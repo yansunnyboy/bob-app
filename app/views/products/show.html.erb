@@ -9,9 +9,20 @@
     <li class="breadcrumb-item active" aria-current="page"><%= @product.name %></li>
   </ol>
 </nav>
-<h1>Products</h1>
-<ol>
-  <li>
-    <a href=<%= @product.url %> target="_blank"><%= @product.name %></a>
-  </li>
-</ol>
+<h1><%= @product.name %></h1>
+<div class="row">
+  <div class="col-sm-6">
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title"></h5>
+
+      <p class="card-text">URL: <a href=<%= @product.url %> target="_blank"><%= @product.name %></p>
+      <p class="card-text">Solution Category</p>
+      <% @product.category_list.each do |x| %>
+      <p class =" text-uppercase card-text badge badge-pill badge-info"><%= x %></p>
+      <%end%>
+      <div><%= link_to("Update", edit_product_path(@product.id), class: "btn btn-primary", data: {confirm: "Are you sure?"}) %></div>
+    </div>
+  </div>
+  </div>
+</div>

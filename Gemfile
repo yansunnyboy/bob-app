@@ -33,6 +33,9 @@ gem 'devise'
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
+# Use tags to categorize products
+gem 'acts-as-taggable-on'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
