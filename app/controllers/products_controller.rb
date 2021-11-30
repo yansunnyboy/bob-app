@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @categories = ActsAsTaggableOn::Tag.all
   end
 
   def create

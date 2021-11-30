@@ -1,5 +1,6 @@
 <%= simple_form_for(product) do |f| %>
   <%= f.input :name %>
   <%= f.input :url %>
+  <%= f.input :category_ids, :collection => @categories %>
   <%= f.submit class:"btn btn-primary" %>
 <% end %>
