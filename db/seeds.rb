@@ -5,21 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 require 'open-uri'
 require 'nokogiri'
 require 'byebug'
 
+categories = [
+  "accounting",
+  "graphics",
+  "marketing",
+  "legal",
+  "project management",
+  "sales",
+  "CRM"
+]
 
-
-
-
-
-
-
-
-
-
-
+categories.each do |category|
+  tag = ActsAsTaggableOn::Tag.find_by(name: category)
+  ActsAsTaggableOn::Tag.create!(name: category) if tag.nil?
+end
 
 categories.each do |category|
   html_file = URI.open("https://www.producthunt.com/search?q=#{category}").read
@@ -46,4 +50,3 @@ categories.each do |category|
     url = "https://www.producthunt.com#{path}" if url.nil?
     Product.create(name: name, url: url)
   end
-end
