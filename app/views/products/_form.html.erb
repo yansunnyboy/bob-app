@@ -1,6 +1,35 @@
 <%= simple_form_for(product) do |f| %>
   <%= f.input :name %>
   <%= f.input :url %>
-  <%= f.input :category_ids, :collection => @categories %>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Current product categories</h5>
+      <% product.category_list.each do |x| %>
+        <p class=" text-uppercase list-group-item list-group-item-success"><%= x %></p>
+      <%end%>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Add additional categories</h5>
+        <% @categories && @categories.each do |category| %>
+          <% next if product.categories.include?(category) %>
+        <p class="card-text"><%= link_to(
+            category.name,
+            toggle_category_product_path(product, category_name: category.name),
+            class: "text-uppercase list-group-item list-group-item-info",
+            method: :post,
+          ) %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
   <%= f.submit class:"btn btn-primary" %>
 <% end %>

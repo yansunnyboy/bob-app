@@ -1,15 +1,15 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: %i[show edit update destroy]
+  before_action :find_product, only: %i[show edit update destroy toggle_category]
   def index
     @products = Product.all
   end
 
   def show
+     @categories = ActsAsTaggableOn::Tag.all
   end
 
   def new
     @product = Product.new
-    @categories = ActsAsTaggableOn::Tag.all
   end
 
   def create
@@ -22,6 +22,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @categories = ActsAsTaggableOn::Tag.all
   end
 
   def update
@@ -33,6 +34,20 @@ class ProductsController < ApplicationController
     @product.destroy
     redirect_to products_path
   end
+
+  def toggle_category
+    # TODO: add if not ther otherwise remove
+    @product.category_list.add(params[:category_name])
+    @product.save!
+    redirect_to edit_product_path(@product)
+  end
+
+  # def remove_category
+  #   # TODO: add if not ther otherwise remove
+  #   @product.category_list.remove(params[:category_name])
+  #   @product.save!
+  #   redirect_to edit_product_path(@product)
+  # end
 
   private
 
