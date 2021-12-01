@@ -36,9 +36,8 @@ categories = [
 categories.each do |category|
   tag = ActsAsTaggableOn::Tag.find_by(name: category)
   ActsAsTaggableOn::Tag.create!(name: category) if tag.nil?
-end
 
-categories.each do |category|
+  category.gsub!(/\s/, '%20') if /\s/.match(category)
   html_file = URI.open("https://www.producthunt.com/search?q=#{category}").read
   html_doc = Nokogiri::HTML(html_file)
   html_doc.search(".styles_item__2kQQ5").each do |product|
@@ -48,10 +47,8 @@ categories.each do |category|
     product_doc = Nokogiri::HTML(product_page)
     path = product_doc.search(".styles_headerInfo__3h0jF h1 a").attribute('href').value
     begin
-      product_site = URI.open("https://www.producthunt.com#{path}")
-      _product_html = Nokogiri::HTML(product_site)
-    rescue OpenURI::HTTPError => _e
-      puts "HTTP error occured"
+      URI.open("https://www.producthunt.com#{path}", :read_timeout => 10)
+    rescue OpenURI::HTTPError
       next
     rescue RuntimeError => e
       if />.*[?]/.match(e.message)
