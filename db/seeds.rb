@@ -46,9 +46,6 @@ categories.each do |category|
   ActsAsTaggableOn::Tag.create!(name: category) if tag.nil?
 end
 
-
-
-
 categories.each do |category|
   category.gsub!(/\s/, "%20") if /.+\s.+/.match(category)
   html_file = URI.open("https://www.producthunt.com/search?q=#{category}").read
@@ -73,6 +70,10 @@ categories.each do |category|
       end
     end
     url = "https://www.producthunt.com#{path}" if url.nil?
-    Product.create(name: name, url: url, bio: bio, info: info)
+    product = Product.find_by(name: name, url: url)
+    product = Product.create!(name: name, url: url) if product.nil?
+    product.update!(bio: bio, info: info)
+    product.category_list.add(category)
+    product.save!
   end
 end
