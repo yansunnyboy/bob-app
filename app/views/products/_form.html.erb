@@ -7,8 +7,13 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Current product categories</h5>
-      <% product.category_list.each do |x| %>
-        <p class=" text-uppercase list-group-item list-group-item-success"><%= x %></p>
+      <% product.category_list.each do |category| %>
+      <p class="card-text"><%= link_to(
+            category,
+            toggle_category_product_path(product, category_name: category),
+            class: "text-uppercase list-group-item list-group-item-success",
+            method: :post,
+          ) %></p>
       <%end%>
       </div>
     </div>

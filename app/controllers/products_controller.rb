@@ -1,8 +1,15 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: %i[show edit update destroy toggle_category]
+
   def index
-    @products = Product.all
+    product_scope = Product.all
+    if !params[:category].nil?
+      product_scope = product_scope.tagged_with(params[:category])
+    end
+    @pagy, @products = pagy(product_scope)
+    @categories = product_scope.tag_counts_on(:categories)
   end
+
 
   def show
      @categories = ActsAsTaggableOn::Tag.all
@@ -36,18 +43,15 @@ class ProductsController < ApplicationController
   end
 
   def toggle_category
-    # TODO: add if not ther otherwise remove
-    @product.category_list.add(params[:category_name])
+    if @product.category_list.include?(params[:category_name])
+      @product.category_list.remove(params[:category_name])
+    else
+      @product.category_list.add(params[:category_name])
+    end
     @product.save!
     redirect_to edit_product_path(@product)
   end
 
-  # def remove_category
-  #   # TODO: add if not ther otherwise remove
-  #   @product.category_list.remove(params[:category_name])
-  #   @product.save!
-  #   redirect_to edit_product_path(@product)
-  # end
 
   private
 
