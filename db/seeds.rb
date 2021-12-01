@@ -22,7 +22,6 @@ users.each do |el|
   user.save
 end
 
-
 categories = [
   "bookkeeping",
   "user experience",
