@@ -5,8 +5,16 @@
   <div class="d-flex justify-content-center">
     <p>Find me in app/views/pages/home.html.erb</p>
   </div>
-  <div class="d-flex justify-content-center">
-    <%= link_to("Sign In",  new_user_session_path, class: "btn btn-success m-2") %>
-    <%= link_to("Sign Up",  new_user_registration_path, class: "btn btn-primary m-2") %>
-  </div>
+  <% if user_signed_in? %>
+    <div class="text-center">
+      <h4>Hello <%=current_user.full_name %>! </h4>
+      <h4>Need some help to grow <%=current_user.business_name %>?</h4>
+      <h4>Your current email address:<%=current_user.email  %></h4>
+    </div>
+  <% else %>
+    <div class="d-flex justify-content-center">
+      <%= link_to("Sign In",  new_user_session_path, class: "btn btn-success m-2") %>
+      <%= link_to("Sign Up",  new_user_registration_path, class: "btn btn-primary m-2") %>
+    </div>
+  <% end %>
 </div>
