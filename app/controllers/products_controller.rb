@@ -31,6 +31,7 @@ class ProductsController < ApplicationController
 
   def edit
     @categories = ActsAsTaggableOn::Tag.all
+    @bussinesses = ActsAsTaggableOn::Tag.all
   end
 
   def update
@@ -48,6 +49,16 @@ class ProductsController < ApplicationController
       @product.category_list.remove(params[:category_name])
     else
       @product.category_list.add(params[:category_name])
+    end
+    @product.save!
+    redirect_to edit_product_path(@product)
+  end
+
+   def toggle_bussiness
+    if @product.bussiness_list.include?(params[:bussiness_name])
+      @product.bussiness_list.remove(params[:bussiness_name])
+    else
+      @product.bussiness_list.add(params[:bussiness_name])
     end
     @product.save!
     redirect_to edit_product_path(@product)
