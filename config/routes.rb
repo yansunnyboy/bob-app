@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   resources :products do
     member do
       post 'toggle_category'
+      post 'toggle_business'
     end
   end
 end
-
-

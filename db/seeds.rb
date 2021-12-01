@@ -10,8 +10,16 @@ require 'open-uri'
 require 'nokogiri'
 require 'byebug'
 
-users = [{ email: "qwerty@gmail.com", password: "qwerty" }, { email: "bob@gmail.com", password: "azerty" },
-         { email: "yan@gmail.com", password: "qwerty" }]
+Product::BUSINESS_SIZES.each do |business|
+  tag_b = ActsAsTaggableOn::Tag.find_by(name: business)
+  ActsAsTaggableOn::Tag.create!(name: business) if tag_b.nil?
+end
+
+users = [
+  { email: "sarah@gmail.com", password: "password" },
+  { email: "bob@gmail.com", password: "azerty" },
+  { email: "yan@gmail.com", password: "password" },
+]
 
 users.each do |el|
   user = User.new(
@@ -39,8 +47,7 @@ categories.each do |category|
 end
 
 categories.each do |category|
-  category.gsub!(/\s/, "%20") if /.+\s.+/.match(category)
-  html_file = URI.open("https://www.producthunt.com/search?q=#{category}").read
+  html_file = URI.open("https://www.producthunt.com/search?q=#{category.gsub(/\s/, "%20")}").read
   html_doc = Nokogiri::HTML(html_file)
   html_doc.search(".styles_item__2kQQ5").each do |product|
     name = product.search(".styles_content__3rHRc a").children.first.text
@@ -62,6 +69,13 @@ categories.each do |category|
       end
     end
     url = "https://www.producthunt.com#{path}" if url.nil?
-    Product.create(name: name, url: url, bio: bio, info: info)
+    product = Product.find_by(name: name, url: url)
+    product = Product.create!(name: name, url: url) if product.nil?
+    product.update!(bio: bio, info: info)
+    product.category_list.add(category)
+    product.save!
+  rescue ActiveRecord::RecordInvalid => e
+    puts e, "could not save that proudct moving on"
+    puts "for:", name, url
   end
 end
