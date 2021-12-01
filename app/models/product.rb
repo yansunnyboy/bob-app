@@ -3,5 +3,11 @@ class Product < ApplicationRecord
   validates :url, uniqueness: true, presence: true, allow_blank: false
   validates :url, format: URI::DEFAULT_PARSER.make_regexp(%w[https http])
 
-  acts_as_taggable_on :categories, :bussiness
+  acts_as_taggable_on :categories, :businesses
+
+  BUSINESS_SIZES = [
+    "small",
+    "medium",
+    "large"
+  ]
 end

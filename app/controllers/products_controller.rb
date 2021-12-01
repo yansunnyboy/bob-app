@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: %i[show edit update destroy toggle_category]
+  before_action :find_product, only: %i[show edit update destroy toggle_category toggle_business]
 
   def index
     product_scope = Product.all
@@ -12,8 +12,9 @@ class ProductsController < ApplicationController
 
 
   def show
-     @categories = ActsAsTaggableOn::Tag.all
-     @bussinesses = ActsAsTaggableOn::Tag.all
+    @categories = ActsAsTaggableOn::Tag
+      .all
+      .reject{|tag| Product::BUSINESS_SIZES.include? tag.name}
   end
 
   def new
@@ -30,8 +31,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @categories = ActsAsTaggableOn::Tag.all
-    @bussinesses = ActsAsTaggableOn::Tag.all
+     @categories = ActsAsTaggableOn::Tag
+      .all
+      .reject{|tag| Product::BUSINESS_SIZES.include? tag.name}
   end
 
   def update
@@ -54,11 +56,11 @@ class ProductsController < ApplicationController
     redirect_to edit_product_path(@product)
   end
 
-   def toggle_bussiness
-    if @product.bussiness_list.include?(params[:bussiness_name])
-      @product.bussiness_list.remove(params[:bussiness_name])
+   def toggle_business
+    if @product.business_list.include?(params[:business_name])
+      @product.business_list.remove(params[:business_name])
     else
-      @product.bussiness_list.add(params[:bussiness_name])
+      @product.business_list.add(params[:business_name])
     end
     @product.save!
     redirect_to edit_product_path(@product)

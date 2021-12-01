@@ -10,8 +10,16 @@ require 'open-uri'
 require 'nokogiri'
 require 'byebug'
 
-users = [{ email: "qwerty@gmail.com", password: "qwerty" }, { email: "bob@gmail.com", password: "azerty" },
-         { email: "yan@gmail.com", password: "qwerty" }]
+Product::BUSINESS_SIZES.each do |business|
+  tag_b = ActsAsTaggableOn::Tag.find_by(name: business)
+  ActsAsTaggableOn::Tag.create!(name: business) if tag_b.nil?
+end
+
+users = [
+  { email: "sarah@gmail.com", password: "password" },
+  { email: "bob@gmail.com", password: "azerty" },
+  { email: "yan@gmail.com", password: "password" },
+]
 
 users.each do |el|
   user = User.new(
@@ -38,16 +46,6 @@ categories.each do |category|
   ActsAsTaggableOn::Tag.create!(name: category) if tag.nil?
 end
 
-bussiness = [
-  "small",
-  "medium",
-  "large"
-]
-
-bussinesses.each do |bussiness|
-  tag_b = ActsAsTaggableOn::Tag.find_by(name: bussiness)
-  ActsAsTaggableOn::Tag.create!(name: bussiness) if tag_b.nil?
-end
 
 
 
