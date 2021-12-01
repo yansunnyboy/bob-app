@@ -29,30 +29,32 @@
   <div class ="row">
     <div class="d-inline-flex p-2"><%== pagy_bootstrap_nav(@pagy)%></div>
   </div>
-<div class="row">
-  <div class="col-sm-6">
-  <% @products.each do |product| %>
-  <div class="card mb-3">
-    <div class="card-body">
-      <h5 class="card-title"><%=link_to product.name,  product.url %></h5>
-      <p class="card-text"><%= product.url %></p>
-      <p class= "card-title">Categories</p>
-      <% product.category_list.each do |x| %>
-      <p class =" text-uppercase card-text badge badge-pill badge-info"><%= x %></p>
-      <%end%>
-      <% product.business_list.each do |business| %>
-      <p class =" text-uppercase card-text badge badge-pill badge-secondary"><%= business %></p>
-      <%end%>
-      <% product.cost_list.each do |cost| %>
-      <p class =" text-uppercase card-text badge badge-pill badge-success"><%= cost %></p>
-      <%end%>
-      <div><%= link_to("Review", edit_product_path(product.id), class: "btn btn-secondary") %></div>
-      <div><%= link_to("Remove", product_path(product.id), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"}) %></div>
-      <p><%= product.bio %></p>
-      <p><%= product.info %></p>
+<div class="container">
+<% @products.each do |product| %>
+  <div class="box border">
+    <div class="product-img">
+      <img src="https://placedog.net/100/100?random" width="100" alt="" />
+    </div>
+    <div class="product-info">
+      <h1><%=product.name %></h1>
+      <p class="price">URL:<%=link_to product.name,  product.url %></p>
+      <p class="description"><p><%= product.bio %></p>
+         <% product.category_list.each do |category| %>
+          <p class =" description text-uppercase badge badge-pill badge-info"><%= category %></p>
+          <%end%>
+          <% product.business_list.each do |business| %>
+          <p class ="description text-uppercase badge badge-pill badge-secondary"><%= business %></p>
+          <%end%>
+          <% product.cost_list.each do |cost| %>
+          <p class ="description text-uppercase badge badge-pill badge-success"><%= cost %></p>
+          <%end%>
+      <br /><br />
+          <button class = "btn btn-secondary"><%= link_to("Review", edit_product_path(product.id)) %></button>
+          <button class = "btn btn-danger" ><%= link_to("Remove", product_path(product.id), method: :delete, data: {confirm: "Are you sure?"}) %></button>
     </div>
   </div>
   <% end %>
-  </div>
 </div>
+   <br /><br />
+
 <%= link_to("Add Product", new_product_path, class: "btn btn-primary") %>

@@ -49,6 +49,16 @@ class ProductsController < ApplicationController
   end
 
 
+  def toggle_category
+    if @product.category_list.include?(params[:category_name])
+      @product.category_list.remove(params[:category_name])
+    else
+      @product.category_list.add(params[:category_name])
+    end
+    @product.save!
+    redirect_to edit_product_path(@product)
+  end
+
   def toggle_cost
     if @product.cost_list.include?(params[:cost_name])
       @product.cost_list.remove(params[:cost_name])
@@ -59,15 +69,6 @@ class ProductsController < ApplicationController
     redirect_to edit_product_path(@product)
   end
 
-  def toggle_category
-    if @product.category_list.include?(params[:category_name])
-      @product.category_list.remove(params[:category_name])
-    else
-      @product.category_list.add(params[:category_name])
-    end
-    @product.save!
-    redirect_to edit_product_path(@product)
-  end
 
    def toggle_business
     if @product.business_list.include?(params[:business_name])
