@@ -51,6 +51,7 @@
       <br /><br />
           <button class = "btn btn-secondary"><%= link_to("Review", edit_product_path(product.id)) %></button>
           <button class = "btn btn-danger" ><%= link_to("Remove", product_path(product.id), method: :delete, data: {confirm: "Are you sure?"}) %></button>
+          <button class = "btn btn-primary" ><%= link_to("See More", product_path(product.id)) %></button>
     </div>
   </div>
   <% end %>
