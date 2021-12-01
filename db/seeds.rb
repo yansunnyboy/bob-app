@@ -11,31 +11,36 @@ require 'nokogiri'
 require 'byebug'
 
 categories = [
-  "accounting",
-  "graphics",
+  "bookkeeping",
+  "user experience",
+  "developer tools",
   "marketing",
-  "legal",
-  "project management",
-  "sales",
-  "CRM"
+  "CRM",
+  "design tools",
+  "productivity",
+  "analytics"
 ]
 
 categories.each do |category|
   tag = ActsAsTaggableOn::Tag.find_by(name: category)
   ActsAsTaggableOn::Tag.create!(name: category) if tag.nil?
+end
 
-  category.gsub!(/\s/, '%20') if /\s/.match(category)
+categories.each do |category|
+  category.gsub!(/\s/, "%20") if /.+\s.+/.match(category)
   html_file = URI.open("https://www.producthunt.com/search?q=#{category}").read
   html_doc = Nokogiri::HTML(html_file)
   html_doc.search(".styles_item__2kQQ5").each do |product|
     name = product.search(".styles_content__3rHRc a").children.first.text
+    bio = product.search(".styles_grey__3J1TQ").children.first.text
     link = product.search(".styles_content__3rHRc a").attribute('href').value
     product_page = URI.open("https://www.producthunt.com#{link}").read
     product_doc = Nokogiri::HTML(product_page)
+    info = product_doc.search(".styles_main__48OVQ p").children.text
     path = product_doc.search(".styles_headerInfo__3h0jF h1 a").attribute('href').value
     begin
-      URI.open("https://www.producthunt.com#{path}", :read_timeout => 10)
-    rescue OpenURI::HTTPError
+      URI.open("https://www.producthunt.com#{path}")
+    rescue OpenURI::HTTPError, Errno::EHOSTUNREACH, Net::OpenTimeout, Errno::ECONNREFUSED
       next
     rescue RuntimeError => e
       if />.*[?]/.match(e.message)
@@ -45,6 +50,6 @@ categories.each do |category|
       end
     end
     url = "https://www.producthunt.com#{path}" if url.nil?
-    Product.create(name: name, url: url)
+    Product.create(name: name, url: url, bio: bio, info: info)
   end
 end

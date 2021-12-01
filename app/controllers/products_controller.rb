@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-     @categories = ActsAsTaggableOn::Tag.all
+    @categories = ActsAsTaggableOn::Tag.all
   end
 
   def new
@@ -56,6 +56,6 @@ class ProductsController < ApplicationController
   end
 
   def set_params
-    params.require(:product).permit(:name, :url)
+    params.require(:product).permit(:name, :url, :bio, :info, :image_url)
   end
 end
