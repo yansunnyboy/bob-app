@@ -18,8 +18,14 @@
 
       <p class="card-text">URL: <a href=<%= @product.url %> target="_blank"><%= @product.name %></p>
       <p class="card-text">Solution Category</p>
-      <% @product.category_list.each do |x| %>
-      <p class =" text-uppercase card-text badge badge-pill badge-info"><%= x %></p>
+      <% @product.category_list.each do |category| %>
+      <p class =" text-uppercase card-text badge badge-pill badge-info"><%= category %></p>
+      <%end%>
+      <% @product.business_list.each do |business| %>
+      <p class =" text-uppercase card-text badge badge-pill badge-secondary"><%= business %></p>
+      <%end%>
+      <% @product.cost_list.each do |cost| %>
+      <p class =" text-uppercase card-text badge badge-pill badge-success"><%= cost %></p>
       <%end%>
       <div><%= link_to("Update", edit_product_path(@product.id), class: "btn btn-primary", data: {confirm: "Are you sure?"}) %></div>
     </div>

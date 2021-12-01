@@ -41,10 +41,15 @@
       <p class =" text-uppercase card-text badge badge-pill badge-info"><%= x %></p>
       <%end%>
       <% product.business_list.each do |business| %>
-      <p class =" text-uppercase card-text badge badge-pill badge-success"><%= business %></p>
+      <p class =" text-uppercase card-text badge badge-pill badge-secondary"><%= business %></p>
       <%end%>
-      <div><%= link_to("Remove", product_path(product.id), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"}) %></div>
+      <% product.cost_list.each do |cost| %>
+      <p class =" text-uppercase card-text badge badge-pill badge-success"><%= cost %></p>
+      <%end%>
       <div><%= link_to("Review", edit_product_path(product.id), class: "btn btn-secondary") %></div>
+      <div><%= link_to("Remove", product_path(product.id), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"}) %></div>
+      <p><%= product.bio %></p>
+      <p><%= product.info %></p>
     </div>
   </div>
   <% end %>

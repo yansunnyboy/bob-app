@@ -34,39 +34,75 @@
       </div>
     </div>
   </div>
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Current Business Category</h5>
-      <% product.business_list.each do |business| %>
-      <p class="card-text"><%= link_to(
-            business,
-            toggle_business_product_path(product, business_name: business),
-            class: "text-uppercase list-group-item list-group-item-success",
-            method: :post,
-          ) %></p>
-      <%end%>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Add additional business categories</h5>
-        <% Product::BUSINESS_SIZES.each do |business| %>
-          <% next if product.businesses.include?(business) %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Current Solution Category</h5>
+        <% product.business_list.each do |business| %>
         <p class="card-text"><%= link_to(
-            business,
-            toggle_business_product_path(product, business_name: business),
-            class: "text-uppercase list-group-item list-group-item-info",
-            method: :post,
-          ) %></p>
-        <% end %>
+              business,
+              toggle_business_product_path(product, business_name: business),
+              class: "text-uppercase list-group-item list-group-item-success",
+              method: :post,
+            ) %></p>
+        <%end%>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Add additional solution categories</h5>
+          <% Product::BUSINESS_SIZES.each do |business| %>
+            <% next if product.businesses.include?(business) %>
+          <p class="card-text"><%= link_to(
+              business,
+              toggle_business_product_path(product, business_name: business),
+              class: "text-uppercase list-group-item list-group-item-info",
+              method: :post,
+            ) %></p>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Current Solution Cost</h5>
+        <% product.cost_list.each do |cost| %>
+        <p class="card-text"><%= link_to(
+              cost,
+              toggle_cost_product_path(product, cost_name: cost),
+              class: "text-uppercase list-group-item list-group-item-success",
+              method: :post,
+            ) %></p>
+        <%end%>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Add additional solution cost</h5>
+          <% Product::COST_CATEGORIES.each do |cost| %>
+            <% next if product.costs.include?(cost) %>
+          <p class="card-text"><%= link_to(
+              cost,
+              toggle_cost_product_path(product, cost_name: cost),
+              class: "text-uppercase list-group-item list-group-item-info",
+              method: :post,
+            ) %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 </div>
 
   <%= f.submit class:"btn btn-primary" %>
