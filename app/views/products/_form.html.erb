@@ -34,6 +34,39 @@
       </div>
     </div>
   </div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Current Business Category</h5>
+      <% product.business_list.each do |business| %>
+      <p class="card-text"><%= link_to(
+            business,
+            toggle_business_product_path(product, business_name: business),
+            class: "text-uppercase list-group-item list-group-item-success",
+            method: :post,
+          ) %></p>
+      <%end%>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Add additional business categories</h5>
+        <% Product::BUSINESS_SIZES.each do |business| %>
+          <% next if product.businesses.include?(business) %>
+        <p class="card-text"><%= link_to(
+            business,
+            toggle_business_product_path(product, business_name: business),
+            class: "text-uppercase list-group-item list-group-item-info",
+            method: :post,
+          ) %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
   <%= f.submit class:"btn btn-primary" %>

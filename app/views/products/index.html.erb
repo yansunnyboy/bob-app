@@ -40,6 +40,9 @@
       <% product.category_list.each do |x| %>
       <p class =" text-uppercase card-text badge badge-pill badge-info"><%= x %></p>
       <%end%>
+      <% product.business_list.each do |business| %>
+      <p class =" text-uppercase card-text badge badge-pill badge-success"><%= business %></p>
+      <%end%>
       <div><%= link_to("Remove", product_path(product.id), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"}) %></div>
     </div>
   </div>

@@ -10,8 +10,16 @@ require 'open-uri'
 require 'nokogiri'
 require 'byebug'
 
-users = [{ email: "qwerty@gmail.com", password: "qwerty" }, { email: "bob@gmail.com", password: "azerty" },
-         { email: "yan@gmail.com", password: "qwerty" }]
+Product::BUSINESS_SIZES.each do |business|
+  tag_b = ActsAsTaggableOn::Tag.find_by(name: business)
+  ActsAsTaggableOn::Tag.create!(name: business) if tag_b.nil?
+end
+
+users = [
+  { email: "sarah@gmail.com", password: "password" },
+  { email: "bob@gmail.com", password: "azerty" },
+  { email: "yan@gmail.com", password: "password" },
+]
 
 users.each do |el|
   user = User.new(
@@ -62,6 +70,10 @@ categories.each do |category|
       end
     end
     url = "https://www.producthunt.com#{path}" if url.nil?
-    Product.create(name: name, url: url, bio: bio, info: info)
+    product = Product.find_by(name: name, url: url)
+    product = Product.create!(name: name, url: url) if product.nil?
+    product.update!(bio: bio, info: info)
+    product.category_list.add(category)
+    product.save!
   end
 end
