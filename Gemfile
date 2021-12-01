@@ -35,6 +35,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 # Use tags to categorize products
 gem 'acts-as-taggable-on'
+# Use to paginate
+gem 'pagy'
 
 group :development, :test do
   gem 'pry-byebug'

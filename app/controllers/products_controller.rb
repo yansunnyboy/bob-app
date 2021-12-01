@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: %i[show edit update destroy toggle_category]
   def index
-    @products = Product.all
+    @pagy, @products = pagy(Product.all)
   end
 
   def show
