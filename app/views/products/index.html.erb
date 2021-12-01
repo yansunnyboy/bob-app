@@ -9,7 +9,26 @@
   </ol>
 </nav>
 <h1>Products</h1>
-<%== pagy_bootstrap_nav(@pagy) %>
+  <div class= "row">
+    <div class="d-inline-flex p-2" >
+    <% @categories.each do |category| %>
+    <%= link_to(
+      "#{category.name}-#{category.taggings_count}",
+      { :action => :index, :category => category.name },
+        :class => "text-uppercase card-text badge badge-pill badge-secondary"
+        ) %>
+  <% end %>
+    <%= link_to(
+      "Show All",
+      { :action => :index},
+        :class => "text-uppercase card-text badge badge-pill badge-secondary"
+        ) %>
+    </div>
+  </div>
+
+  <div class ="row">
+    <div class="d-inline-flex p-2"><%== pagy_bootstrap_nav(@pagy)%></div>
+  </div>
 <div class="row">
   <div class="col-sm-6">
   <% @products.each do |product| %>
