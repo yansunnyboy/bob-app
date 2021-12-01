@@ -10,6 +10,19 @@ require 'open-uri'
 require 'nokogiri'
 require 'byebug'
 
+users = [{ email: "qwerty@gmail.com", password: "qwerty" }, { email: "bob@gmail.com", password: "azerty" },
+         { email: "yan@gmail.com", password: "qwerty" }]
+
+users.each do |el|
+  user = User.new(
+      :email                 => el[:email],
+      :password              => el[:password],
+      :password_confirmation => el[:password]
+    )
+  user.save
+end
+
+
 categories = [
   "accounting",
   "graphics",
@@ -50,3 +63,4 @@ categories.each do |category|
     url = "https://www.producthunt.com#{path}" if url.nil?
     Product.create(name: name, url: url)
   end
+end
