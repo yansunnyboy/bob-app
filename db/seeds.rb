@@ -38,6 +38,19 @@ categories.each do |category|
   ActsAsTaggableOn::Tag.create!(name: category) if tag.nil?
 end
 
+bussiness = [
+  "small",
+  "medium",
+  "large"
+]
+
+bussinesses.each do |bussiness|
+  tag_b = ActsAsTaggableOn::Tag.find_by(name: bussiness)
+  ActsAsTaggableOn::Tag.create!(name: bussiness) if tag_b.nil?
+end
+
+
+
 categories.each do |category|
   category.gsub!(/\s/, "%20") if /.+\s.+/.match(category)
   html_file = URI.open("https://www.producthunt.com/search?q=#{category}").read

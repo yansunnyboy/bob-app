@@ -12,7 +12,8 @@ class ProductsController < ApplicationController
 
 
   def show
-    @categories = ActsAsTaggableOn::Tag.all
+     @categories = ActsAsTaggableOn::Tag.all
+     @bussinesses = ActsAsTaggableOn::Tag.all
   end
 
   def new
