@@ -20,6 +20,7 @@ class ListsController < ApplicationController
 
   def create
     @list = List.create(list_params)
+    @list.contributors.build(user: current_user, role: "owner")
     redirect_to new_list_solution_path(@list)
   end
 

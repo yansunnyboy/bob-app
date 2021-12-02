@@ -1,0 +1,29 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+    <a href="/">Home</a>
+    </li>
+    <li class="breadcrumb-item">
+     Products
+   </li>
+  </ol>
+</nav>
+<div class="row">
+  <div class="container">
+  <div class="box border">
+    <h3>Contributors</h3>
+      <% @contributors.each do |contributor| %>
+      <%= contributor.user.full_name%>
+      <%= contributor.role%>
+    <button class = "btn btn-success">Remove <%= contributor.user.full_name%></button>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <button class = "btn btn-danger">Add New Contributor></button>
+  </div>
+</div>
