@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     member do
       post 'toggle_category'
       post 'toggle_business'
+      post 'toggle_cost'
     end
   end
 end
