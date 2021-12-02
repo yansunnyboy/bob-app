@@ -30,7 +30,7 @@
     <div class="d-inline-flex p-2"><%== pagy_bootstrap_nav(@pagy)%></div>
   </div>
 <div class="container">
-<% @products.each do |product| %>
+  <% @products.each do |product| %>
   <div class="box border">
     <div class="product-img">
       <img src="https://placedog.net/100/100?random" width="100" alt="" />
@@ -52,6 +52,7 @@
           <button class = "btn btn-secondary"><%= link_to("Review", edit_product_path(product.id)) %></button>
           <button class = "btn btn-danger" ><%= link_to("Remove", product_path(product.id), method: :delete, data: {confirm: "Are you sure?"}) %></button>
           <button class = "btn btn-primary" ><%= link_to("See More", product_path(product.id)) %></button>
+          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#createList">Add to List</button>
     </div>
   </div>
   <% end %>
@@ -59,3 +60,27 @@
    <br /><br />
 
 <%= link_to("Add Product", new_product_path, class: "btn btn-primary") %>
+
+
+<!-- Modal -->
+<div class="modal fade" id="createList" tabindex="-1" role="dialog" aria-labelledby="createList" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add to List</h5>
+        <button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for(List.new) do |f| %>
+          <%= f.input :name %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
