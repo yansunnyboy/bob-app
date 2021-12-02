@@ -17,5 +17,4 @@ class Product < ApplicationRecord
     "up-front",
     "subscription"
   ]
-  
 end

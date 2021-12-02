@@ -9,4 +9,8 @@ Rails.application.routes.draw do
       post 'toggle_cost'
     end
   end
+  resources :lists do
+    resources :solutions
+  end
+
 end
