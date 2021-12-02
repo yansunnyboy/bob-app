@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   before_action :find_list, only: %i[show edit destroy update]
 
   def index
-    @list = List.all
+    @lists = List.all
   end
 
   def new
@@ -10,6 +10,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    @solution = Solution.new
   end
 
   def create

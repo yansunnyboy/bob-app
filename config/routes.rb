@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
   resources :lists do
-    resources :solutions
+    resources :solutions, only: %i[new create]
   end
-
+  resources :solutions, only: :destroy
 end
