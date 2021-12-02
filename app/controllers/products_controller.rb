@@ -3,18 +3,15 @@ class ProductsController < ApplicationController
 
   def index
     product_scope = Product.all
-    if !params[:category].nil?
-      product_scope = product_scope.tagged_with(params[:category])
-    end
+    product_scope = product_scope.tagged_with(params[:category]) unless params[:category].nil?
     @pagy, @products = pagy(product_scope)
     @categories = product_scope.tag_counts_on(:categories)
   end
 
-
   def show
     @categories = ActsAsTaggableOn::Tag
-      .all
-      .reject{|tag| Product::BUSINESS_SIZES.include? tag.name}
+                  .all
+                  .reject { |tag| Product::BUSINESS_SIZES.include? tag.name }
   end
 
   def new
@@ -31,9 +28,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
-     @categories = ActsAsTaggableOn::Tag
-      .all
-      .reject{|tag| Product::BUSINESS_SIZES.include? tag.name}
+    @categories = ActsAsTaggableOn::Tag
+                  .all
+                  .reject { |tag| Product::BUSINESS_SIZES.include? tag.name }
   end
 
   def update
@@ -56,7 +53,7 @@ class ProductsController < ApplicationController
     redirect_to edit_product_path(@product)
   end
 
-   def toggle_business
+  def toggle_business
     if @product.business_list.include?(params[:business_name])
       @product.business_list.remove(params[:business_name])
     else
@@ -65,7 +62,6 @@ class ProductsController < ApplicationController
     @product.save!
     redirect_to edit_product_path(@product)
   end
-
 
   private
 
