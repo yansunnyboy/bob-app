@@ -18,7 +18,7 @@ end
 users = [
   { email: "sarah@gmail.com", password: "password" },
   { email: "bob@gmail.com", password: "azerty" },
-  { email: "yan@gmail.com", password: "password" },
+  { email: "yan@gmail.com", password: "password" }
 ]
 
 users.each do |el|
@@ -47,7 +47,7 @@ categories.each do |category|
 end
 
 categories.each do |category|
-  html_file = URI.open("https://www.producthunt.com/search?q=#{category.gsub(/\s/, "%20")}").read
+  html_file = URI.open("https://www.producthunt.com/search?q=#{category.gsub(/\s/, '%20')}").read
   html_doc = Nokogiri::HTML(html_file)
   html_doc.search(".styles_item__2kQQ5").each do |product|
     name = product.search(".styles_content__3rHRc a").children.first.text
@@ -75,7 +75,7 @@ categories.each do |category|
     product.category_list.add(category)
     product.save!
   rescue ActiveRecord::RecordInvalid => e
-    puts e, "could not save that proudct moving on"
+    puts e, "could not save that product, moving on"
     puts "for:", name, url
   end
 end
