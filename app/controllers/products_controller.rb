@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: %i[show edit update destroy toggle_category toggle_business toggle_cost]
+  before_action :find_product, only: %i[show edit update destroy toggle_category toggle_business toggle_cost add_to_list create_solution_from_product]
 
   def index
     product_scope = Product.all
@@ -73,6 +73,18 @@ class ProductsController < ApplicationController
     end
     @product.save!
     redirect_to edit_product_path(@product)
+  end
+
+  def add_to_list
+    # change to user list
+    @lists = List.all
+    @solution = Solution.new
+  end
+
+  def create_solution_from_product
+    @list = List.find(params[:solution][:list])
+    @solution = Solution.create(list: @list, product: @product)
+    redirect_to product_path(@product)
   end
 
   private

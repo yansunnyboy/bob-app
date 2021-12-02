@@ -8,7 +8,7 @@ class SolutionsController < ApplicationController
   def create
     @solution = Solution.new(solution_params)
     @solution.list = @list
-    flash[:notice] = @solution.errors.full_messages.to_sentence unless @bookmark.save
+    flash[:notice] = @solution.errors.full_messages.to_sentence unless @solution.save
     redirect_to list_path(@list)
   end
 
