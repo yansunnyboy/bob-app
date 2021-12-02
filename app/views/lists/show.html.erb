@@ -1,0 +1,18 @@
+<h1>My <%= @list.name %> List</h1>
+  <div class="container">
+    <% @products.each do |product| %>
+      <div class="box border">
+        <div class="product-img">
+          <img src="https://placedog.net/100/100?random" width="100" alt="" />
+        </div>
+        <div class="product-info">
+          <h1><%= product.name %></h1>
+            <p class="price">URL: <%= link_to product.name,  product.url %></p>
+            <p class="description"><p><%= product.bio %></p>
+          <br/><br/>
+            <%= link_to("See More", product_path(product.id), class: "btn btn-warning") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<%= link_to("Add Product", new_list_solution_path(@list), class: "btn btn-success") %>

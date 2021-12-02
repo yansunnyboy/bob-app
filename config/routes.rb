@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       post 'toggle_category'
       post 'toggle_business'
       post 'toggle_cost'
+      get 'add_to_list'
+      post 'create_solution_from_product'
     end
   end
   resources :lists do

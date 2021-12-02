@@ -2,7 +2,8 @@ class ListsController < ApplicationController
   before_action :find_list, only: %i[show edit destroy update]
 
   def index
-    @lists = List.all
+    list_scope = List.all
+    @pagy, @lists = pagy(list_scope)
   end
 
   def new
@@ -10,11 +11,16 @@ class ListsController < ApplicationController
   end
 
   def show
-    @solution = Solution.new
+    @solutions = Solution.where(list_id: params[:id])
+    @products = []
+    @solutions.each do |solution|
+      @products << Product.find(solution.product_id)
+    end
   end
 
   def create
-    @list = List.new(list_params)
+    @list = List.create(list_params)
+    redirect_to new_list_solution_path(@list)
   end
 
   def edit
@@ -37,6 +43,6 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :description)
   end
 end
