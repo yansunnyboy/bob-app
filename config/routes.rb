@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   resources :lists do
     resources :solutions, only: %i[new create]
+    resources :contributors, only: %i[index]
   end
   resources :solutions, only: :destroy
 end

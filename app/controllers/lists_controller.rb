@@ -15,6 +15,9 @@ class ListsController < ApplicationController
 
   def create
     @list = List.new(list_params)
+    @list.contributors.build(user: User.first, role: "owner")
+    @list.save!
+    redirect_to list_path(@list)
   end
 
   def edit
