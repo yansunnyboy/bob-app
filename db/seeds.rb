@@ -79,3 +79,33 @@ categories.each do |category|
     puts "for:", name, url
   end
 end
+
+## NEED TO SORT THIS OUT
+
+#   lists = [
+#     { name: "Bookkeeping Solutions", description: "Looking for free and low cost book keeping solutions for my cafe" },
+#     { name: "Marketing Solutions", description: "Looking for free and low cost marketing keeping solutions for my cafe" },
+#   ]
+
+#   lists.each do |list|
+#     list = List.new(
+#         :name                => list[:name,
+#         :password            => list[:description],
+#       )
+#     list.save
+#   end
+
+#   #have list id_1 id_2
+
+#   solutions = [
+#     {list_id: 1,  product_id:
+#       products_samples = [(Product.tagged_by("bookkeeping").sample(10)]
+
+#       product_samples.each do |product|
+#         product.product_id
+#       end
+
+
+#     },
+#     {list_id: 2,  product_id: sample(Product.tagged_by("marketing")},
+# }
