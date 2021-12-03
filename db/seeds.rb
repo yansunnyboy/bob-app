@@ -44,8 +44,9 @@ categories.each do |category|
   tag = ActsAsTaggableOn::Tag.find_by(name: category)
   ActsAsTaggableOn::Tag.create!(name: category) if tag.nil?
 end
-
+puts "ready to seed products"
 categories.each do |category|
+  puts "seed for category: #{category}"
   html_file = URI.open("https://www.producthunt.com/search?q=#{category.gsub(/\s/, '%20')}").read
   html_doc = Nokogiri::HTML(html_file)
   html_doc.search(".styles_item__2kQQ5").each do |product|
@@ -73,6 +74,7 @@ categories.each do |category|
     product.update!(bio: bio, info: info)
     product.category_list.add(category)
     product.save!
+    puts "created products: #{product.name}"
   rescue ActiveRecord::RecordInvalid => e
     puts e, "could not save that product, moving on"
     puts "for:", name, url
