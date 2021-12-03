@@ -49,7 +49,9 @@ categories.each do |category|
   puts "seed for category: #{category}"
   html_file = URI.open("https://www.producthunt.com/search?q=#{category.gsub(/\s/, '%20')}").read
   html_doc = Nokogiri::HTML(html_file)
+  puts "access the first url"
   html_doc.search(".styles_item__2kQQ5").each do |product|
+    puts "seeding the product: #{product}"
     name = product.search(".styles_content__3rHRc a").children.first.text
     bio = product.search(".styles_grey__3J1TQ").children.first.text
     link = product.search(".styles_content__3rHRc a").attribute('href').value
@@ -59,9 +61,11 @@ categories.each do |category|
     path = product_doc.search(".styles_headerInfo__3h0jF h1 a").attribute('href').value
     begin
       URI.open("https://www.producthunt.com#{path}")
+      puts "opened path url: #{path}"
     rescue OpenURI::HTTPError, Errno::EHOSTUNREACH, Net::OpenTimeout, Errno::ECONNREFUSED
       next
     rescue RuntimeError => e
+      puts "inside rescue"
       if />.*[?]/.match(e.message)
         url = />.*[?]/.match(e.message).to_s.chars[2...-1].join
       else
@@ -69,6 +73,7 @@ categories.each do |category|
       end
     end
     url = "https://www.producthunt.com#{path}" if url.nil?
+    puts "url: #{url}"
     product = Product.find_by(name: name, url: url)
     product = Product.create!(name: name, url: url) if product.nil?
     product.update!(bio: bio, info: info)
