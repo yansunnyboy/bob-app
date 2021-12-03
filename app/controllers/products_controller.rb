@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index show]
   before_action :find_product, only: %i[show edit update destroy toggle_category toggle_business toggle_cost add_to_list create_solution_from_product]
 
   def index
@@ -6,6 +7,8 @@ class ProductsController < ApplicationController
     product_scope = product_scope.tagged_with(params[:category]) unless params[:category].nil?
     @pagy, @products = pagy(product_scope)
     @categories = product_scope.tag_counts_on(:categories)
+    @lists = List.all
+    @solution = Solution.new
   end
 
   def show
@@ -84,7 +87,7 @@ class ProductsController < ApplicationController
   def create_solution_from_product
     @list = List.find(params[:solution][:list])
     @solution = Solution.create(list: @list, product: @product)
-    redirect_to product_path(@product)
+    redirect_to products_path
   end
 
   private
