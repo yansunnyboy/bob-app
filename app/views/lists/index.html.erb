@@ -25,9 +25,9 @@
       <p class="price">URL:<%=link_to list.name %></p>
       <p class="description"><p>My list Bio</p>
       <br /><br />
-          <button class = "btn btn-secondary"><%= link_to("Review", edit_list_path(list.id)) %></button>
-          <button class = "btn btn-danger" ><%= link_to("Remove", list_path(list.id), method: :delete, data: {confirm: "Are you sure?"}) %></button>
-          <button class = "btn btn-primary" ><%= link_to("See More", list_path(list.id)) %></button>
+          <%= link_to("Review", edit_list_path(list.id), class: "btn btn-secondary") %>
+          <%= link_to("Remove", list_path(list.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger") %>
+          <%= link_to("See More", list_path(list.id), class: "btn btn-primary") %>
     </div>
   </div>
   <% end %>
