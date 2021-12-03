@@ -1,6 +1,5 @@
 require 'open-uri'
 require 'nokogiri'
-require 'byebug'
 
 def scraper(category)
   html_file = URI.open("https://www.producthunt.com/search?q=#{category}").read

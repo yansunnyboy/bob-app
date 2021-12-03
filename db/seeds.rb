@@ -8,7 +8,6 @@
 
 require 'open-uri'
 require 'nokogiri'
-require 'byebug'
 
 Product::BUSINESS_SIZES.each do |business|
   tag_b = ActsAsTaggableOn::Tag.find_by(name: business)
