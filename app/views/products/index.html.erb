@@ -33,7 +33,11 @@
   <% @products.each do |product| %>
   <div class="box border">
     <div class="product-img">
+    <% if product.image_url %>
+      <%= image_tag product.image_url, width: 100%>
+    <% else %>
       <img src="https://placedog.net/100/100?random" width="100" alt="" />
+    <% end %>
     </div>
     <div class="product-info">
       <h1><%=product.name %></h1>
