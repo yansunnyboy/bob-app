@@ -59,33 +59,69 @@ categories.each do |category|
 end
 
 categories.each do |category|
-  html_file = URI.open("https://www.producthunt.com/search?q=#{category.gsub(/\s/, '%20')}").read
+  html_file = URI.open("https://www.producthunt.com/search?q=#{category}").read
   html_doc = Nokogiri::HTML(html_file)
-  html_doc.search(".styles_item__2kQQ5").each do |product|
-    name = product.search(".styles_content__3rHRc a").children.first.text
-    bio = product.search(".styles_grey__3J1TQ").children.first.text
-    link = product.search(".styles_content__3rHRc a").attribute('href').value
-    product_page = URI.open("https://www.producthunt.com#{link}").read
+
+  # TODO: make it work
+  bio = html_doc.search(".styles_grey__3J1TQ")&.children&.first&.text
+
+  apollo_state = JSON.parse(
+    html_doc
+      .search("#__NEXT_DATA__")
+      .to_s
+      .sub(/^[^{]+\{/, '{')
+      .sub("</script>", "")
+  ).dig("props", "apolloState")
+  post_keys = apollo_state.keys.filter { |post_key| post_key =~ /Post\d+$/ }
+  apollo_state_products = post_keys.map do |post_key|
+    apollo_state[post_key].slice(
+      "name",
+      "tagline",
+      "thumbnailImageUuid"
+      # NOTE: other data that could be extracted
+      # "alternativesCount",      # =>22,
+      # "commentsCount",          # =>11,
+      # "pricingType",            # =>nil,
+      # "recommendedPostsCount",  # =>22,
+      # "productState",           # =>"default",
+      # "createdAt",              # =>"2019-03-26T06:00:00-07:00",
+      # "featuredAt",             # =>"2019-03-26T06:00:00-07:00",
+      # "updatedAt",              # =>"2021-11-20T14:45:37-08:00",
+      # "disabledWhenScheduled",  # =>true,
+      # "hasVoted",               # =>false,
+      # "votesCount",             # =>196,
+    )
+  end
+
+  html_doc
+    .search("main h3 a")
+    .map { |anchor| { url: anchor["href"], name: anchor.text, a_node: anchor } }
+    .reject { |product| product[:name].empty? }
+    .each do |args|
+    args = args.merge(url: "https://www.producthunt.com#{args[:url]}")
+
+    categories = [category]
+    product_page = URI.open(args[:url]).read
     product_doc = Nokogiri::HTML(product_page)
+
+    # TODO: make it work
     info = product_doc.search(".styles_main__48OVQ p").children.text
-    path = product_doc.search(".styles_headerInfo__3h0jF h1 a").attribute('href').value
-    begin
-      URI.open("https://www.producthunt.com#{path}")
-    rescue OpenURI::HTTPError, Errno::EHOSTUNREACH, Net::OpenTimeout, Errno::ECONNREFUSED
-      next
-    rescue RuntimeError => e
-      if />.*[?]/.match(e.message)
-        url = />.*[?]/.match(e.message).to_s.chars[2...-1].join
-      else
-        url = />.*/.match(e.message).to_s.chars[2..].join
-      end
-    end
-    url = "https://www.producthunt.com#{path}" if url.nil?
-    product = Product.find_by(name: name, url: url)
-    product = Product.create!(name: name, url: url) if product.nil?
-    product.update!(bio: bio, info: info)
-    product.category_list.add(category)
-    product.save!
+
+    # product_doc
+    #   .search("main div")
+    #   .to_a
+    #   .filter { |div| !div.search("> span").empty? && div.search("> span").text == "" }
+    #   .map do |product_doc_category| # not including any +1 +2
+    #     categories << product_doc_category
+    #   end
+
+    thumbnail_uuid = apollo_state_products.find { |asprod| asprod["name"] == args[:name] }["thumbnailImageUuid"]
+    image_url = "https://ph-files.imgix.net/#{thumbnail_uuid}" if thumbnail_uuid
+    optional_args = "?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"
+    image_url = "https://ph-files.imgix.net/#{thumbnail_uuid}#{optional_args}" if thumbnail_uuid
+    args = args.merge(image_url: image_url) if image_url
+    args.delete(:a_node)
+
     puts format(
       <<~EO_PRODUCT_CREATE,
         product = Product.find_by(%<find_args>s)
@@ -95,9 +131,9 @@ categories.each do |category|
         product.save!
         product = nil
       EO_PRODUCT_CREATE
-      find_args: {name: name, url: url},
-      create_args: {name: name, url: url},
-      update_args: {bio: bio, info: info},
+      find_args: {name: args[:name], url: args[:url]},
+      create_args: {name: args[:name], url: args[:url]},
+      update_args: {bio: bio, info: info, image_url: args[:image_url]},
       categories: [category].join(", ")
     )
   rescue ActiveRecord::RecordInvalid => e

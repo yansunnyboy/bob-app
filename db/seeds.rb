@@ -29,3 +29,483 @@ tag = ActsAsTaggableOn::Tag.find_by(name: "productivity")
 ActsAsTaggableOn::Tag.create!(name: "productivity") if tag.nil?
 tag = ActsAsTaggableOn::Tag.find_by(name: "analytics")
 ActsAsTaggableOn::Tag.create!(name: "analytics") if tag.nil?
+product = Product.find_by({:name=>"Pilot", :url=>"https://www.producthunt.com/posts/pilot-6"})
+product = Product.create!({:name=>"Pilot", :url=>"https://www.producthunt.com/posts/pilot-6"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/a1ec86fb-de76-4add-95ec-814a8d19f6e2.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("bookkeeping", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Bench Accounting", :url=>"https://www.producthunt.com/posts/bench-accounting"})
+product = Product.create!({:name=>"Bench Accounting", :url=>"https://www.producthunt.com/posts/bench-accounting"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/c2167080-c0c4-4f86-ab87-d1133440b45a.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("bookkeeping", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"SimpleKeep", :url=>"https://www.producthunt.com/posts/simplekeep"})
+product = Product.create!({:name=>"SimpleKeep", :url=>"https://www.producthunt.com/posts/simplekeep"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/1f2ed450-1793-41e7-b35e-ea3e24c05744.jpeg?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("bookkeeping", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Crypto Tax Prep by Happy Tax", :url=>"https://www.producthunt.com/posts/crypto-tax-prep-by-happy-tax"})
+product = Product.create!({:name=>"Crypto Tax Prep by Happy Tax", :url=>"https://www.producthunt.com/posts/crypto-tax-prep-by-happy-tax"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/25fb564a-ae42-412b-908e-5e295fca25d9.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("bookkeeping", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Botkeeper", :url=>"https://www.producthunt.com/posts/botkeeper"})
+product = Product.create!({:name=>"Botkeeper", :url=>"https://www.producthunt.com/posts/botkeeper"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/557d0d36-5600-4d11-b033-92ee332e6210.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("bookkeeping", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Bookleaf", :url=>"https://www.producthunt.com/posts/bookleaf"})
+product = Product.create!({:name=>"Bookleaf", :url=>"https://www.producthunt.com/posts/bookleaf"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/39d2978f-f6e9-45fb-b182-23dedce87dc1.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("bookkeeping", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Contalink", :url=>"https://www.producthunt.com/posts/contalink"})
+product = Product.create!({:name=>"Contalink", :url=>"https://www.producthunt.com/posts/contalink"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/daad1978-0064-4f76-96e8-3f628c7071fb.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("bookkeeping", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Receipt Stash", :url=>"https://www.producthunt.com/posts/receipt-stash"})
+product = Product.create!({:name=>"Receipt Stash", :url=>"https://www.producthunt.com/posts/receipt-stash"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/79b4432c-4d33-4fe9-afb5-29ab4c4c2822.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("bookkeeping", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Simply123", :url=>"https://www.producthunt.com/posts/simply123"})
+product = Product.create!({:name=>"Simply123", :url=>"https://www.producthunt.com/posts/simply123"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/b524c5d1-9b28-40a7-a4a6-22030b7c6dfa.jpeg?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("bookkeeping", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Asto", :url=>"https://www.producthunt.com/posts/asto"})
+product = Product.create!({:name=>"Asto", :url=>"https://www.producthunt.com/posts/asto"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/9e1dd01b-d282-4b88-a8f6-4b8e93e6b9c9.jpeg?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("bookkeeping", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"UX Lifecycle - The business guide to implementing great software user experiences", :url=>"https://www.producthunt.com/posts/ux-lifecycle-the-business-guide-to-implementing-great-software-user-experiences"})
+product = Product.create!({:name=>"UX Lifecycle - The business guide to implementing great software user experiences", :url=>"https://www.producthunt.com/posts/ux-lifecycle-the-business-guide-to-implementing-great-software-user-experiences"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/5d45fd20-ec49-46e6-abfc-a20dd55ff58a.jpeg?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("user experience", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Fluxguard - End User Experience Monitoring", :url=>"https://www.producthunt.com/posts/fluxguard-end-user-experience-monitoring"})
+product = Product.create!({:name=>"Fluxguard - End User Experience Monitoring", :url=>"https://www.producthunt.com/posts/fluxguard-end-user-experience-monitoring"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/39df0506-e877-43ab-b89a-24a6c10e89ca.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("user experience", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"User Experiences That Matter (Second Edition)", :url=>"https://www.producthunt.com/posts/user-experiences-that-matter-second-edition"})
+product = Product.create!({:name=>"User Experiences That Matter (Second Edition)", :url=>"https://www.producthunt.com/posts/user-experiences-that-matter-second-edition"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/abffbb80-66d8-4a7c-b2f8-e64a3469c25f.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("user experience", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"User Experiences That Matter", :url=>"https://www.producthunt.com/posts/user-experiences-that-matter"})
+product = Product.create!({:name=>"User Experiences That Matter", :url=>"https://www.producthunt.com/posts/user-experiences-that-matter"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/abffbb80-66d8-4a7c-b2f8-e64a3469c25f.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("user experience", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Lean UX: Applying Lean Principles to Improve User Experience", :url=>"https://www.producthunt.com/posts/lean-ux-applying-lean-principles-to-improve-user-experience"})
+product = Product.create!({:name=>"Lean UX: Applying Lean Principles to Improve User Experience", :url=>"https://www.producthunt.com/posts/lean-ux-applying-lean-principles-to-improve-user-experience"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/7d375fe3-073b-4c8d-9803-164ba2dc4536.jpeg?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("user experience", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Sketching User Experiences: Getting the Design Right and the Right Design", :url=>"https://www.producthunt.com/posts/sketching-user-experiences-getting-the-design-right-and-the-right-design"})
+product = Product.create!({:name=>"Sketching User Experiences: Getting the Design Right and the Right Design", :url=>"https://www.producthunt.com/posts/sketching-user-experiences-getting-the-design-right-and-the-right-design"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/eedcb0bc-c0cd-4ef8-a682-0cd014d22791.jpeg?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("user experience", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"LUXD: Learn User Experience Design", :url=>"https://www.producthunt.com/posts/luxd-learn-user-experience-design"})
+product = Product.create!({:name=>"LUXD: Learn User Experience Design", :url=>"https://www.producthunt.com/posts/luxd-learn-user-experience-design"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/6906c8a4-30ce-472c-ae0f-49948578abe7.jpeg?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("user experience", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"The User Experience Team of One", :url=>"https://www.producthunt.com/posts/the-user-experience-team-of-one"})
+product = Product.create!({:name=>"The User Experience Team of One", :url=>"https://www.producthunt.com/posts/the-user-experience-team-of-one"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/2d2c3839-7f70-4416-82ad-36a247556e7d.jpeg?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("user experience", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"The Elements of User Experience", :url=>"https://www.producthunt.com/posts/the-elements-of-user-experience"})
+product = Product.create!({:name=>"The Elements of User Experience", :url=>"https://www.producthunt.com/posts/the-elements-of-user-experience"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/24ce3ccc-7062-4652-8418-34fa3be1c272.jpeg?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("user experience", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Evolt Design Suite", :url=>"https://www.producthunt.com/posts/evolt-design-suite"})
+product = Product.create!({:name=>"Evolt Design Suite", :url=>"https://www.producthunt.com/posts/evolt-design-suite"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/e3bc7bd1-fd5f-4e27-9592-6cdfc591fb18.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("user experience", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Profitable developer tools database", :url=>"https://www.producthunt.com/posts/profitable-developer-tools-database"})
+product = Product.create!({:name=>"Profitable developer tools database", :url=>"https://www.producthunt.com/posts/profitable-developer-tools-database"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/1200ce71-f611-4bdd-b96b-07e9f964289c.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("developer tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"GitHub Student Developer Pack", :url=>"https://www.producthunt.com/posts/github-student-developer-pack"})
+product = Product.create!({:name=>"GitHub Student Developer Pack", :url=>"https://www.producthunt.com/posts/github-student-developer-pack"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/84745bf8-4783-4ba3-9785-d241165f6b00.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("developer tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"LaunchKit - Open Source", :url=>"https://www.producthunt.com/posts/launchkit-open-source"})
+product = Product.create!({:name=>"LaunchKit - Open Source", :url=>"https://www.producthunt.com/posts/launchkit-open-source"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/06669635-7522-4165-a7fb-96bfba0846b8.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("developer tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Pretty Awesome Lists", :url=>"https://www.producthunt.com/posts/pretty-awesome-lists"})
+product = Product.create!({:name=>"Pretty Awesome Lists", :url=>"https://www.producthunt.com/posts/pretty-awesome-lists"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/3244f241-8cab-456d-8384-cc328d5be4f8.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("developer tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Weights & Biases", :url=>"https://www.producthunt.com/posts/weights-biases"})
+product = Product.create!({:name=>"Weights & Biases", :url=>"https://www.producthunt.com/posts/weights-biases"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/170e24f0-0b12-45d1-b25b-a2c4bc2f6e4d.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("developer tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"SmallDevTools", :url=>"https://www.producthunt.com/posts/smalldevtools"})
+product = Product.create!({:name=>"SmallDevTools", :url=>"https://www.producthunt.com/posts/smalldevtools"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/1cb7041a-e35b-4878-a8d4-669cecf1dde3.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("developer tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Bugout", :url=>"https://www.producthunt.com/posts/bugout"})
+product = Product.create!({:name=>"Bugout", :url=>"https://www.producthunt.com/posts/bugout"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/47f095a1-924b-452a-8aae-298c680cae1b.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("developer tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"whatdevsneed", :url=>"https://www.producthunt.com/posts/whatdevsneed"})
+product = Product.create!({:name=>"whatdevsneed", :url=>"https://www.producthunt.com/posts/whatdevsneed"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/7d09768f-152e-480e-a1f2-cbff9f79f68a.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("developer tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Serverless-Dev-Tools", :url=>"https://www.producthunt.com/posts/serverless-dev-tools"})
+product = Product.create!({:name=>"Serverless-Dev-Tools", :url=>"https://www.producthunt.com/posts/serverless-dev-tools"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/12f4f4b5-9a5e-4046-8ab3-fefbf723c131.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("developer tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"ValueTools", :url=>"https://www.producthunt.com/posts/valuetools"})
+product = Product.create!({:name=>"ValueTools", :url=>"https://www.producthunt.com/posts/valuetools"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/8134d5a3-95d8-4dff-9765-0812181266d4.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("developer tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Marketing Stack", :url=>"https://www.producthunt.com/posts/marketing-stack"})
+product = Product.create!({:name=>"Marketing Stack", :url=>"https://www.producthunt.com/posts/marketing-stack"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/bf987837-651e-43de-979d-2c7b14a40932.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("marketing", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Marketing Resources List", :url=>"https://www.producthunt.com/posts/marketing-resources-list"})
+product = Product.create!({:name=>"Marketing Resources List", :url=>"https://www.producthunt.com/posts/marketing-resources-list"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/bf2f50b6-cf92-4e2b-90dd-887c3f2e1ca2.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("marketing", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Content Marketing Stack", :url=>"https://www.producthunt.com/posts/content-marketing-stack"})
+product = Product.create!({:name=>"Content Marketing Stack", :url=>"https://www.producthunt.com/posts/content-marketing-stack"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/26c37180-c3af-4a18-9035-c203b62618b0.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("marketing", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Marketing Examples", :url=>"https://www.producthunt.com/posts/marketing-examples-2"})
+product = Product.create!({:name=>"Marketing Examples", :url=>"https://www.producthunt.com/posts/marketing-examples-2"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/a6c9b9fd-15da-41c2-935e-ce47c11a33da.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("marketing", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"The Influencer Marketing Stack", :url=>"https://www.producthunt.com/posts/the-influencer-marketing-stack"})
+product = Product.create!({:name=>"The Influencer Marketing Stack", :url=>"https://www.producthunt.com/posts/the-influencer-marketing-stack"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/6e0e195a-6b25-4480-bca1-f2b70c9bd30d.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("marketing", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Zero to Marketing", :url=>"https://www.producthunt.com/posts/zero-to-marketing"})
+product = Product.create!({:name=>"Zero to Marketing", :url=>"https://www.producthunt.com/posts/zero-to-marketing"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/67537b96-2ee0-44fc-bc96-3902da866459.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("marketing", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"App Marketing Stack", :url=>"https://www.producthunt.com/posts/app-marketing-stack"})
+product = Product.create!({:name=>"App Marketing Stack", :url=>"https://www.producthunt.com/posts/app-marketing-stack"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/cfd00600-2d56-4303-a0e4-0eac66e82681.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("marketing", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Intercom on Marketing", :url=>"https://www.producthunt.com/posts/intercom-on-marketing"})
+product = Product.create!({:name=>"Intercom on Marketing", :url=>"https://www.producthunt.com/posts/intercom-on-marketing"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/c9fd25b1-0db3-4410-ab9d-5283011020d3.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("marketing", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Marketing for Developers 2.0", :url=>"https://www.producthunt.com/posts/marketing-for-developers-2-0"})
+product = Product.create!({:name=>"Marketing for Developers 2.0", :url=>"https://www.producthunt.com/posts/marketing-for-developers-2-0"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/e8e3c330-7cd7-4ffe-abf4-19fab8444b64.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("marketing", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Marketing for Startups", :url=>"https://www.producthunt.com/posts/marketing-for-startups-1"})
+product = Product.create!({:name=>"Marketing for Startups", :url=>"https://www.producthunt.com/posts/marketing-for-startups-1"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/c96ba751-39ac-4a60-a5dd-8df3c6816593.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("marketing", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Salesflare CRM", :url=>"https://www.producthunt.com/posts/salesflare-crm"})
+product = Product.create!({:name=>"Salesflare CRM", :url=>"https://www.producthunt.com/posts/salesflare-crm"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/ddb3d205-b7ce-4072-a914-18f9ae59c52f.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("CRM", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Onesheet CRM", :url=>"https://www.producthunt.com/posts/onesheet-crm"})
+product = Product.create!({:name=>"Onesheet CRM", :url=>"https://www.producthunt.com/posts/onesheet-crm"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/75be7f86-1183-430f-8548-5261dae44870.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("CRM", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"FollowUp Personal CRM", :url=>"https://www.producthunt.com/posts/followup-personal-crm"})
+product = Product.create!({:name=>"FollowUp Personal CRM", :url=>"https://www.producthunt.com/posts/followup-personal-crm"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/aaca2e36-3370-4c0e-acbb-9e6bb7f86c4e.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("CRM", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Freshsales CRM", :url=>"https://www.producthunt.com/posts/freshsales-crm"})
+product = Product.create!({:name=>"Freshsales CRM", :url=>"https://www.producthunt.com/posts/freshsales-crm"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/47379563-022b-419d-bcba-7330335e4c33.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("CRM", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"InStream CRM", :url=>"https://www.producthunt.com/posts/instream-crm"})
+product = Product.create!({:name=>"InStream CRM", :url=>"https://www.producthunt.com/posts/instream-crm"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/668f108b-f7ef-48c4-b361-d67c48d2a872.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("CRM", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Sortd Sales CRM for Gmail", :url=>"https://www.producthunt.com/posts/sortd-sales-crm-for-gmail"})
+product = Product.create!({:name=>"Sortd Sales CRM for Gmail", :url=>"https://www.producthunt.com/posts/sortd-sales-crm-for-gmail"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/b66cd47d-94f1-400e-b328-7af0f598e607.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("CRM", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"PipeDrive CRM", :url=>"https://www.producthunt.com/posts/pipedrive"})
+product = Product.create!({:name=>"PipeDrive CRM", :url=>"https://www.producthunt.com/posts/pipedrive"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/edbe8a51-ea7a-48f9-929d-19d4c233f0bc.jpeg?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("CRM", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Overloop CRM", :url=>"https://www.producthunt.com/posts/overloop-crm"})
+product = Product.create!({:name=>"Overloop CRM", :url=>"https://www.producthunt.com/posts/overloop-crm"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/3ff29b69-da1c-40e7-a280-d71ad5f12764.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("CRM", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"HubSpot CRM", :url=>"https://www.producthunt.com/posts/hubspot-crm"})
+product = Product.create!({:name=>"HubSpot CRM", :url=>"https://www.producthunt.com/posts/hubspot-crm"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/40ae8b1a-ca3a-4e9e-96a2-51f7c4b80ef8.jpeg?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("CRM", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"NetHunt CRM", :url=>"https://www.producthunt.com/posts/nethunt-crm"})
+product = Product.create!({:name=>"NetHunt CRM", :url=>"https://www.producthunt.com/posts/nethunt-crm"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/1389e318-2035-4a64-8292-1c5b0819d88b.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("CRM", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"2015 Design Tools", :url=>"https://www.producthunt.com/posts/2015-design-tools"})
+product = Product.create!({:name=>"2015 Design Tools", :url=>"https://www.producthunt.com/posts/2015-design-tools"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/73fa0960-32e9-49f4-8952-a96efd87d705.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("design tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Design Tools Weekly", :url=>"https://www.producthunt.com/posts/design-tools-weekly"})
+product = Product.create!({:name=>"Design Tools Weekly", :url=>"https://www.producthunt.com/posts/design-tools-weekly"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/85574ca4-c813-407f-bd68-43d11e7e11af.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("design tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"2021 Design Tools Survey", :url=>"https://www.producthunt.com/posts/2021-design-tools-survey"})
+product = Product.create!({:name=>"2021 Design Tools Survey", :url=>"https://www.producthunt.com/posts/2021-design-tools-survey"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/5f4bb8d9-3213-42c1-a55d-5e7acadd0f07.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("design tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Undesign", :url=>"https://www.producthunt.com/posts/undesign"})
+product = Product.create!({:name=>"Undesign", :url=>"https://www.producthunt.com/posts/undesign"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/a3d3bd50-0d01-4215-94c6-a12701178084.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("design tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Avocode 3.0", :url=>"https://www.producthunt.com/posts/avocode-3-0"})
+product = Product.create!({:name=>"Avocode 3.0", :url=>"https://www.producthunt.com/posts/avocode-3-0"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/2a0f2cd8-00dd-4807-87de-dfee4f685665.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("design tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"DesignValley", :url=>"https://www.producthunt.com/posts/designvalley"})
+product = Product.create!({:name=>"DesignValley", :url=>"https://www.producthunt.com/posts/designvalley"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/2d078e11-8a0a-485f-b7c7-0bc6791be333.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("design tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Craft Stock, from InVision", :url=>"https://www.producthunt.com/posts/craft-stock-from-invision"})
+product = Product.create!({:name=>"Craft Stock, from InVision", :url=>"https://www.producthunt.com/posts/craft-stock-from-invision"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/99f37d14-fe19-43dd-9693-0e0f8dcce425.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("design tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Public Design Vault", :url=>"https://www.producthunt.com/posts/public-design-vault"})
+product = Product.create!({:name=>"Public Design Vault", :url=>"https://www.producthunt.com/posts/public-design-vault"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/625e0791-2e84-4abb-8e37-d84df6e808e4.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("design tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Apply Pixels", :url=>"https://www.producthunt.com/posts/apply-pixels"})
+product = Product.create!({:name=>"Apply Pixels", :url=>"https://www.producthunt.com/posts/apply-pixels"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/58e0c26a-373f-4ba7-8cd5-62cabf522c0b.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("design tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"UX Tools", :url=>"https://www.producthunt.com/posts/ux-tools-2"})
+product = Product.create!({:name=>"UX Tools", :url=>"https://www.producthunt.com/posts/ux-tools-2"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/3f19db2e-b0ac-454b-8b82-b9fdd26a5cfa.jpeg?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("design tools", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Productivity Tools by Dropbox", :url=>"https://www.producthunt.com/posts/productivity-tools-by-dropbox"})
+product = Product.create!({:name=>"Productivity Tools by Dropbox", :url=>"https://www.producthunt.com/posts/productivity-tools-by-dropbox"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/496fb7b6-a5a0-4fe0-b018-36fc365eb651.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("productivity", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Productivity.so", :url=>"https://www.producthunt.com/posts/productivity-so"})
+product = Product.create!({:name=>"Productivity.so", :url=>"https://www.producthunt.com/posts/productivity-so"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/149ca86b-ff3e-4b4b-a21b-92bb4eff6db7.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("productivity", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"The Ultimate Productivity Stack", :url=>"https://www.producthunt.com/posts/the-ultimate-productivity-stack"})
+product = Product.create!({:name=>"The Ultimate Productivity Stack", :url=>"https://www.producthunt.com/posts/the-ultimate-productivity-stack"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/b2e07fc9-c076-471e-bbdf-c87e0d329be2.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("productivity", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Productivity Planner", :url=>"https://www.producthunt.com/posts/productivity-planner"})
+product = Product.create!({:name=>"Productivity Planner", :url=>"https://www.producthunt.com/posts/productivity-planner"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/3f7731bb-6d61-48dc-b988-afbc1675c329.jpeg?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("productivity", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"ProductivityMentor", :url=>"https://www.producthunt.com/posts/productivitymentor"})
+product = Product.create!({:name=>"ProductivityMentor", :url=>"https://www.producthunt.com/posts/productivitymentor"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/11522a39-0675-4d2f-ad39-04afe475229d.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("productivity", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Command Line Productivity", :url=>"https://www.producthunt.com/posts/command-line-productivity"})
+product = Product.create!({:name=>"Command Line Productivity", :url=>"https://www.producthunt.com/posts/command-line-productivity"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/11930efa-bd57-4c11-8ff7-91859179d187.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("productivity", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"VS Code Extensions for Productivity", :url=>"https://www.producthunt.com/posts/vs-code-extensions-for-productivity"})
+product = Product.create!({:name=>"VS Code Extensions for Productivity", :url=>"https://www.producthunt.com/posts/vs-code-extensions-for-productivity"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/fffad596-f704-4a2d-812e-5750cdfd1ff7.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("productivity", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"ipsm.io - Productivity Tools", :url=>"https://www.producthunt.com/posts/ipsm-io-productivity-tools"})
+product = Product.create!({:name=>"ipsm.io - Productivity Tools", :url=>"https://www.producthunt.com/posts/ipsm-io-productivity-tools"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/a65fa8e8-54c5-4a1d-b4fa-175cc90727d5.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("productivity", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"YouTube Productivity Mode", :url=>"https://www.producthunt.com/posts/youtube-productivity-mode"})
+product = Product.create!({:name=>"YouTube Productivity Mode", :url=>"https://www.producthunt.com/posts/youtube-productivity-mode"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/dfa6913a-0bcf-4650-be76-9afcd82541c0.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("productivity", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Productivity Notebook", :url=>"https://www.producthunt.com/posts/productivity-notebook"})
+product = Product.create!({:name=>"Productivity Notebook", :url=>"https://www.producthunt.com/posts/productivity-notebook"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/07dc6435-cf0b-4cc2-8c28-4553eed3e640.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("productivity", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Narrative BI for Google Analytics", :url=>"https://www.producthunt.com/posts/narrative-bi-for-google-analytics"})
+product = Product.create!({:name=>"Narrative BI for Google Analytics", :url=>"https://www.producthunt.com/posts/narrative-bi-for-google-analytics"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/4ddceb91-d927-44f9-87b5-e288a9a177b8.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("analytics", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Fathom Analytics", :url=>"https://www.producthunt.com/posts/fathom-analytics"})
+product = Product.create!({:name=>"Fathom Analytics", :url=>"https://www.producthunt.com/posts/fathom-analytics"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/1b62fea7-e785-4704-a82e-283d2ef1693e.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("analytics", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Nacho Analytics", :url=>"https://www.producthunt.com/posts/nacho-analytics-3"})
+product = Product.create!({:name=>"Nacho Analytics", :url=>"https://www.producthunt.com/posts/nacho-analytics-3"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/be47022e-4a43-4a1c-9703-dc07cb1b2ab9.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("analytics", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Plausible Analytics", :url=>"https://www.producthunt.com/posts/plausible-analytics"})
+product = Product.create!({:name=>"Plausible Analytics", :url=>"https://www.producthunt.com/posts/plausible-analytics"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/84db18d0-6f62-4d19-8afa-968ee4bc6751.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("analytics", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Simple Analytics", :url=>"https://www.producthunt.com/posts/simple-analytics"})
+product = Product.create!({:name=>"Simple Analytics", :url=>"https://www.producthunt.com/posts/simple-analytics"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/a8526e4b-08dd-448b-834d-8e2861329608.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("analytics", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Indicative Analytics", :url=>"https://www.producthunt.com/posts/indicative-analytics"})
+product = Product.create!({:name=>"Indicative Analytics", :url=>"https://www.producthunt.com/posts/indicative-analytics"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/56f162c0-37f2-4a33-a05a-6a413f483bfe.jpeg?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("analytics", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Kuku Analytics", :url=>"https://www.producthunt.com/posts/kuku-analytics"})
+product = Product.create!({:name=>"Kuku Analytics", :url=>"https://www.producthunt.com/posts/kuku-analytics"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/c60e1f84-593b-43ec-862f-89670e1279f5.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("analytics", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Influencer Analytics by Interceptd", :url=>"https://www.producthunt.com/posts/influencer-analytics-by-interceptd"})
+product = Product.create!({:name=>"Influencer Analytics by Interceptd", :url=>"https://www.producthunt.com/posts/influencer-analytics-by-interceptd"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/a648aef8-ae5a-4b27-a86e-27023c64cc82.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("analytics", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Native Analytics by Keen IO", :url=>"https://www.producthunt.com/posts/native-analytics-by-keen-io"})
+product = Product.create!({:name=>"Native Analytics by Keen IO", :url=>"https://www.producthunt.com/posts/native-analytics-by-keen-io"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/25e706bc-5b14-4c5c-88b2-f18ecb7acd9a.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("analytics", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Intutel - Social Media Analytics", :url=>"https://www.producthunt.com/posts/intutel-social-media-analytics"})
+product = Product.create!({:name=>"Intutel - Social Media Analytics", :url=>"https://www.producthunt.com/posts/intutel-social-media-analytics"}) if product.nil?
+product.update!({:bio=>nil, :info=>"", :image_url=>"https://ph-files.imgix.net/6589d877-5951-48c5-baff-58b9e85eee50.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("analytics", parse: true)
+product.save!
+product = nil
