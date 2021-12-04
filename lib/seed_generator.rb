@@ -94,14 +94,23 @@ categories.each do |category|
   end
 
   html_doc
-    .search("main h3 a")
-    .map { |anchor| { url: anchor["href"], name: anchor.text, a_node: anchor } }
+    .search("main h3")
+    .reject { |h3| h3.search("a").length != 2 }
+    .map { |h3|
+    {
+      ph_url: h3.search("a")[0]["href"],
+      url: h3.search("a")[1]["href"],
+      name: h3.text,
+    } }
     .reject { |product| product[:name].empty? }
     .each do |args|
-    args = args.merge(url: "https://www.producthunt.com#{args[:url]}")
+    response = Net::HTTP.get_response(URI.parse("https://www.producthunt.com#{args[:url]}"))
+    args[:url] = response['location'].sub("?ref=producthunt", "")
+
+    args = args.merge(ph_url: "https://www.producthunt.com#{args[:ph_url]}")
 
     categories = [category]
-    product_page = URI.open(args[:url]).read
+    product_page = URI.open(args[:ph_url]).read
     product_doc = Nokogiri::HTML(product_page)
 
     # TODO: make it work
@@ -120,7 +129,6 @@ categories.each do |category|
     optional_args = "?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"
     image_url = "https://ph-files.imgix.net/#{thumbnail_uuid}#{optional_args}" if thumbnail_uuid
     args = args.merge(image_url: image_url) if image_url
-    args.delete(:a_node)
 
     puts format(
       <<~EO_PRODUCT_CREATE,
