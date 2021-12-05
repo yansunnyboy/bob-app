@@ -62,11 +62,6 @@ categories.each do |category|
   html_file = URI.open("https://www.producthunt.com/search?q=#{category}").read
   html_doc = Nokogiri::HTML(html_file)
 
-  # TODO: make it work
-  bio_paragraphs = html_doc.search("[class*=styles_description__] p")
-  raise "expected one paragraph" unless bio_paragraphs.count == 1
-  bio = bio_paragraphs.first.text
-
   apollo_state = JSON.parse(
     html_doc
       .search("#__NEXT_DATA__")
@@ -114,9 +109,7 @@ categories.each do |category|
     categories = [category]
     product_page = URI.open(args[:ph_url]).read
     product_doc = Nokogiri::HTML(product_page)
-
-    # TODO: make it work
-    info = product_doc.search(".styles_main__48OVQ p").children.text
+    product_data = ProducthuntParser.parse_product_page(product_doc)
 
     # product_doc
     #   .search("main div")
@@ -143,7 +136,7 @@ categories.each do |category|
       EO_PRODUCT_CREATE
       find_args: {name: args[:name], url: args[:url]},
       create_args: {name: args[:name], url: args[:url]},
-      update_args: {bio: bio, info: info, image_url: args[:image_url]},
+      update_args: {bio: product_data[:bio], info: product_data[:info], image_url: args[:image_url]},
       categories: [category].join(", ")
     )
   rescue ActiveRecord::RecordInvalid => e
