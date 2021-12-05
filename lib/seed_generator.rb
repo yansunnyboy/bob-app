@@ -63,7 +63,9 @@ categories.each do |category|
   html_doc = Nokogiri::HTML(html_file)
 
   # TODO: make it work
-  bio = html_doc.search(".styles_grey__3J1TQ")&.children&.first&.text
+  bio_paragraphs = html_doc.search("[class*=styles_description__] p")
+  raise "expected one paragraph" unless bio_paragraphs.count == 1
+  bio = bio_paragraphs.first.text
 
   apollo_state = JSON.parse(
     html_doc
