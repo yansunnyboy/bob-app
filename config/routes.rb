@@ -18,6 +18,11 @@ Rails.application.routes.draw do
         post 'remove'
       end
     end
+    resources :products do
+      member do
+        post 'toggle_vote'
+      end
+    end
   end
   resources :solutions, only: :destroy
 end
