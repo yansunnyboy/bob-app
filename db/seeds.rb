@@ -107,12 +107,12 @@ product.update!({:bio=>"What defines a great user experience?", :info=>"User Exp
 product.category_list.add("user experience", parse: true)
 product.save!
 product = nil
-product = Product.find_by({:name=>"User Experiences That Matter", :url=>"https://www.userexperiencesmatter.com/"})
-product = Product.create!({:name=>"User Experiences That Matter", :url=>"https://www.userexperiencesmatter.com/"}) if product.nil?
-product.update!({:bio=>"Take your product from liked by you, to loved by your users!", :info=>nil, :image_url=>"https://ph-files.imgix.net/abffbb80-66d8-4a7c-b2f8-e64a3469c25f.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
-product.category_list.add("user experience", parse: true)
-product.save!
-product = nil
+# product = Product.find_by({:name=>"User Experiences That Matter", :url=>"https://www.userexperiencesmatter.com/"})
+# product = Product.create!({:name=>"User Experiences That Matter", :url=>"https://www.userexperiencesmatter.com/"}) if product.nil?
+# product.update!({:bio=>"Take your product from liked by you, to loved by your users!", :info=>nil, :image_url=>"https://ph-files.imgix.net/abffbb80-66d8-4a7c-b2f8-e64a3469c25f.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+# product.category_list.add("user experience", parse: true)
+# product.save!
+# product = nil
 product = Product.find_by({:name=>"Lean UX: Applying Lean Principles to Improve User Experience", :url=>"http://amzn.to/1U0ryiP&tag=prodhunt04-20"})
 product = Product.create!({:name=>"Lean UX: Applying Lean Principles to Improve User Experience", :url=>"http://amzn.to/1U0ryiP&tag=prodhunt04-20"}) if product.nil?
 product.update!({:bio=>"Applying Lean Principles to Improve User Experience", :info=>nil, :image_url=>"https://ph-files.imgix.net/7d375fe3-073b-4c8d-9803-164ba2dc4536.jpeg?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
