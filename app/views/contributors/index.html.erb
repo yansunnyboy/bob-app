@@ -4,7 +4,19 @@
     <a href="/">Home</a>
     </li>
     <li class="breadcrumb-item">
-     Products
+     <%= link_to(
+        "Lists",
+        lists_path
+     ) %>
+   </li>
+    <li class="breadcrumb-item">
+     <%= link_to(
+        params[:list_id],
+        list_path(params[:list_id])
+     ) %>
+   </li>
+    <li class="breadcrumb-item">
+      Contributors
    </li>
   </ol>
 </nav>
@@ -14,8 +26,14 @@
     <h3>Contributors</h3>
       <% @contributors.each do |contributor| %>
       <%= contributor.user.full_name%>
+      <%= contributor.user.email%>
       <%= contributor.role%>
-    <button class = "btn btn-success">Remove <%= contributor.user.full_name%></button>
+      <%= link_to(
+        "remove",
+        remove_list_contributor_path(list_id: params[:list_id], id: contributor),
+        class: "btn btn-danger",
+        method: :post,
+      ) %>
       <% end %>
     </div>
   </div>
@@ -24,6 +42,10 @@
 
 <div class="row">
   <div class="col-md-6 offset-md-3">
-    <button class = "btn btn-danger">Add New Contributor></button>
+    <%= link_to(
+      "Add New Contributor",
+      new_list_contributor_path(list_id: params[:list_id]),
+      class: "btn btn-success"
+    ) %>
   </div>
 </div>

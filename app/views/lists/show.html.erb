@@ -1,3 +1,20 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+    <a href="/">Home</a>
+    </li>
+    <li class="breadcrumb-item">
+     <%= link_to(
+        "Lists",
+        lists_path
+     ) %>
+   </li>
+    <li class="breadcrumb-item">
+     <%= params[:id] %>
+   </li>
+  </ol>
+</nav>
+
 <h1>My <%= @list.name %> List</h1>
   <div class="container">
     <% @products.each do |product| %>
@@ -18,4 +35,3 @@
 <%= link_to("Add Product", new_list_solution_path(@list), class: "btn btn-success") %>
 
 <button class = "btn btn-secondary"><%= link_to("Contributors", list_contributors_path(list_id:@list.id)) %></button>
-
