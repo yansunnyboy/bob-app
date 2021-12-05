@@ -108,6 +108,7 @@ categories.each do |category|
 
     categories = [category]
     product_page = URI.open(args[:ph_url]).read
+    # puts args[:ph_url]
     product_doc = Nokogiri::HTML(product_page)
     product_data = ProducthuntParser.parse_product_page(product_doc)
 
