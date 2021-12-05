@@ -1,12 +1,11 @@
 <div class="box border mb-3">
-  <div class="product-img">
-    <img src="https://placedog.net/100/100?random" height="100" alt="" />
-  </div>
   <div class="product-info">
     <h1><%= list.name %></h1>
-    <p class="price">URL:<%=link_to list.name %></p>
-    <p class="description"><p>My list Bio</p>
+    <p class="description">
+      <%= list.description %>
+    </p>
     <br />
+
     <br />
     <%= link_to("Review", edit_list_path(list.id), class: "btn btn-secondary") %>
     <%= link_to("Remove", list_path(list.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger") %>

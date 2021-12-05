@@ -17,7 +17,7 @@
 
 <h1>My <%= @list.name %> List</h1>
 
-<%= render partial: "product", collection: @products %>
+<%= render partial: "products/product", collection: @products %>
 
 <%= link_to("Add Product", new_list_solution_path(@list), class: "btn btn-success") %>
 
