@@ -25,6 +25,17 @@
     <%= link_to("Remove", product_path(product.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger") %>
     <%= link_to("See More", product_path(product.id), class: "btn btn-primary") %>
     <button type="button" class="btn btn-warning" data-toggle="modal" data-target='#<%= "createList#{product.id}" %>'>Add to List</button>
+    <% if @list %>
+      <% solution = Solution.find_by(list: @list, product: product) %>
+      <%= solution.get_likes.size %>
+        <%= link_to("See More", product_path(product.id), class: "btn btn-warning") %>
+        <%= link_to(
+          @contributor.voted_for?(solution) ? "Down Vote" : "Up Vote",
+          toggle_vote_list_product_path(list_id: @list.id, id: product.id),
+          class: "btn btn-success",
+          method: :post,
+        ) %>
+    <% end %>
   </div>
 </div>
 
