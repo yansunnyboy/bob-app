@@ -1,0 +1,26 @@
+<div class="box border mb-3">
+  <div class="product-img">
+    <div class="product-img">
+      <% if product.image_url %>
+        <%= image_tag product.image_url, height: 100%>
+      <% else %>
+        <img src="https://placedog.net/100/100?random" height="100" alt="" />
+      <% end %>
+    </div>
+  </div>
+  <div class="product-info">
+    <h1><%= product.name %></h1>
+      <p class="price">URL: <%= link_to product.name,  product.url %></p>
+      <p class="description"><p><%= product.bio %></p>
+    <br/><br/>
+    <% solution = Solution.find_by(list: @list, product: product) %>
+    <%= solution.get_likes.size %>
+      <%= link_to("See More", product_path(product.id), class: "btn btn-warning") %>
+      <%= link_to(
+        @contributor.voted_for?(solution) ? "Down Vote" : "Up Vote",
+        toggle_vote_list_product_path(list_id: @list.id, id: product.id),
+        class: "btn btn-success",
+        method: :post,
+      ) %>
+  </div>
+</div>

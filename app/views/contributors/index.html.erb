@@ -22,23 +22,14 @@
 </nav>
 <div class="row">
   <div class="container">
-  <div class="box border">
-    <h3>Contributors</h3>
-      <% @contributors.each do |contributor| %>
-      <%= contributor.user.full_name%>
-      <%= contributor.user.email%>
-      <%= contributor.role%>
-      <%= link_to(
-        "remove",
-        remove_list_contributor_path(list_id: params[:list_id], id: contributor),
-        class: "btn btn-danger",
-        method: :post,
-      ) %>
-      <% end %>
+    <div class="box border">
+      <h3>Contributors</h3>
+      <ul class="list-group">
+        <%= render partial: "contributor", collection: @contributors %>
+      </ul>
     </div>
   </div>
 </div>
-
 
 <div class="row">
   <div class="col-md-6 offset-md-3">

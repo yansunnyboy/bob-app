@@ -16,9 +16,9 @@
       <div class="card-body">
         <div class="product-img">
         <% if @product.image_url %>
-        <%= image_tag @product.image_url, width: 100%>
+        <%= image_tag @product.image_url, height: 100%>
           <% else %>
-        <img src="https://placedog.net/100/100?random" width="100" alt="" />
+        <img src="https://placedog.net/100/100?random" height="100" alt="" />
           <% end %>
         </div>
       </div>

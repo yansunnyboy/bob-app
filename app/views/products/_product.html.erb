@@ -1,0 +1,49 @@
+<div class="box border mb-3">
+  <div class="product-img">
+  <% if product.image_url %>
+    <%= image_tag product.image_url, height: 100%>
+  <% else %>
+    <img src="https://placedog.net/100/100?random" height="100" alt="" />
+  <% end %>
+  </div>
+  <div class="product-info">
+    <h1><%=product.name %></h1>
+    <p class="price">URL:<%=link_to product.name,  product.url %></p>
+    <p class="description"><p><%= product.bio %></p>
+      <% product.category_list.each do |category| %>
+        <p class =" description text-uppercase badge badge-pill badge-info"><%= category %></p>
+      <% end %>
+      <% product.business_list.each do |business| %>
+        <p class ="description text-uppercase badge badge-pill badge-secondary"><%= business %></p>
+      <% end %>
+      <% product.cost_list.each do |cost| %>
+        <p class ="description text-uppercase badge badge-pill badge-success"><%= cost %></p>
+      <% end %>
+    <br />
+    <br />
+    <%= link_to("Review", edit_product_path(product.id), class: "btn btn-secondary") %>
+    <%= link_to("Remove", product_path(product.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger") %>
+    <%= link_to("See More", product_path(product.id), class: "btn btn-primary") %>
+    <button type="button" class="btn btn-warning" data-toggle="modal" data-target='#<%= "createList#{product.id}" %>'>Add to List</button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id='<%= "createList#{product.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "createList#{product.id}" %>' aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add to List</h5>
+        <button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render "dropdown", product: product %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
