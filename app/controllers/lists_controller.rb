@@ -12,6 +12,7 @@ class ListsController < ApplicationController
 
   def show
     @solutions = Solution.where(list_id: params[:id])
+    @contributor = Contributor.find_by!(list: @list, user: current_user)
     @products = []
     @solutions.each do |solution|
       @products << Product.find(solution.product_id)
@@ -20,7 +21,7 @@ class ListsController < ApplicationController
 
   def create
     @list = List.create(list_params)
-    @list.contributors.build(user: current_user, role: "owner")
+    @list.contributors.create(user: current_user, role: "owner")
     redirect_to new_list_solution_path(@list)
   end
 

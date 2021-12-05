@@ -1,0 +1,11 @@
+<li class="list-group-item">
+  <%= contributor.user.full_name%>
+  <%= contributor.user.email%>
+  <%= contributor.role%>
+  <%= link_to(
+    "remove",
+    remove_list_contributor_path(list_id: params[:list_id], id: contributor),
+    class: "btn btn-danger",
+    method: :post,
+  ) %>
+</li>

@@ -37,6 +37,8 @@ gem 'simple_form'
 gem 'acts-as-taggable-on'
 # Use to paginate
 gem 'pagy'
+# Use to up vote on list
+gem 'acts_as_votable'
 
 group :development, :test do
   gem 'pry-byebug'

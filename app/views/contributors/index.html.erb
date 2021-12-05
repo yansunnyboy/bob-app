@@ -4,26 +4,39 @@
     <a href="/">Home</a>
     </li>
     <li class="breadcrumb-item">
-     Products
+     <%= link_to(
+        "Lists",
+        lists_path
+     ) %>
+   </li>
+    <li class="breadcrumb-item">
+     <%= link_to(
+        params[:list_id],
+        list_path(params[:list_id])
+     ) %>
+   </li>
+    <li class="breadcrumb-item">
+      Contributors
    </li>
   </ol>
 </nav>
 <div class="row">
   <div class="container">
-  <div class="box border">
-    <h3>Contributors</h3>
-      <% @contributors.each do |contributor| %>
-      <%= contributor.user.full_name%>
-      <%= contributor.role%>
-    <button class = "btn btn-success">Remove <%= contributor.user.full_name%></button>
-      <% end %>
+    <div class="box border">
+      <h3>Contributors</h3>
+      <ul class="list-group">
+        <%= render partial: "contributor", collection: @contributors %>
+      </ul>
     </div>
   </div>
 </div>
 
-
 <div class="row">
   <div class="col-md-6 offset-md-3">
-    <button class = "btn btn-danger">Add New Contributor></button>
+    <%= link_to(
+      "Add New Contributor",
+      new_list_contributor_path(list_id: params[:list_id]),
+      class: "btn btn-success"
+    ) %>
   </div>
 </div>

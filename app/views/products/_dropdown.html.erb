@@ -1,4 +1,4 @@
-<%= simple_form_for [product, @solution], url: create_solution_from_product_product_path(product), method: 'post' do |f| %>
+<%= simple_form_for [product, @solution || Solution.new], url: create_solution_from_product_product_path(product), method: 'post' do |f| %>
   <%= f.input :list, collection: @lists %>
   <%= f.submit 'Add to List' %>
 <% end %>

@@ -11,52 +11,60 @@
     <div class="card col-sm-4">
       <div class="card-body">
         <p>Current product categories</p>
-      <% product.category_list.each do |category| %>
-      <p class="card-text"><%= link_to(
-            category,
-            toggle_category_product_path(product, category_name: category),
-            class: "text-uppercase list-group-item list-group-item-success",
-            method: :post,
-          ) %></p>
-      <%end%>
+        <% product.category_list.each do |category| %>
+          <p class="card-text">
+            <%= link_to(
+              category,
+              toggle_category_product_path(product, category_name: category),
+              class: "text-uppercase list-group-item list-group-item-success",
+              method: :post,
+            ) %>
+          </p>
+        <% end %>
       </div>
       <div class="card-body">
         <p>Add additional categories</p>
         <% @categories && @categories.each do |category| %>
           <% next if product.categories.include?(category) %>
-        <p class="card-text"><%= link_to(
-            category.name,
-            toggle_category_product_path(product, category_name: category.name),
-            class: "text-uppercase list-group-item list-group-item-info",
-            method: :post,
-          ) %></p>
+          <p class="card-text">
+            <%= link_to(
+              category.name,
+              toggle_category_product_path(product, category_name: category.name),
+              class: "text-uppercase list-group-item list-group-item-info",
+              method: :post,
+            ) %>
+          </p>
         <% end %>
       </div>
     </div>
 
-      <div class="card col-sm-4">
-        <div class="card-body">
-          <p>Business size compatability</p>
-            <% product.business_list.each do |business| %>
-            <p class="card-text"><%= link_to(
-              business,
-              toggle_business_product_path(product, business_name: business),
-              class: "text-uppercase list-group-item list-group-item-success",
-              method: :post,
-            ) %></p>
-          <%end%>
+    <div class="card col-sm-4">
+      <div class="card-body">
+        <p>Business size compatability</p>
+          <% product.business_list.each do |business| %>
+            <p class="card-text">
+              <%= link_to(
+                business,
+                toggle_business_product_path(product, business_name: business),
+                class: "text-uppercase list-group-item list-group-item-success",
+                method: :post,
+              ) %>
+            </p>
+          <% end %>
         </div>
 
         <div class="card-body">
-            <p>Add additional business size</p>
-            <% Product::BUSINESS_SIZES.each do |business| %>
-              <% next if product.businesses.include?(business) %>
-            <p class="card-text"><%= link_to(
-              business,
-              toggle_business_product_path(product, business_name: business),
-              class: "text-uppercase list-group-item list-group-item-info",
-              method: :post,
-            ) %></p>
+          <p>Add additional business size</p>
+          <% Product::BUSINESS_SIZES.each do |business| %>
+            <% next if product.businesses.include?(business) %>
+            <p class="card-text">
+              <%= link_to(
+                business,
+                toggle_business_product_path(product, business_name: business),
+                class: "text-uppercase list-group-item list-group-item-info",
+                method: :post,
+              ) %>
+            </p>
           <% end %>
         </div>
       </div>
@@ -65,24 +73,28 @@
         <div class="card-body">
           <p>Current Solution Cost</p>
           <% product.cost_list.each do |cost| %>
-          <p class="card-text"><%= link_to(
-              cost,
-              toggle_cost_product_path(product, cost_name: cost),
-              class: "text-uppercase list-group-item list-group-item-success",
-              method: :post,
-            ) %></p>
+            <p class="card-text">
+              <%= link_to(
+                cost,
+                toggle_cost_product_path(product, cost_name: cost),
+                class: "text-uppercase list-group-item list-group-item-success",
+                method: :post,
+              ) %>
+            </p>
           <%end%>
         </div>
         <div class="card-body">
           <p>Add additional solution cost</p>
           <% Product::COST_CATEGORIES.each do |cost| %>
             <% next if product.costs.include?(cost) %>
-          <p class="card-text"><%= link_to(
-              cost,
-              toggle_cost_product_path(product, cost_name: cost),
-              class: "text-uppercase list-group-item list-group-item-info",
-              method: :post,
-            ) %></p>
+            <p class="card-text">
+              <%= link_to(
+                cost,
+                toggle_cost_product_path(product, cost_name: cost),
+                class: "text-uppercase list-group-item list-group-item-info",
+                method: :post,
+              ) %>
+            </p>
           <% end %>
         </div>
       </div>

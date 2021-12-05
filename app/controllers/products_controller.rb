@@ -90,6 +90,20 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
+  def toggle_vote
+    list = List.find(params[:list_id])
+    product = Product.find(params[:id])
+    contributor = Contributor.find_by(list: list, user: current_user)
+    solution = Solution.find_by(list: list, product: product)
+    if contributor.voted_for?(solution)
+      solution.unliked_by contributor
+    else
+      solution.liked_by contributor
+    end
+
+    redirect_back fallback_location: list_product_path(list: list, product: product)
+  end
+
   private
 
   def find_product
