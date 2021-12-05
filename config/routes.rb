@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   end
   resources :lists do
     resources :solutions, only: %i[new create]
-    resources :contributors, only: %i[index]
+    resources :contributors, only: %i[index new create] do
+      member do
+        post 'remove'
+      end
+    end
   end
   resources :solutions, only: :destroy
 end
