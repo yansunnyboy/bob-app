@@ -5,39 +5,38 @@
       <h1 class="animate-pulse py-12 uppercase flex-wrap font-bold text-2xl md:text-7xl sm:text-2xl "> Welcome to BOB!</h1>
     <% end %>
 </div>
+<div class="mt-8 bg-white rounded-t min-h-screen">
+<%# <%= render 'shared/lgcontainer' %> 
+  <%# #bob come on in button# %>
+  <div class="min-w-screen flex flex-wrap place-content-evenly items-center justify-center px-2 py-2">
+    <div class="w-2/3 mx-auto rounded-lg bg-pink-200 shadow-lg px-5 pt-5 pb-10 text-gray-800" style="max-width: 500px">
+        <div class="w-full pt-1 pb-5">
+          <div class="rounded-full overflow-hidden w-40 h-40 -mt-16 mx-auto shadow-lg bg-white">
+            <%= link_to(
+              products_path,
+              class: ""
+              ) do %>
+              <i class="text-7xl fas fa-balance-scale fa-2x text-pink-400 hover:text-purple-400 mt-9 ml-9"></i>
+            <% end %>
+          </div>
+        </div>
+        <div class="w-full mb-10">
+          <div class="text-3xl text-pink-500 text-left leading-tight h-3">“</div>
+          <p class="text-m text-white text-center px-3"> Bob... Build Our Bussiness with Our Bussiness Buddy</p>
+          <div class="text-3xl text-pink-500 text-right leading-tight h-3 -mt-3">”</div>
+      </div>
+    </div>
+  </div>
+  <div class="h-24">
+  </div>
 
-<div class="h-18 bg-transparent ">
-</div>
-
-<%# #bob come on in button# %>
-<div class="min-w-screen flex flex-wrap place-content-evenly items-center justify-center px-2 py-2">
-  <div class="w-full mx-auto rounded-lg bg-transparent shadow-lg px-5 pt-5 pb-10 text-gray-800" style="max-width: 500px">
-      <div class="w-full pt-1 pb-5">
-        <div class="rounded-full overflow-hidden w-40 h-40 -mt-16 mx-auto shadow-lg bg-white">
-          <%= link_to(
-            products_path,
-            class: ""
-            ) do %>
-            <i class="text-7xl fas fa-balance-scale fa-2x text-pink-400 hover:text-purple-400 mt-9 ml-9"></i>
-          <% end %>
+  <% @categories.each do |category| %>
+    <div class="min-w-screen over flex flex-wrap place-content-evenly items-center justify-center px-2 py-2">
+      <div class="w-2/3 mx-auto rounded-lg bg-pink-100 shadow-sml px-5 pt-5 pb-5">
+        <div class="w-1/2 pt-1 pb-5">
+          <%= render partial: "shared/category", locals: { category: category} %>
         </div>
       </div>
-      <div class="w-full mb-10">
-        <div class="text-3xl text-pink-500 text-left leading-tight h-3">“</div>
-        <p class="text-m text-white text-center px-3"> Bob... Build Our Bussiness with Our Bussiness Buddy</p>
-        <div class="text-3xl text-pink-500 text-right leading-tight h-3 -mt-3">”</div>
     </div>
-  </div>
+  <% end %>
 </div>
-<div class="h-24 bg-transparent ">
-</div>
-
-<% @categories.each do |category| %>
-  <div class="min-w-screen over flex flex-wrap place-content-evenly items-center justify-center px-2 py-2">
-    <div class="w-full mx-auto rounded-lg bg-transparent shadow-lg px-5 pt-5 pb-5">
-      <div class="w-1/2 pt-1 pb-5">
-        <%= render partial: "shared/category", locals: { category: category} %>
-      </div>
-    </div>
-  </div>
-<% end %>
