@@ -5,10 +5,11 @@
       <%= render 'shared/categorytags' %>
     </div>
   </div>
-  <div class ="row">
-
+    <div class="flex justify-center items-center">
+    <div><%== pagy_nav(@pagy) %></div>
   </div>
   <%= render partial: "product", collection: @products %>
-  <%= link_to("Add Product", new_product_path, class: "btn btn-primary") %>
 <% end %>
-    <div class="mb-20 d-inline-flex p-2"><%== pagy_nav(@pagy) %></div>
+  <div class="flex justify-center items-center">
+    <div class='mb-20 pb-2'><%== pagy_nav(@pagy) %></div>
+  </div>
