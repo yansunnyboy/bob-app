@@ -1,6 +1,6 @@
 
 <div class="card mb-3 bg-white" >
-  <div class="card-img p-4" style="background-color: rgb(199,221,254)">
+  <div class="card-img p-4 bg-pink-200">
     <h1>IMAGE</h1>
     <img src="">
   </div>
@@ -15,7 +15,7 @@
             <img src="https://placedog.net/100/100?random" height="100" alt="" />
               <% end %>
           </div>
-          <div class="nameBio col-9">
+          <div class="col-9">
               <h1><%= product.name %></h1>
               <p><%= product.bio %></p>
           </div>
@@ -36,7 +36,7 @@
           <p class =" text-uppercase card-text badge badge-pill badge-success"><%= cost %></p>
           <%end%>
           <div>
-          <button type="button" class="btn" data-toggle="modal" data-target='#<%= "createList#{product.id}" %>' style="background-color: rgb(254,194,242)" >Add to List</button></div>
+          <button type="button" class="btn bg-purple-600 text-pink-200" data-toggle="modal" data-target='#<%= "createList#{product.id}" %>' >Add to List</button></div>
         </div>
       </div>
     </div>
