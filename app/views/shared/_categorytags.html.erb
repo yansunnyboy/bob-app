@@ -1,0 +1,50 @@
+<% icons = { bookkeeping:"fas fa-book", userexperience: "fas fa-edit", developertools: "fas fa-laptop-code", marketing: "fas fa-search-dollar",
+         CRM: "fas fa-project-diagram", designtools: "fas fa-pencil-ruler", productivity: "fas fa-industry", analytics: "fas fa-chart-line" } %>
+
+<% @categories.each do |category| %>
+  <% active_classes = category.name == params[:category] ? 'bg-indigo-500 text-white' : 'text-indigo-500' %>
+  <%= link_to(
+    { controller: :products, :action => :index, :category => category.name },
+      :class => "
+    block
+    px-3
+    text-base
+    border-2
+    border-indigo-500
+    justify-center
+    items-center
+    text-xs
+    rounded-md
+    py-3
+    mx-1
+    whitespace-nowrap
+    #{active_classes}
+  "
+      ) do %>
+    <i class="<%= icons[category.name.gsub(' ', '').to_sym] %> grid justify-center text-lg"></i>
+    <span class="ml-1"><%= "#{category.name == category.name.upcase ? category.name : category.name.capitalize}" %></span>
+  <% end %>
+<% end %>
+
+<%= link_to(
+  "Show All",
+  { controller: :products, :action => :index },
+  :class => "
+    flex
+    px-3
+    text-base
+    border-2
+    border-indigo-500
+    justify-center
+    items-center
+    text-xs
+    rounded-md
+    py-0
+    mx-1
+    whitespace-nowrap
+    text-indigo-500
+  "
+) %>
+  </div>
+  </div>
+  <div class ="row">
