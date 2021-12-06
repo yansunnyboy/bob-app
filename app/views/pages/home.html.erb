@@ -1,87 +1,46 @@
-<div class="container col-6 mt-3 bg-white border p-5">
-  <div class="d-flex justify-content-center">
-    <div class="font-sans bg-white h-20 flex flex-col w-full">
-      <div class="h-20 bg-gradient-to-r from-green-400 to-blue-500">
-        <div class="px-4 py-6">
-        <div class="relative w-full text-center">
-          <h1 class="animate-pulse font-bold text-gray-200 text-2xl mb-6">
-            WELCOME to BOB
-          </h1>
-        </div>
-      </div>
-      </div>
-    </div>
-  </div>
-  <% if user_signed_in? %>
-    <div class="text-center mt-5">
-      <h4>Hello <%=current_user.full_name %>! </h4>
-      <h4>Need some help to grow <%=current_user.business_name %>?</h4>
-      <%= link_to("Tell us more about you", edit_user_registration_path, class: "btn btn-info m-3")%>
-    <div>
-    Nav Bar
-
-HOME ICON
-<i class="fas fa-home"></i>
-
-CATEGORY ICON
-<i class="fas fa-th-large"></i>
-
-LIST ICON
-<i class="fas fa-list-ul"></i>
-
-USER ICON
-<i class="fas fa-user"></i>
-
-Others
-UPVOTE ICON
-<i class="fas fa-heart"></i>
-
-ADD CONTRIBUTOR ICON in add contributors page
-<i class="fas fa-user-plus"></i>
-
-ADD ROUND ICON
-<i class="fas fa-plus-circle"></i>
-
-Cancel CROSS ICON
-<i class="fas fa-times"></i>
-
-<br><br>
-CATEGORIES
-
-Accounting
-<i class="fas fa-book"></i>
-
-User Experienc
-<i class="fas fa-edit"></i>
-
-Developper
-<i class="fas fa-laptop-code"></i>
-
-Marketing
-<i class="fas fa-search-dollar"></i>
-
-CRM
-<i class="fas fa-project-diagram"></i>
-
-Analytics
-<i class="fas fa-chart-line"></i>
-
-Productivity
-<i class="fas fa-industry"></i>
-
-Design
-<i class="fas fa-pencil-ruler"></i>
-
-
+<div class="min-h-screen bg-purple-300 p-20">
+  <div>
+    <button class="bg-pink-700 hover:bg-pink-300 text-white font-bold py-2 px-4 rounded">
+    Button
+  </button>
 </div>
+  <p class="font-mono txl-8xl"> Bob... Our Bussiness Buddy
+</div>
+
+<nav class= "fixed bottom-0 inset-x-0 bg bg-white py-4  flex justify-between h-20">
+  <a href="../" class="w-full text-center "><i class="fas fa-home fa-2x text-pink-400 hover:text-purple-400"></i></a>
+  <%= link_to(
+    products_path,
+    class: "w-full text-center "
+    ) do %>
+    <i class="fas fa-th-large fa-2x text-pink-400 hover:text-purple-400"></i>
+    <% end %>
+  <% if user_signed_in? %>
+    <%= link_to(
+        lists_path,
+        class: "w-full text-center"
+        )do %>
+        <i class="fas fa-list-ul fa-2x text-pink-400 hover:text-purple-400"></i>
+        <% end %>
+    <div class = "w-full text-center">
+      <i class="fas fa-user fa-2x text-pink-400 hover:text-purple-400" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+      <div class="dropdown-menu">
+        <%= link_to "Edit your profile", edit_user_registration_path, class: "dropdown-item" %>
+        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+      </div>
     </div>
   <% else %>
-    <div class="d-flex justify-content-center">
-      <%= link_to("Sign In",  new_user_session_path, class: "btn btn-success m-2") %>
-      <%= link_to("Sign Up",  new_user_registration_path, class: "btn btn-primary m-2") %>
-    </div>
+    <%= link_to(
+      new_user_session_path,
+      class: "w-full text-center"
+      ) do %>
+      <i class="fas fa-list-ul fa-2x text-pink-400 hover:text-purple-400"></i>
+      <% end %>
+    <%= link_to(
+    new_user_session_path,
+    class: "w-full text-center"
+    ) do %>
+    <i class="fas fa-user fa-2x text-pink-400 hover:text-purple-400"></i>
+    <% end %>
   <% end %>
-    <div class="d-flex justify-content-center mt-5">
-      <%= link_to("Browse our solutions", products_path, class: "btn btn-dark") %>
-    </div>
-</div>
+</nav>
