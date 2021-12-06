@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
     @categories = ActsAsTaggableOn::Tag
                   .all
                   .reject { |tag| Product::BUSINESS_SIZES.include? tag.name }

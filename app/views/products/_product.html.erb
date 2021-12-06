@@ -24,7 +24,9 @@
     <%= link_to("Review", edit_product_path(product.id), class: "btn btn-secondary") %>
     <%= link_to("Remove", product_path(product.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger") %>
     <%= link_to("See More", product_path(product.id), class: "btn btn-primary") %>
+
     <button type="button" class="btn btn-warning" data-toggle="modal" data-target='#<%= "createList#{product.id}" %>'>Add to List</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target='#<%= "show#{product.id}" %>'>See more</button>
     <% if @list %>
       <% solution = Solution.find_by(list: @list, product: product) %>
       <%= solution.get_likes.size %>
@@ -42,7 +44,7 @@
 <!-- Modal -->
 <div class="modal fade" id='<%= "createList#{product.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "createList#{product.id}" %>' aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content w-full">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Add to List</h5>
         <button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">
@@ -51,6 +53,24 @@
       </div>
       <div class="modal-body">
         <%= render "products/dropdown", product: product %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id='<%= "show#{product.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "show#{product.id}" %>' aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content w-full">
+      <div class="modal-header" style="background-color: rgb(39,28,162)">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white">Product details</h5>
+        <button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="background-color: rgb(254,194,242)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="background-color: rgb(139,128,254)">
+        <%= render "products/modal", product: product %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
