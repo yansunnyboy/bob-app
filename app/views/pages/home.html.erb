@@ -1,87 +1,44 @@
-<div class="container col-6 mt-3 bg-white border p-5">
+<div class="min-h-screen bg-gradient-to-r from-purple-400 to-pink-500 p-20">
   <div class="d-flex justify-content-center">
-    <div class="font-sans bg-white h-20 flex flex-col w-full">
-      <div class="h-20 bg-gradient-to-r from-green-400 to-blue-500">
-        <div class="px-4 py-6">
-        <div class="relative w-full text-center">
-          <h1 class="animate-pulse font-bold text-gray-200 text-2xl mb-6">
-            WELCOME to BOB
-          </h1>
+    <div class="relative w-full text-center">
+      <% if user_signed_in? %>
+        <h1 class="animate-pulse font-bold text-white text-2xl mb-6"> Welcome <%= current_user.full_name %> ! to BOB</h1>
+      <% else %>
+        <h1 class="animate-pulse font-bold text-white text-2xl mb-6"> Welcome to BOB!</h1>
+      <% end %>
+        <p class="font-mono txl-8xl"> Bob... Our Bussiness Buddy</p>
+        <div class="d-flex justify-content-center mt-5">
+        <%= link_to("Browse our solutions", products_path, class: "btn btn-dark") %>
         </div>
-      </div>
-      </div>
     </div>
   </div>
-  <% if user_signed_in? %>
-    <div class="text-center mt-5">
-      <h4>Hello <%=current_user.full_name %>! </h4>
-      <h4>Need some help to grow <%=current_user.business_name %>?</h4>
-      <%= link_to("Tell us more about you", edit_user_registration_path, class: "btn btn-info m-3")%>
-    <div>
-    Nav Bar
-
-HOME ICON
-<i class="fas fa-home"></i>
-
-CATEGORY ICON
-<i class="fas fa-th-large"></i>
-
-LIST ICON
-<i class="fas fa-list-ul"></i>
-
-USER ICON
-<i class="fas fa-user"></i>
+</div>
 
 Others
 UPVOTE ICON
 <i class="fas fa-heart"></i>
-
 ADD CONTRIBUTOR ICON in add contributors page
 <i class="fas fa-user-plus"></i>
-
 ADD ROUND ICON
 <i class="fas fa-plus-circle"></i>
-
 Cancel CROSS ICON
 <i class="fas fa-times"></i>
-
 <br><br>
 CATEGORIES
 
 Bookkeeping
 <i class="fas fa-book"></i>
-
 User Experience
 <i class="fas fa-edit"></i>
-
 Developer Tools
 <i class="fas fa-laptop-code"></i>
-
 Marketing
 <i class="fas fa-search-dollar"></i>
-
 CRM
 <i class="fas fa-project-diagram"></i>
-
 Analytics
 <i class="fas fa-chart-line"></i>
-
 Productivity
 <i class="fas fa-industry"></i>
-
 Design Tools
 <i class="fas fa-pencil-ruler"></i>
-
-
-</div>
-    </div>
-  <% else %>
-    <div class="d-flex justify-content-center">
-      <%= link_to("Sign In",  new_user_session_path, class: "btn btn-success m-2") %>
-      <%= link_to("Sign Up",  new_user_registration_path, class: "btn btn-primary m-2") %>
-    </div>
-  <% end %>
-    <div class="d-flex justify-content-center mt-5">
-      <%= link_to("Browse our solutions", products_path, class: "btn btn-dark") %>
-    </div>
-</div>
