@@ -1,44 +1,46 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-    <a href="/">Home</a>
-    </li>
-    <li class="breadcrumb-item">
-      <%= link_to("Products", products_path) %>
-    </li>
-    <li class="breadcrumb-item active" aria-current="page"><%= @product.name %></li>
-  </ol>
-</nav>
-<h1><%= @product.name %></h1>
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card mb-3">
-      <div class="card-body">
-        <div class="product-img">
-        <% if @product.image_url %>
-        <%= image_tag @product.image_url, height: 100%>
-          <% else %>
-        <img src="https://placedog.net/100/100?random" height="100" alt="" />
-          <% end %>
+
+<div class="card mb-3">
+  <div class="card-img bg-success p-4">
+    <h1>IMAGE</h1>
+    <img src="">
+  </div>
+  <div class="card-body">
+
+    <div class="row">
+      <div class="col-sm-6">
+
+          <div class="card-body1 d-flex justify-content-between">
+            <div class="product-img col-3">
+              <% if @product.image_url %>
+              <%= image_tag @product.image_url, height: 100%>
+                <% else %>
+              <img src="https://placedog.net/100/100?random" height="100" alt="" />
+                <% end %>
+              </div>
+              <div class="nameBio col-12 ml-3">
+                <h1><%= @product.name %></h1>
+                <p><%= @product.bio %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+          <p class="card-text">URL:<a href=<%= @product.url %> target="_blank"><%= @product.name %></a></p>
+          <div>
+
+            <p><%= @product.info %></p>
+          </div>
+          <% @product.category_list.each do |category| %>
+          <p class =" text-uppercase card-text badge badge-pill badge-info"><%= category %></p>
+          <%end%>
+          <% @product.business_list.each do |business| %>
+          <p class =" text-uppercase card-text badge badge-pill badge-secondary"><%= business %></p>
+          <%end%>
+          <% @product.cost_list.each do |cost| %>
+          <p class =" text-uppercase card-text badge badge-pill badge-success"><%= cost %></p>
+          <%end%>
+          <div><%= link_to("Update", edit_product_path(@product.id), class: "btn btn-primary", data: {confirm: "Are you sure?"}) %></div>
         </div>
       </div>
     </div>
-      <p class="card-text">URL:<a href=<%= @product.url %> target="_blank"><%= @product.name %></a></p>
-      <div>
-        <p><%= @product.bio %></p>
-        <p><%= @product.info %></p>
-      </div>
-      <% @product.category_list.each do |category| %>
-      <p class =" text-uppercase card-text badge badge-pill badge-info"><%= category %></p>
-      <%end%>
-      <% @product.business_list.each do |business| %>
-      <p class =" text-uppercase card-text badge badge-pill badge-secondary"><%= business %></p>
-      <%end%>
-      <% @product.cost_list.each do |cost| %>
-      <p class =" text-uppercase card-text badge badge-pill badge-success"><%= cost %></p>
-      <%end%>
-      <div><%= link_to("Update", edit_product_path(@product.id), class: "btn btn-primary", data: {confirm: "Are you sure?"}) %></div>
-    </div>
-  </div>
   </div>
 </div>
