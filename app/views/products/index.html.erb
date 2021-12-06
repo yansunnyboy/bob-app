@@ -1,57 +1,14 @@
 <%= render "shared/container", classes: "p-4 flex flex-col items-center" do %>
   <h1 class="bold">Products</h1>
-  <div class= "row w-full overflow-x-auto">
+  <div class= "row w-full overflow-scroll">
     <div class="d-inline-flex p-2" >
-      <% icons = { bookkeeping:"fas fa-book", userexperience: "fas fa-edit", developertools: "fas fa-laptop-code", marketing: "fas fa-search-dollar",
-         CRM: "fas fa-project-diagram", designtools: "fas fa-pencil-ruler", productivity: "fas fa-industry", analytics: "fas fa-chart-line" } %>
-      <% @categories.each do |category| %>
-        <% active_classes = category.name == params[:category] ? 'bg-indigo-500 text-white' : 'text-indigo-500' %>
-        <%= link_to(
-          { :action => :index, :category => category.name },
-            :class => "
-          block
-          px-3
-          text-base
-          border-2
-          border-indigo-500
-          justify-center
-          items-center
-          text-xs
-          rounded-md
-          py-3
-          mx-1
-          whitespace-nowrap
-          #{active_classes}
-        "
-            ) do %>
-          <i class="<%= icons[category.name.gsub(' ', '').to_sym] %> grid justify-center text-lg"></i>
-          <span class="ml-1"><%= "#{category.name == category.name.upcase ? category.name : category.name.capitalize}" %></span>
-        <% end %>
-      <% end %>
-      <%= link_to(
-        "Show All",
-        { :action => :index },
-        :class => "
-          flex
-          px-3
-          text-base
-          border-2
-          border-indigo-500
-          justify-center
-          items-center
-          text-xs
-          rounded-md
-          py-0
-          mx-1
-          whitespace-nowrap
-          text-indigo-500
-        "
-      ) %>
-      </div>
+      <%= render 'shared/categorytags' %>
     </div>
-    <div class ="row">
-      <div class="d-inline-flex p-2"><%== pagy_bootstrap_nav(@pagy)%></div>
-    </div>
+  </div>
+  <div class ="row">
+
+  </div>
   <%= render partial: "product", collection: @products %>
   <%= link_to("Add Product", new_product_path, class: "btn btn-primary") %>
 <% end %>
+    <div class="mb-20 d-inline-flex p-2"><%== pagy_nav(@pagy) %></div>

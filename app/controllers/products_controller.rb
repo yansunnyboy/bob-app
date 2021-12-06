@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   def index
     product_scope = Product.all
     product_scope = product_scope.tagged_with(params[:category]) unless params[:category].nil?
-    @pagy, @products = pagy(product_scope)
+    @pagy, @products = pagy(product_scope, size: [1,1,1,1])
     @categories = product_scope.tag_counts_on(:categories)
     @lists = List.all
     @solution = Solution.new

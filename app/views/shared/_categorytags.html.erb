@@ -1,0 +1,24 @@
+<%= render partial: "shared/category", collection: @categories %>
+
+<%= link_to(
+  "Show All",
+  { controller: :products, :action => :index },
+  :class => "
+    flex
+    px-3
+    text-base
+    border-2
+    border-indigo-500
+    justify-center
+    items-center
+    text-xs
+    rounded-md
+    py-0
+    mx-1
+    whitespace-nowrap
+    text-indigo-500
+  "
+) %>
+  </div>
+  </div>
+  <div class ="row">
