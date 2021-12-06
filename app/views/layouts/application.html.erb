@@ -14,11 +14,10 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-
     <main class="min-h-screen bg-gradient-to-r from-purple-400 to-pink-500 p-2">
-     <%= yield %>
+      <%= yield %>
+    <%= render 'shared/navbar' %>
     </main>
   </body>
 </html>

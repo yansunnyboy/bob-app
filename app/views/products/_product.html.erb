@@ -1,17 +1,15 @@
-<div class="box border mb-3">
-  <div class="product-img">
-  <% if product.image_url %>
-    <%= image_tag product.image_url, height: 100%>
-  <% else %>
-    <img src="https://placedog.net/100/100?random" height="100" alt="" />
-  <% end %>
-  </div>
-  <div class="product-info">
-    <h1><%=product.name %></h1>
-    <p class="price">URL:<%=link_to product.name,  product.url %></p>
-    <p class="description"><p><%= product.bio %></p>
+<%= render "shared/container", classes: "p-4 items-center" do %>
+  <div class="flex border-solid border border-gray-200 rounded-md bg-white" data-toggle="modal" data-target='#<%= "show#{product.id}" %>'>
+    <div class="product-img col-4 py-4">
+      <% if product.image_url %>
+        <%= image_tag product.image_url, height: 100 %>
+      <% else %>
+        <img src="https://placedog.net/100/100?random" height="100" alt="" />
+      <% end %>
+      <% icons = { bookkeeping:"fas fa-book fa-3x text-pink-400 hover:text-purple-400", userexperience: "fas fa-edit", developertools: "fas fa-laptop-code", marketing: "fas fa-search-dollar",
+         CRM: "fas fa-project-diagram", designtools: "fas fa-pencil-ruler", productivity: "fas fa-industry", analytics: "fas fa-chart-line" } %>
       <% product.category_list.each do |category| %>
-        <p class =" description text-uppercase badge badge-pill badge-info"><%= category %></p>
+        <i class="<%= icons[category.gsub(' ', '').to_sym] %> grid justify-center text-sm"></i>
       <% end %>
       <% product.business_list.each do |business| %>
         <p class ="description text-uppercase badge badge-pill badge-secondary"><%= business %></p>
@@ -19,43 +17,41 @@
       <% product.cost_list.each do |cost| %>
         <p class ="description text-uppercase badge badge-pill badge-success"><%= cost %></p>
       <% end %>
-    <br />
-    <br />
-    <%= link_to("Review", edit_product_path(product.id), class: "btn btn-secondary") %>
-    <%= link_to("Remove", product_path(product.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger") %>
-    <%= link_to("See More", product_path(product.id), class: "btn btn-primary") %>
-
-    <button type="button" class="btn btn-warning" data-toggle="modal" data-target='#<%= "createList#{product.id}" %>'>Add to List</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target='#<%= "show#{product.id}" %>'>See more</button>
-    <% if @list %>
-      <% solution = Solution.find_by(list: @list, product: product) %>
-      <%= solution.get_likes.size %>
-        <%= link_to("See More", product_path(product.id), class: "btn btn-warning") %>
-        <%= link_to(
-          @contributor.voted_for?(solution) ? "Down Vote" : "Up Vote",
-          toggle_vote_list_product_path(list_id: @list.id, id: product.id),
-          class: "btn btn-success",
-          method: :post,
-        ) %>
-    <% end %>
+    </div>
+    <div class='inline-block py-3.5 m-1' >
+      <p class='font-bold'><%= product.name %></p>
+      <p class="price">URL: <%=link_to product.name, product.url %></p>
+      <p class="description"><p><%= product.bio %></p>
+      <% if @list %>
+        <% solution = Solution.find_by(list: @list, product: product) %>
+        <%= solution.get_likes.size %>
+          <%= link_to("See More", product_path(product.id), class: "btn btn-warning") %>
+          <%= link_to(
+            @contributor.voted_for?(solution) ? "Down Vote" : "Up Vote",
+            toggle_vote_list_product_path(list_id: @list.id, id: product.id),
+            class: "btn btn-success",
+            method: :post,
+          ) %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
 
 <!-- Modal -->
 <div class="modal fade" id='<%= "createList#{product.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "createList#{product.id}" %>' aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content w-full">
-      <div class="modal-header bg-purple-400">
-        <h5 class="modal-title text-white" id="exampleModalLabel">Add to List</h5>
-        <button type="button" class="btn bg-pink-200" data-dismiss="modal" aria-label="Close">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add to List</h5>
+        <button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <%= render "products/dropdown", product: product %>
       </div>
-      <div class="modal-footer bg-purple-400">
-        <button type="button" class="btn bg-pink-200" data-dismiss="modal">Close</button>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -63,17 +59,14 @@
 <div class="modal fade" id='<%= "show#{product.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "show#{product.id}" %>' aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content w-full">
-      <div class="modal-header bg-purple-600">
-        <h5 class="modal-title text-pink-200" id="exampleModalLabel">Product details</h5>
-        <button type="button" class="btn bg-pink-200" data-dismiss="modal" aria-label="Close" style="background-color: rgb(254,194,242)">
+      <div class="modal-header" style="background-color: rgb(39,28,162)">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white">Product details</h5>
+        <button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="background-color: rgb(254,194,242)">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body bg-pink-400">
+      <div class="modal-body" style="background-color: rgb(139,128,254)">
         <%= render "products/modal", product: product %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
