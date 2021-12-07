@@ -11,7 +11,6 @@ export default class extends Controller {
   }
   addToList(e) {
     e.preventDefault();
-    debugger
     console.log("added to list");
     fetch(this.urlValue, {
       method: "POST",
