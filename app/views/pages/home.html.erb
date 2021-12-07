@@ -1,8 +1,9 @@
-<div class=" min-h-2 flex flex-wrap place-content-evenly text-white mb-6 place-content-evenly ">
-  <% if user_signed_in? %>
-      <h1 class="animate-pulse py-12 uppercase flex-wrap font-bold text-2xl md:text-7xl sm:text-2xl ">Welcome <%= current_user.full_name %> to BOB!</h1>
+<main class="min-h-screen bg-gradient-to-t from-pink-200 to-purple-400 p-0">
+  <div class=" min-h-2 flex flex-wrap place-content-evenly text-white mb-6 place-content-evenly">
+    <% if user_signed_in? %>
+      <h1 class="animate-pulse py-12 uppercase flex-wrap font-bold text-2xl md:text-7xl sm:text-2xl">Welcome <%= current_user.full_name %> to BOB!</h1>
     <% else %>
-      <h1 class="animate-pulse py-12 uppercase flex-wrap font-bold text-2xl md:text-7xl sm:text-2xl "> Welcome to BOB!</h1>
+      <h1 class="animate-pulse py-12 uppercase flex-wrap font-bold text-2xl md:text-7xl sm:text-2xl"> Welcome to BOB!</h1>
     <% end %>
   </div>
   <div class="">
@@ -21,24 +22,24 @@
               <% end %>
             </div>
           </div>
+          <div class="w-full mb-10">
+            <div class="text-3xl text-pink-300 text-left leading-tight h-3">“</div>
+            <p class="text-m text-purple-900 text-center px-3 font-italic">Our business buddy</p>
+            <div class="text-3xl text-pink-300 text-right leading-tight h-3 -mt-3">”</div>
         </div>
-        <div class="w-full mb-10">
-          <div class="text-3xl text-pink-500 text-left leading-tight h-3">“</div>
-          <p class="text-m text-white text-center px-3"> Bob... Build Our Bussiness with Our Bussiness Buddy</p>
-          <div class="text-3xl text-pink-500 text-right leading-tight h-3 -mt-3">”</div>
       </div>
     </div>
-  </div>
-  <div class="h-24">
-  </div>
+    <div class="h-24">
+    </div>
 
-  <% @categories.each do |category| %>
-    <div class="min-w-screen over flex flex-wrap place-content-evenly items-center justify-center px-2 py-2">
-      <div class="w-2/3 mx-auto rounded-lg bg-pink-100 shadow-sml px-5 pt-5 pb-5">
-        <div class="w-1/2 pt-1 pb-5">
-          <%= render partial: "shared/category", locals: { category: category} %>
+    <% @categories.each do |category| %>
+      <div class="min-w-screen over flex flex-wrap place-content-evenly items-center justify-center px-2 py-2">
+        <div class="w-2/3 mx-auto rounded-lg bg-white shadow-sml px-5 pt-5 pb-5">
+          <div class="w-1/2 pt-1 pb-5">
+            <%= render partial: "shared/category", locals: { category: category} %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+</main>
