@@ -1,33 +1,33 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-    <a href="/">Home</a>
-    </li>
-    <li class="breadcrumb-item">
-     <%= link_to(
-        "Lists",
-        lists_path
-     ) %>
-   </li>
-    <li class="breadcrumb-item">
-     <%= params[:id] %>
-   </li>
-  </ol>
-</nav>
-<h1>My <%= @list.name %> List</h1>
-
-<button class="btn btn-primary" data-toggle="modal" data-target='#<%= "new#{@list.id}" %>'>
-  <i class="fas fa-user-plus fa-2x text-purple-400 hover:text-pink-400 ml-4 mt-4"></i>
-</button>
+<main class="h-full bg-gradient-to-t from-pink-200 to-purple-400 pt-20">
+  <h1 class="bg-transparent text-white">My <%= @list.name %> List</h1>
+    <div class="ml-60 ">
+      <div class="row justify-content-center">
+        <div class="col-4" data-toggle="modal" data-target='#<%= "new#{@list.id}" %>'>
+          <i class="fas fa-user-plus fa-2x text-pink-400 hover:text-purple-900"></i>
+        </div>
+        <div class="col-4">
+          <i class="fas fa-plus fa-2x text-pink-400 hover:text-purple-900"></i>
+        </div>
+        <div class="col-4" data-toggle="modal" data-target='#'>
+          <i class="fas fa-user fa-2x text-pink-400 hover:text-purple-900"></i>
+        </div>
+      </div>
+    </div>
+  <%= render "shared/lgcontainer", classes: "p-4 flex flex-col items-center h-full" do %>
+  <%= render partial: "products/product", collection: @products, classes: "mb-8" %>
+  <% end %>
+</main>
 
 
-<%= render partial: "products/product", collection: @products %>
-
-<%= link_to("Add Product", new_list_solution_path(@list), class: "btn btn-success") %>
-
-<button class = "btn btn-secondary"><%= link_to("Contributors", list_contributors_path(list_id:@list.id)) %></button>
 
 
+
+<%# need to be use to make buttons above live %>
+<%# <%= link_to("Add Product", new_list_solution_path(@list), class: "btn btn-success") %>
+
+<%# <button class = "btn btn-secondary"><%= link_to("Contributors", list_contributors_path(list_id:@list.id)) %></button> %> %>
+
+<%# colaborator add modal %>
 <div class="modal fade" id='<%= "new#{@list.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "new#{@list.id}" %>' aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content w-full">
