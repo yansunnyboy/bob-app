@@ -1,0 +1,7 @@
+<%= simple_form_for [list, Contributor.new] do |f| %>
+ <%=f.input :user%>
+  <%#= f.simple_fields_for :user do |p| %>
+    <%#= p.input :email%>
+  <%#end%>
+  <%= f.submit class:"btn btn-primary" %>
+<% end %>
