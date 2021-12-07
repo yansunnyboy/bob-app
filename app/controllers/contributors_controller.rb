@@ -9,7 +9,7 @@ class ContributorsController < ApplicationController
   end
 
   def create
-    user = User.find_by(set_params[:user_attributes])
+    user = User.find_by(email: set_params[:user])
     @list = List.find(params[:list_id])
     @contributor = Contributor.new(user: user, list: @list)
     if @contributor.save
@@ -29,6 +29,6 @@ class ContributorsController < ApplicationController
   private
 
   def set_params
-    params.require(:contributor).permit(user_attributes: :email)
+    params.require(:contributor).permit(:user)
   end
 end
