@@ -1,12 +1,13 @@
-<div id= "product_<%=product.id%>" data-controller="save" data-save-url-value="<%=save_to_session_product_url(product) %>" data-save-target="product" >
+<% if current_user %>
+<div>
+<% else %>
+  <div id= "product_<%=product.id%>" data-controller="save" data-save-url-value="<%=save_to_session_product_url(product) %>" data-save-target="product" >
+<% end %>
   <%if !current_user && session[:saved_products]&.include?(product.id) %>
   <p>SAVED!!</p>
   <% end %>
-  <div class="flex border-solid border border-gray-200 rounded-md bg-white" data-toggle="modal_a" data-target='#<%= "show#{product.id}" %>'>
+  <div class="flex border-solid border border-gray-200 rounded-md bg-white">
     <div class="product-img col-4 py-4">
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" data-action="click->save#addToList">
-        ADD
-      </button>
       <% if product.image_url %>
         <%= image_tag product.image_url, height: 100 %>
       <% else %>
@@ -25,9 +26,16 @@
       <% end %>
     </div>
     <div class='inline-block py-3.5 m-1' >
-      <p class='font-bold'><%= product.name %></p>
+      <p class='font-bold' data-toggle="modal" data-target='#<%= "show#{product.id}" %>'><%= product.name %></p>
       <p class="price">URL: <%=link_to product.name, product.url %></p>
       <p class="description"><p><%= product.bio %></p>
+      <% if current_user %>
+      <%= render "products/savemodal", product: product %>
+      <% else %>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" data-action="click->save#addToList">
+          ADD
+        </button>
+      <% end %>
       <% if @list %>
         <% solution = Solution.find_by(list: @list, product: product) %>
         <%= solution.get_likes.size %>

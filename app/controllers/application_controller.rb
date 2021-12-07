@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
 
   include Pagy::Backend
 
-  # rescue_from ActiveRecord::RecordInvalid, with: :show_errors
-  # rescue_from ActiveRecord::RecordNotFound, with: :show_errors
+  rescue_from ActiveRecord::RecordInvalid, with: :show_errors
+  rescue_from ActiveRecord::RecordNotFound, with: :show_errors
 
   # def after_sign_in_path_for(user)
   # stored_location_for(user) || welcome_path

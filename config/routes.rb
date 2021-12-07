@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       member do
         post 'toggle_vote'
       end
+      resources :solutions, only: :create, controller:'lists/products/solutions'
     end
   end
   resources :solutions, only: :destroy
