@@ -7,7 +7,7 @@ class ListsController < ApplicationController
   end
 
   def new
-    @list = List.new
+    @list = params.has_key?(:list) ? List.new(list_params) : List.new()
   end
 
   def show
@@ -21,8 +21,15 @@ class ListsController < ApplicationController
 
   def create
     @list = List.create(list_params)
+    params[:product_ids] && params[:product_ids].each do |product_id|
+      Solution.create!(product_id: product_id, list: @list)
+    end
+    session[:saved_products] && session[:saved_products] do |product_id|
+      Solution.create!(product_id: product_id, list: @list)
+    end
+    session[:saved_products] = []
     @list.contributors.create(user: current_user, role: "owner")
-    redirect_to new_list_solution_path(@list)
+    redirect_to list_path(@list)
   end
 
   def edit

@@ -1,5 +1,8 @@
 <%= simple_form_for(list) do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
+  <% params[:product_ids] && params[:product_ids].each do |product_id| %>
+    <input name="product_ids[]" type="hidden" value="<%= product_id %>">
+  <% end %>
   <%= f.submit class:"btn btn-primary" %>
 <% end %>

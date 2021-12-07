@@ -1,8 +1,28 @@
 <nav class= "fixed bottom-0 inset-x-0 bg bg-white rounded-t-l py-4 flex justify-between h-20 border-solid border-t border-gray-200 shadow">
+  <% if session[:saved_products] && session[:saved_products].count > 0 %>
+    <div class="absolute w-full">
+      <div class="flex justify-around -m-10">
+        <%= link_to(
+          new_list_path(
+            list: {
+              name: "Default",
+              description: "A default list",
+            },
+            "product_ids" => session[:saved_products],
+          ),
+          class: "mt-16 m-auto no-underline hover:no-underline hover:black"
+          ) do %>
+            <i class="fas fa-plus-circle fa-2x text-purple-400 hover:text-purple-900 bg-white rounded-full border-2 "></i>
+            <p id="#nav-count" class="relative -top-12 -right-5 bg-red-600 pl-1 w-7 h-7 rounded-full font-bold text-gray-200 text-center">
+              <%= session[:saved_products].count %>
+            </p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
   <a href="../" class="w-full text-center">
     <i class="fas fa-home fa-2x <%= action_name == "index" ? "text-pink-200" : "text-purple-300"  %> hover:text-purple-900"></i>
   </a>
-
   <%= link_to(
     products_path,
     class: "w-full text-center "
