@@ -1,7 +1,7 @@
 <%= simple_form_for [list, Contributor.new] do |f| %>
- <%=f.input :user%>
+ <%=f.input :user, label: 'Enter contributors email', placeholder: "yan@gmail.com" %>
   <%#= f.simple_fields_for :user do |p| %>
     <%#= p.input :email%>
   <%#end%>
-  <%= f.submit class:"btn btn-primary" %>
+  <%= f.submit 'Save', class: 'bg-pink-100 p-2'%>
 <% end %>
