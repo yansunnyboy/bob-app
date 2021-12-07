@@ -1,5 +1,5 @@
-<%= render "shared/container", classes: "p-4 items-center" do %>
-  <div class="flex border-solid border border-gray-200 rounded-md bg-white" data-toggle="modal" data-target='#<%= "show#{product.id}" %>'>
+<%= render "shared/container", classes: "px-4 py-2 items-center bg-white" do %>
+  <div class="flex rounded-md bg-pink-50 shadow-sm" data-toggle="modal" data-target='#<%= "show#{product.id}" %>'>
     <div class="product-img col-4 py-4">
       <% if product.image_url %>
         <%= image_tag product.image_url, height: 100 %>

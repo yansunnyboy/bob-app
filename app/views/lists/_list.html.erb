@@ -1,14 +1,8 @@
-<div class="box border mb-3">
-  <div class="product-info">
-    <h1><%= list.name %></h1>
-    <p class="description">
-      <%= list.description %>
-    </p>
-    <br />
-
-    <br />
-    <%= link_to("Review", edit_list_path(list.id), class: "btn btn-secondary") %>
-    <%= link_to("Remove", list_path(list.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger") %>
-    <%= link_to("See More", list_path(list.id), class: "btn btn-primary") %>
+<%= render "shared/container", classes: "items-center bg-white" do %>
+  <div class="flex rounded-md bg-pink-50 shadow-sm p-4">
+    <div class="block">
+      <%= link_to("#{list.name}", list_path(list.id), class: "font-bold") %>
+      <%# <% list_solutions = Solution.where %>
+    </div>
   </div>
-</div>
+<% end %>
