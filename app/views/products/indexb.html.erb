@@ -1,0 +1,15 @@
+<%= render "shared/container", classes: "p-4 flex flex-col items-center" do %>
+  <h1 class="bold">Products</h1>
+  <div class= "row w-full overflow-scroll">
+    <div class="d-inline-flex p-2" >
+      <%= render 'shared/categorytags' %>
+    </div>
+  </div>
+    <div class="flex justify-center items-center">
+    <div><%== pagy_nav(@pagy) %></div>
+  </div>
+  <%= render partial: "product", collection: @products %>
+<% end %>
+  <div class="flex justify-center items-center">
+    <div class='mb-20 pb-2'><%== pagy_nav(@pagy) %></div>
+  </div>

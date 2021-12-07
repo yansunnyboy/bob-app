@@ -39,6 +39,8 @@ gem 'acts-as-taggable-on'
 gem 'pagy'
 # Use to up vote on list
 gem 'acts_as_votable'
+#stimulus-rails
+ gem 'stimulus-rails'
 
 group :development, :test do
   gem 'pry-byebug'

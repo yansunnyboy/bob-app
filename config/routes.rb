@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       post 'toggle_cost'
       get 'add_to_list'
       post 'create_solution_from_product'
+      post 'save_to_session'
     end
   end
   resources :lists do

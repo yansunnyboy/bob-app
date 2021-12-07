@@ -1,13 +1,19 @@
-<%= render "shared/container", classes: "p-4 items-center" do %>
-  <div class="flex border-solid border border-gray-200 rounded-md bg-white" data-toggle="modal" data-target='#<%= "show#{product.id}" %>'>
+<div id= "product_<%=product.id%>" data-controller="save" data-save-url-value="<%=save_to_session_product_url(product) %>" data-save-target="product" >
+  <%if !current_user && session[:saved_products]&.include?(product.id) %>
+  <p>SAVED!!</p>
+  <% end %>
+  <div class="flex border-solid border border-gray-200 rounded-md bg-white" data-toggle="modal_a" data-target='#<%= "show#{product.id}" %>'>
     <div class="product-img col-4 py-4">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" data-action="click->save#addToList">
+        ADD
+      </button>
       <% if product.image_url %>
         <%= image_tag product.image_url, height: 100 %>
       <% else %>
         <img src="https://placedog.net/100/100?random" height="100" alt="" />
       <% end %>
       <% icons = { bookkeeping:"fas fa-book fa-3x text-pink-400 hover:text-purple-400", userexperience: "fas fa-edit", developertools: "fas fa-laptop-code", marketing: "fas fa-search-dollar",
-         CRM: "fas fa-project-diagram", designtools: "fas fa-pencil-ruler", productivity: "fas fa-industry", analytics: "fas fa-chart-line" } %>
+          CRM: "fas fa-project-diagram", designtools: "fas fa-pencil-ruler", productivity: "fas fa-industry", analytics: "fas fa-chart-line" } %>
       <% product.category_list.each do |category| %>
         <i class="<%= icons[category.gsub(' ', '').to_sym] %> grid justify-center text-sm"></i>
       <% end %>
@@ -35,38 +41,39 @@
       <% end %>
     </div>
   </div>
-<% end %>
+
 
 <!-- Modal -->
-<div class="modal fade" id='<%= "createList#{product.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "createList#{product.id}" %>' aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content w-full">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add to List</h5>
-        <button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= render "products/dropdown", product: product %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <div class="modal fade" id='<%= "createList#{product.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "createList#{product.id}" %>' aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content w-full">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add to List</h5>
+          <button type="button" class="btn btn-warning" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= render "products/dropdown", product: product %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="modal fade" id='<%= "show#{product.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "show#{product.id}" %>' aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content w-full">
-      <div class="modal-header" style="background-color: rgb(39,28,162)">
-        <h5 class="modal-title" id="exampleModalLabel" style="color: white">Product details</h5>
-        <button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="background-color: rgb(254,194,242)">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" style="background-color: rgb(139,128,254)">
-        <%= render "products/modal", product: product %>
+  <div class="modal fade" id='<%= "show#{product.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "show#{product.id}" %>' aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content w-full">
+        <div class="modal-header" style="background-color: rgb(39,28,162)">
+          <h5 class="modal-title" id="exampleModalLabel" style="color: white">Product details</h5>
+          <button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="background-color: rgb(254,194,242)">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="background-color: rgb(139,128,254)">
+          <%= render "products/modal", product: product %>
+        </div>
       </div>
     </div>
   </div>
