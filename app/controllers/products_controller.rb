@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show save_to_session]
-  before_action :find_product, only: %i[show edit update destroy toggle_category toggle_business toggle_cost add_to_list create_solution_from_product save_to_session]
+  skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :find_product, only: %i[show edit update destroy toggle_category toggle_business toggle_cost add_to_list create_solution_from_product]
 
   def index
     product_scope = Product.all
@@ -102,20 +102,7 @@ class ProductsController < ApplicationController
       solution.liked_by contributor
     end
 
-
     redirect_back fallback_location: list_product_path(list: list, product: product)
-  end
-
-  def save_to_session
-    if session[:saved_products].nil?
-      session[:saved_products] = [@product.id]
-    else
-      session[:saved_products] << @product.id
-    end
-    respond_to do |format|
-    format.html # Follow regular flow of Rails
-    format.text { render partial: 'products/product', locals: { product: @product }, formats: [:html] }
-  end
   end
 
   private
