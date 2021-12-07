@@ -1,45 +1,53 @@
-<main class="min-h-screen bg-gradient-to-t from-pink-200 to-purple-400 p-0">
-  <div class=" min-h-2 flex flex-wrap place-content-evenly text-white mb-6 place-content-evenly">
-    <% if user_signed_in? %>
-      <h1 class="animate-pulse py-12 uppercase flex-wrap font-bold text-2xl md:text-7xl sm:text-2xl">Welcome <%= current_user.full_name %> to BOB!</h1>
-    <% else %>
-      <h1 class="animate-pulse py-12 uppercase flex-wrap font-bold text-2xl md:text-7xl sm:text-2xl"> Welcome to BOB!</h1>
-    <% end %>
-  </div>
-  <div class="">
-  <%# <%= render 'shared/lgcontainer' %>
-    <%# #bob come on in button# %>
-    <div class="min-w-screen flex flex-wrap place-content-evenly items-center justify-center px-2 py-2">
-      <div class="w-2/3 mx-auto rounded-lg bg-white shadow-lg px-5 pt-5 pb-10 text-gray-800" style="max-width: 500px">
-          <div class="w-full pt-1 pb-5">
-            <div class="rounded-full overflow-hidden w-40 h-40 -mt-16 mx-auto bg-gradient-to-br bg-gradient-to-t from-purple-300 via-pink-200 to-purple-300">
-              <%= link_to(
-                products_path,
-                class: ""
-                ) do %>
-                <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_ft7sexw4.json"  background="transparent"  speed="1"  style="width: 150px; height: 150px;"  loop  autoplay></lottie-player>
-                <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-              <% end %>
-            </div>
-          </div>
-          <div class="w-full mb-10">
-            <div class="text-3xl text-pink-300 text-left leading-tight h-3">“</div>
-            <p class="text-m text-purple-900 text-center px-3 font-italic">Our business buddy</p>
-            <div class="text-3xl text-pink-300 text-right leading-tight h-3 -mt-3">”</div>
-        </div>
-      </div>
-    </div>
-    <div class="h-24">
-    </div>
+  <%# title container %>
+<div class=" min-h-2 flex flex-wrap place-content-evenly text-white mb-6 place-content-evenly mb-72">
+  <% if user_signed_in? %>
+    <h1 class="animate-pulse py-12 uppercase flex-wrap font-bold text-2xl md:text-7xl sm:text-2xl">Welcome <%= current_user.full_name %> to BOB!</h1>
+  <% else %>
+    <h1 class="animate-pulse py-12 uppercase flex-wrap font-bold text-2xl md:text-7xl sm:text-2xl"> Welcome to BOB!</h1>
+  <% end %>
+</div>
 
+<%# #bob come on in button# %>
+<div class="min-w-screen flex flex-wrap place-content-evenly items-center justify-center px-2 py-2 ">
+  <div class="w-2/3 mx-auto rounded-lg bg-transparent px-5 pt-5 pb-10 text-gray-800" style="max-width: 500px">
+    <div class="w-full pt-1 pb-5">
+      <div class="rounded-full overflow-hidden w-40 h-40 -mt-16 mx-auto bg-gradient-to-br bg-gradient-to-t from-purple-300 via-pink-200 to-purple-300">
+        <%= link_to(
+          products_path,
+          class: ""
+          ) do %>
+          <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_ft7sexw4.json"  background="transparent"  speed="1"  style="width: 150px; height: 150px;"  loop  autoplay></lottie-player>
+          <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="h-24">
+</div>
+<%# creating a category list! %>
+
+<div class="flex flex-col bg-transparent m-auto p-auto">
+  <h1 class="flex py-5 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl text-white">Explore our bussiness categories today....</h1>
+  <div class="flex overflow-x-scroll pb-10 hide-scroll-bar">
+    <div class="flex flex-nowrap lg:ml-40 md:ml-20 ml-10 ">
     <% @categories.each do |category| %>
-      <div class="min-w-screen over flex flex-wrap place-content-evenly items-center justify-center px-2 py-2">
-        <div class="w-2/3 mx-auto rounded-lg bg-white shadow-sml px-5 pt-5 pb-5">
-          <div class="w-1/2 pt-1 pb-5">
-            <%= render partial: "shared/category", locals: { category: category} %>
-          </div>
+      <div class="inline-block px-3">
+        <div class="w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-pink-100 hover:shadow-xl transition-shadow duration-300 ease-in-out">
+        <%= render partial: "shared/category", locals: { category: category} %>
         </div>
       </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</main>
+</div>
+<style>
+.hide-scroll-bar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none;
+}
+</style>
