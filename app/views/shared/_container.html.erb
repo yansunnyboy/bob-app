@@ -1,8 +1,12 @@
 <% classes ||= "" %>
 
-<div class="md:max-w-2xl mx-auto w-full h-full flex-1 relative <%= classes %>">
+<% if @no_classes %>
   <%= yield %>
-</div>
+<% else %>
+  <div class="md:max-w-2xl mx-auto w-full h-full flex-1 relative <%= classes %>">
+    <%= yield %>
+  </div>
+<% end %>
 
 <!-- use like this -->
 <%# <%= render "shared/container", classes: "p-4 flex flex-col items-center" do %>

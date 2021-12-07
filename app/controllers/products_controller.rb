@@ -107,12 +107,14 @@ class ProductsController < ApplicationController
   end
 
   def save_to_session
-    if session[:saved_products].nil?
-      session[:saved_products] = [@product.id]
+    session[:saved_products] ||= []
+    if session[:saved_products].include?(@product.id)
+      session[:saved_products] = session[:saved_products].reject{|p| p == @product.id}
     else
       session[:saved_products] << @product.id
     end
     respond_to do |format|
+    @no_classes = true # hack to remove shared/_container wrapping for re-render
     format.html # Follow regular flow of Rails
     format.text { render partial: 'products/product', locals: { product: @product }, formats: [:html] }
   end

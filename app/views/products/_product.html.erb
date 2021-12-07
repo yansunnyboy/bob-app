@@ -1,12 +1,13 @@
 <%= render "shared/container", classes: "px-4 py-2 items-center bg-white" do %>
-  <div class="flex rounded-md bg-pink-50 shadow-sm" data-toggle="modal" data-target='#<%= "show#{product.id}" %>'>
-  <% if current_user %>
-    <div>
-  <% else %>
-    <div id= "product_<%=product.id%>" data-controller="save" data-save-url-value="<%=save_to_session_product_url(product) %>" data-save-target="product" >
-  <% end %>
+  <div
+    class="flex rounded-md shadow-sm <%= session[:saved_products]&.include?(product.id) ? "bg-gray-50" : "bg-pink-50"  %>"
+    id="product_<%=product.id%>"
+    data-controller="save"
+    data-save-url-value="<%= save_to_session_product_url(product) %>"
+    data-save-target="product"
+  >
     <%if !current_user && session[:saved_products]&.include?(product.id) %>
-      <p>SAVED!!</p>
+      <p class="absolute right-8 top-3 p-1 bg-gray-200 rounded-md font-bold">SAVED!!</p>
     <% end %>
     <div class="product-img col-4 py-4">
       <% if product.image_url %>
@@ -31,10 +32,12 @@
       <p class="price">URL: <%=link_to product.name, product.url %></p>
       <p class="description"><p><%= product.bio %></p>
       <% if current_user %>
-      <%= render "products/savemodal", product: product %>
+        <%= render "products/savemodal", product: product %>
       <% else %>
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" data-action="click->save#addToList">
-          ADD
+          <%= session[:saved_products]&.include?(product.id) ?
+            "REMOVE" :
+            "ADD" %>
         </button>
       <% end %>
       <% if @list %>
@@ -86,5 +89,4 @@
       </div>
     </div>
   </div>
-</div>
 <% end %>
