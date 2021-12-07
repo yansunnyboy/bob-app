@@ -1,20 +1,20 @@
-<nav class= "fixed bottom-0 inset-x-0 bg bg-white py-4 flex justify-between h-20 border-solid border-t border-gray-200 shadow">
-  <a href="../" class="w-full text-center "><i class="fas fa-home fa-2x text-purple-400 hover:text-purple-900"></i></a>
+<nav class= "fixed bottom-0 inset-x-0 bg bg-white py-4  flex justify-between h-20">
+  <a href="../" class="w-full text-center "><i class="fas fa-home fa-2x text-pink-400 hover:text-purple-400"></i></a>
   <%= link_to(
     products_path,
     class: "w-full text-center "
     ) do %>
-    <i class="fas fa-th-large fa-2x text-purple-400 hover:text-purple-900"></i>
+    <i class="fas fa-th-large fa-2x text-pink-400 hover:text-purple-400"></i>
     <% end %>
   <% if user_signed_in? %>
     <%= link_to(
         lists_path,
         class: "w-full text-center"
         )do %>
-        <i class="fas fa-list-ul fa-2x text-purple-400 hover:text-purple-900"></i>
+        <i class="fas fa-list-ul fa-2x text-pink-400 hover:text-purple-400"></i>
         <% end %>
     <div class = "w-full text-center">
-      <i class="fas fa-user fa-2x text-purple-400 hover:text-purple-900" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+      <i class="fas fa-user fa-2x text-pink-400 hover:text-purple-400" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
       <div class="dropdown-menu">
         <%= link_to "Edit your profile", edit_user_registration_path, class: "dropdown-item" %>
         <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
@@ -25,13 +25,13 @@
       new_user_session_path,
       class: "w-full text-center"
       ) do %>
-      <i class="fas fa-list-ul fa-2x text-purple-400 hover:text-purple-900"></i>
+      <i class="fas fa-list-ul fa-2x text-pink-400 hover:text-purple-400"></i>
       <% end %>
     <%= link_to(
     new_user_session_path,
     class: "w-full text-center"
     ) do %>
-    <i class="fas fa-user fa-2x text-purple-400 hover:text-purple-900"></i>
+    <i class="fas fa-user fa-2x text-pink-400 hover:text-purple-400"></i>
     <% end %>
   <% end %>
 </nav>
