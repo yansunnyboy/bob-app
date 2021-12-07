@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   before_action :find_list, only: %i[show edit destroy update]
 
   def index
-    list_scope = List.joins(:contributors).where(contributors:{user:current_user})
+    list_scope = List.all
     @pagy, @lists = pagy(list_scope)
   end
 
