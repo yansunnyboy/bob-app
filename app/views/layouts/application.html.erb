@@ -12,10 +12,9 @@
     <%= stylesheet_pack_tag 'application' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
-
-  <body>
-    <%= render 'shared/flashes' %>
-      <%= yield %>
-    <%= render 'shared/navbar' %>
+  <body class= "bg-white">
+      <%= render 'shared/flashes' %>
+        <%= yield %>
+      <%= render 'shared/navbar' %>
   </body>
 </html>

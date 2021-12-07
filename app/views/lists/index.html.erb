@@ -1,10 +1,17 @@
-<div class="bg-gradient-to-t from-pink-200 to-purple-400 pt-20">
-  <%= render "shared/lgcontainer", classes: "p-4 flex flex-col items-center" do %>
-  <h1 class="font-bold text-lg bg-white pb-5">My Lists</h1>
-  <div class='h-96 bg-white'>
-    <%= render partial: "list", collection: @lists %>
-  <% end %>
-  <%= link_to("Add list", new_list_path, class: "btn btn-primary flex justify-center items-center") %>
-    <div class='flex justify-center'><%== pagy_nav(@pagy) %></div>
-  </div>
-</div>
+<main class="h-full bg-gradient-to-t from-pink-200 to-purple-400 pt-20">
+  <h1 class="bg-transparent text-white">My Lists</h1>
+    <div class="ml-80 ">
+    <%= link_to(
+        new_list_path,
+        class: "w-full text-right"
+        )do %>
+        <i class="fas fa-plus fa-2x text-pink-400 hover:text-purple-900"></i>
+        <% end %>
+        </div>
+      <%= render "shared/lgcontainer", classes: "p-4 flex flex-col items-center" do %>
+        <%= render "shared/lgcontainer", classes: "p-4 flex flex-col items-center" do %>
+        <% end %>
+      <%= render partial: "list", collection: @lists, classes: "flex rounded-md bg-pink-50 shadow-sm w-2/3"%>
+      <div class='flex justify-center'><%== pagy_nav(@pagy) %></div>
+    <% end %>
+</main>
