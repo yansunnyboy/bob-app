@@ -14,11 +14,32 @@
    </li>
   </ol>
 </nav>
-
 <h1>My <%= @list.name %> List</h1>
+
+<button class="btn btn-primary" data-toggle="modal" data-target='#<%= "new#{@list.id}" %>'>
+  <i class="fas fa-user-plus fa-2x text-purple-400 hover:text-pink-400 ml-4 mt-4"></i>
+</button>
+
 
 <%= render partial: "products/product", collection: @products %>
 
 <%= link_to("Add Product", new_list_solution_path(@list), class: "btn btn-success") %>
 
 <button class = "btn btn-secondary"><%= link_to("Contributors", list_contributors_path(list_id:@list.id)) %></button>
+
+
+<div class="modal fade" id='<%= "new#{@list.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "new#{@list.id}" %>' aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content w-full">
+      <div class="modal-header" style="background-color: rgb(39,28,162)">
+        <h5 class="modal-title" id="exampleModalLabel" style="color: white">Add a contributor</h5>
+        <button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="background-color: rgb(254,194,242)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="background-color: rgb(139,128,254)">
+        <%= render "contributors/new", list: @list %>
+      </div>
+    </div>
+  </div>
+</div>
