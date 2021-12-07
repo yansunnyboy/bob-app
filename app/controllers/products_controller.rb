@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show save_to_session]
+  skip_before_action :authenticate_user!, only: %i[index show save_to_session nav_count]
   before_action :find_product, only: %i[show edit update destroy toggle_category toggle_business toggle_cost add_to_list create_solution_from_product save_to_session]
 
   def index
@@ -114,10 +114,14 @@ class ProductsController < ApplicationController
       session[:saved_products] << @product.id
     end
     respond_to do |format|
-    @no_classes = true # hack to remove shared/_container wrapping for re-render
-    format.html # Follow regular flow of Rails
-    format.text { render partial: 'products/product', locals: { product: @product }, formats: [:html] }
+      @no_classes = true # hack to remove shared/_container wrapping for re-render
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'products/product', locals: { product: @product }, formats: [:html] }
+    end
   end
+
+  def nav_count
+    render partial: 'shared/navbar'
   end
 
   private
