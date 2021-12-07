@@ -22,6 +22,19 @@ export default class extends Controller {
       .then((response) => response.text())
       .then((data) => {
         this.productTarget.outerHTML = data;
+        this.updateNavCount()
+      });
+  }
+  updateNavCount() {
+    fetch("/products/nav_count", {
+      method: "GET",
+      headers: {
+        "X-CSRF-TOKEN": document.querySelector("[name=csrf-token]").content,
+      },
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        $("#nav-bar").html(data);
       });
   }
 }

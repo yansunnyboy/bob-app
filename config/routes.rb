@@ -13,6 +13,9 @@ Rails.application.routes.draw do
       post 'create_solution_from_product'
       post 'save_to_session'
     end
+    collection do
+      get 'nav_count'
+    end
   end
   resources :lists do
     resources :solutions, only: %i[new create]
