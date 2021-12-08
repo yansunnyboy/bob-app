@@ -1,58 +1,74 @@
 <%= render "shared/container", classes: "px-4 py-2 items-center bg-white" do %>
-  <div
-    class="flex rounded-md shadow-sm <%= session[:saved_products]&.include?(product.id) ? "bg-gray-50" : "bg-pink-50"  %>"
+  <div class="flex rounded-md shadow-sm h-48 items-center <%= session[:saved_products]&.include?(product.id) ? "bg-gray-50" : "bg-pink-50"  %>"
     id="product_<%=product.id%>"
     data-controller="save"
     data-save-url-value="<%= save_to_session_product_url(product) %>"
-    data-save-target="product"
-  >
+    data-save-target="product">
     <%if !current_user && session[:saved_products]&.include?(product.id) %>
       <p class="absolute right-8 top-3 p-1 bg-gray-200 rounded-md font-bold">SAVED!!</p>
     <% end %>
-    <div class="product-img col-4 py-4">
+    <div class="col-4 py-4 inline-block">
       <% if product.image_url %>
-        <%= image_tag product.image_url, height: 100 %>
+        <%= image_tag product.image_url %>
       <% else %>
         <img src="https://placedog.net/100/100?random" height="100" alt="" />
       <% end %>
-      <% icons = { bookkeeping:"fas fa-book fa-3x text-pink-400 hover:text-purple-400", userexperience: "fas fa-edit", developertools: "fas fa-laptop-code", marketing: "fas fa-search-dollar",
-          CRM: "fas fa-project-diagram", designtools: "fas fa-pencil-ruler", productivity: "fas fa-industry", analytics: "fas fa-chart-line" } %>
-      <% product.category_list.each do |category| %>
-        <i class="<%= icons[category.gsub(' ', '').to_sym] %> grid justify-center text-sm"></i>
-      <% end %>
-      <% product.business_list.each do |business| %>
-        <p class ="description text-uppercase badge badge-pill badge-secondary"><%= business %></p>
-      <% end %>
-      <% product.cost_list.each do |cost| %>
-        <p class ="description text-uppercase badge badge-pill badge-success"><%= cost %></p>
-      <% end %>
     </div>
-    <div class='inline-block py-3.5 m-1' >
-      <p class='font-bold' data-toggle="modal" data-target='#<%= "show#{product.id}" %>'><%= product.name %></p>
-      <p class="price">URL: <%=link_to product.name, product.url %></p>
-      <p class="description"><p><%= product.bio %></p>
-      <% if current_user %>
-        <%= render "products/savemodal", product: product %>
-      <% else %>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" data-action="click->save#addToList">
-          <%= session[:saved_products]&.include?(product.id) ?
-            "REMOVE" :
-            "ADD" %>
-        </button>
-      <% end %>
-      <% if @list %>
-        <% solution = Solution.find_by(list: @list, product: product) %>
-        <%= solution.get_likes.size %>
-          <%= link_to("See More", product_path(product.id), class: "btn btn-warning") %>
-          <%= link_to(
-            @contributor.voted_for?(solution) ? "Down Vote" : "Up Vote",
-            toggle_vote_list_product_path(list_id: @list.id, id: product.id),
-            class: "btn btn-success",
-            method: :post,
-          ) %>
-      <% end %>
+    <div class='col-8 pt-0 py-3.5 m-1 inline-block align-middle' >
+      <div class='font-bold text-lg' data-toggle="modal" data-target='#<%= "show#{product.id}" %>'>
+        <%= product.name.first(20) %>
+        <%# <%= product.name.split("-")[0] %>
+        <%# <%= product.name.split(":")[0] %>
+      </div>
+      <%# <div class="font-italic text-sm">
+        Link: <%=link_to product.name, product.url %>
+      <%# </div> %>
+      <p class="font-light text-sm"><%= product.bio %></p>
+      <div class= "grid grid-cols-3 gap-4">
+        <div class=" text-purple-600 align ">
+          <% icons = { bookkeeping:"fas fa-book fa-3x text-purple-400 hover:text-purple-400", userexperience: "fas fa-edit", developertools: "fas fa-laptop-code", marketing: "fas fa-search-dollar",
+              CRM: "fas fa-project-diagram", designtools: "fas fa-pencil-ruler", productivity: "fas fa-industry", analytics: "fas fa-chart-line" } %>
+          <% product.category_list.each do |category| %>
+            <i class="<%= icons[category.gsub(' ', '').to_sym] %> grid text-lg"></i>
+          <% end %>
+          <% product.business_list.each do |business| %>
+            <p class ="description text-uppercase badge badge-pill badge-secondary"><%= business %></p>
+          <% end %>
+          <% product.cost_list.each do |cost| %>
+            <p class ="description text-uppercase badge badge-pill badge-success"><%= cost %></p>
+          <% end %>
+        </div>
+        <div class= "align">
+          <% if @list %>
+          <%# ADD TO TITLE AS A SHOW MORE MODAL<%= link_to("See More", product_path(product.id), class: "btn") %>
+          <% solution = Solution.find_by(list: @list, product: product) %>
+          <div class = "text-pink-600 font-bold py-2  bg-transparent w-16 text-center px-0 rounded text-sm">
+            <i class="fas fa-heart"> <%= solution.get_likes.size %></i>
+          </div>
+          <div class="bg-purple-600 w-16 text-center px-0 rounded text-sm  ">
+            <%= link_to(
+              @contributor.voted_for?(solution) ? "Down Vote" : "Up Vote",
+              toggle_vote_list_product_path(list_id: @list.id, id: product.id),
+              class: "text-white font-bold text-sm py-2 rounded",
+              method: :post,
+            ) %>
+          </div>
+        <% end %>
+        </div>
+
+        <div class="bg-purple-600 w-16 text-center px-0 rounded text-sm align ">
+          <% if current_user %>
+            <%= render "products/savemodal", product: product %>
+            <% else %>
+            <button class= "text-white font-bold text-sm py-2 rounded" data-action="click->save#addToList">
+              <%= session[:saved_products]&.include?(product.id) ?
+                "REMOVE" :
+                "ADD" %>
+            </button>
+          <% end %>
+        </div>
     </div>
-  </div>
+
 
 
 <!-- Modal -->

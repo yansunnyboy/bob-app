@@ -1,9 +1,9 @@
-<main class="h-full bg-gradient-to-t from-pink-200 to-purple-400 pt-20">
-  <h1 class="bg-transparent text-white">My <%= @list.name %> List</h1>
+<div class="bg-gradient-to-t from-pink-200 to-purple-400 pt-20">
+  <h1 class="pl-10 font-bold text-lg bg-transparent uppercase">My <%= @list.name %> List</h1>
     <div class="ml-60 ">
       <div class="row justify-content-center">
         <div class="col-4" data-toggle="modal" data-target='#<%= "new#{@list.id}" %>'>
-          <i class="fas fa-user-plus fa-2x text-pink-200 hover:text-purple-900"></i>
+          <i class="fas fa-user-plus fa-2x text-pink-200 hover:text-purple-900" data-toggle="tooltip" type="button" data-placement="top" title="Add a new contributor"></i>
         </div>
         <div class="col-4">
           <%= link_to(
@@ -19,23 +19,24 @@
           list_contributors_path(list_id:@list.id),
           class: "w-full text-center"
           ) do %>
-          <i class="fas fa-user fa-2x text-pink-200 hover:text-purple-900" data-toggle="tooltip" type="button" data-placement="top" title="Add a new product"></i>
+          <i class="fas fa-user fa-2x text-pink-200 hover:text-purple-900" data-toggle="tooltip" type="button" data-placement="top" title="See Your Contributors"></i>
           <% end %>
-      </div>
+        </div>
       </div>
     </div>
-  <%= render "shared/lgcontainer", classes: "p-4 flex flex-col items-center h-full" do %>
-  <%= render partial: "products/product", collection: @products, classes: "mb-8" %>
-  <% end %>
-</main>
 
+  <%= render "shared/lgcontainer", classes: "p-4 flex flex-col items-center" do %>
+    <%= render partial: "products/product", collection: @products, classes: "mb-8" %>
+  <% end %>
+      <div class= "h-48"></div>
+</div>
 
 
 
 <%# need to be use to make buttons above live %>
 <%# <%= link_to("Add Product", new_list_solution_path(@list), class: "btn btn-success") %>
 
-<%# <button class = "btn btn-secondary"><%= link_to("Contributors", list_contributors_path(list_id:@list.id)) %></button> %> %>
+<%# <button class = "btn btn-secondary"><%= link_to("Contributors", list_contributors_path(list_id:@list.id)) %>
 
 <%# colaborator add modal %>
 <div class="modal fade" id='<%= "new#{@list.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "new#{@list.id}" %>' aria-hidden="true">
