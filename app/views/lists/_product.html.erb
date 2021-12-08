@@ -88,13 +88,13 @@
   <div class="modal fade" id='<%= "show#{product.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "show#{product.id}" %>' aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content w-full">
-        <div class="modal-header" style="background-color: rgb(39,28,162)">
-          <h5 class="modal-title" id="exampleModalLabel" style="color: white">Product details</h5>
-          <button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="background-color: rgb(254,194,242)">
-            <span aria-hidden="true">&times;</span>
+        <div class="modal-header" style="background-color: rgb(139,128,254)">
+          <h5 class="modal-title" id="ModalTitle" style="color: rgb(255,253,255)">Product details</h5>
+          <button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="background-color: rgb(139,128,254)">
+            <span style="color: rgb(255,253,255)" aria-hidden="true"><i class="fas fa-times"></i></span>
           </button>
         </div>
-        <div class="modal-body" style="background-color: rgb(139,128,254)">
+        <div class="modal-body" style="background-color: rgb(255,253,255)">
           <%= render "products/modal", product: product %>
         </div>
       </div>
