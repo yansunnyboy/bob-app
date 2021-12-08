@@ -5,7 +5,7 @@
     data-save-url-value="<%= save_to_session_product_url(product) %>"
     data-save-target="product">
     <%if !current_user && session[:saved_products]&.include?(product.id) %>
-      <p class="absolute right-8 top-3 p-1 bg-gray-200 rounded-md font-bold">SAVED!!</p>
+      <p class="absolute right-8 top-3 p-1 bg-gray-200 rounded-md">SAVED!</p>
     <% end %>
     <div class="col-4 py-4 inline-block">
       <% if product.image_url %>
