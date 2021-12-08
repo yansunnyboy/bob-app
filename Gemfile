@@ -40,7 +40,11 @@ gem 'pagy'
 # Use to up vote on list
 gem 'acts_as_votable'
 #stimulus-rails
- gem 'stimulus-rails'
+gem 'stimulus-rails'
+# qr code generation
+gem 'rqrcode'
+# jwt for token signing
+gem 'jwt'
 
 group :development, :test do
   gem 'pry-byebug'

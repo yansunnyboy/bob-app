@@ -4,6 +4,11 @@ class PagesController < ApplicationController
   def home
     @products = Product.all
     @categories = ActsAsTaggableOn::Tag.all
+    if session["user_return_to"]
+      redirect_to session["user_return_to"]
+    else
+      render
+    end
   end
 
   def index

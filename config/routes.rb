@@ -30,6 +30,9 @@ Rails.application.routes.draw do
       end
       resources :solutions, only: :create, controller:'lists/products/solutions'
     end
+    member do
+      get :invite
+    end
   end
   resources :solutions, only: :destroy
 end
