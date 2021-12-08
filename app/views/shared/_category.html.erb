@@ -1,25 +1,31 @@
-<% icons = { bookkeeping:"fas fa-book fa-3x text-pink-400 hover:text-purple-400", userexperience: "fas fa-edit", developertools: "fas fa-laptop-code", marketing: "fas fa-search-dollar",
+<% icons = { bookkeeping:"fas fa-book fa-3x", userexperience: "fas fa-edit", developertools: "fas fa-laptop-code", marketing: "fas fa-search-dollar",
          CRM: "fas fa-project-diagram", designtools: "fas fa-pencil-ruler", productivity: "fas fa-industry", analytics: "fas fa-chart-line" } %>
 
-  <% active_classes = category.name == params[:category] ? 'bg-indigo-500 text-white' : 'text-indigo-500' %>
+  <% active_classes = category.name == params[:category] ? 'bg-purple-400 text-pink-50 shadow-inner rounded-xl' : 'bg-indigo-200 text-white rounded-full shadow-sm' %>
+    <% if category.name.match(" ") %>
+      <% space_classes = 'py-0.5' %>
+    <% else %>
+      <% space_classes = 'py-3' %>
+    <% end %>
+    <% if category.name.match("design") %>
+      <% space_classes = 'pt-3' %>
+    <% end %>
   <%= link_to(
     { controller: :products, :action => :index, :category => category.name },
       :class => "
+    h-24
+    w-28
     block
-    px-3
-    text-base
-    border-2
-    border-indigo-500
+    border
     justify-center
     items-center
-    text-xs
-    rounded-md
-    py-3
+    text-center
+    text-s
     mx-1
-    whitespace-nowrap
+    #{space_classes}
     #{active_classes}
   "
       ) do %>
     <i class="<%= icons[category.name.gsub(' ', '').to_sym] %> grid justify-center text-lg"></i>
-    <span class="ml-1"><%= "#{category.name == category.name.upcase ? category.name : category.name.capitalize}" %></span>
+    <span class="ml-1"><%= "#{category.name == category.name.upcase ? category.name : category.name.titleize}" %></span>
   <% end %>
