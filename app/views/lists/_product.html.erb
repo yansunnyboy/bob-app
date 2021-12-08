@@ -17,16 +17,15 @@
     <div class='col-8 pt-2 p-3.5 inline-block align-middle' >
       <div class='font-bold text-lg' data-toggle="modal" data-target='#<%= "show#{product.id}" %>'>
         <%= product.name.first(20) %>
-        <%# <%= product.name.split("-")[0] %>
-        <%# <%= product.name.split(":")[0] %>
+          <%# <%= product.name.split("-")[0] %>
+          <%# <%= product.name.split(":")[0] %>
       </div>
-      <%# <div class="font-italic text-sm">
+        <%# <div class="font-italic text-sm">
         Link: <%=link_to product.name, product.url %>
-      <%# </div> %>
+        <%# </div> %>
       <p class="font-light text-sm"><%= product.bio %></p>
-      <div class="flex">
-        <div class="flex-1">
-          <div class="text-purple-600">
+        <div class="flex">
+          <div class="flex-1 text-purple-600">
             <% icons = { bookkeeping:"fas fa-book fa-3x", userexperience: "fas fa-edit", developertools: "fas fa-laptop-code", marketing: "fas fa-search-dollar",
                 CRM: "fas fa-project-diagram", designtools: "fas fa-pencil-ruler", productivity: "fas fa-industry", analytics: "fas fa-chart-line" } %>
             <% product.category_list.each do |category| %>
@@ -39,23 +38,27 @@
               <p class ="description text-uppercase badge badge-pill badge-success"><%= cost %></p>
             <% end %>
           </div>
+          <% solution = Solution.find_by(list: @list, product: product) %>
+          <div class= "flex-1 <%= @contributor.voted_for?(solution) ? "text-pink-500" : "text-gray-400" %> pt-2">
+            <% if @list %>
+              <%# ADD TO TITLE AS A SHOW MORE MODAL<%= link_to("See More", product_path(product.id), class: "btn") %>
+              <% classlist = @contributor.voted_for?(solution) ? "shadow-inner" : "shadow" %>
+              <div class="text-right">
+                <%= link_to(
+                  toggle_vote_list_product_path(list_id: @list.id, id: product.id),
+                  class: "bg-purple-100 py-2 px-2.5 rounded-full text-sm text-center #{classlist}",
+                  method: :post,
+                ) do %>
+                  <i class= "<%= @contributor.voted_for?(solution) ? "fas fa-heart" : "fas fa-heart" %>"></i>
+                  <%= solution.get_likes.size %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
-        <div>
-        <div class="flex-1 bg-purple-600 w-16 text-center px-0 rounded text-sm">
-          <% if current_user %>
-            <%= render "products/savemodal", product: product %>
-          <% else %>
-            <button class= "text-white font-bold text-sm py-2 pl-4 rounded" data-action="click->save#addToList">
-              <%= session[:saved_products]&.include?(product.id) ?
-                  "REMOVE" :
-                  "ADD" %>
-            </button>
-          <% end %>
-        </div>
-        </div>
-      </div>
     </div>
-
+  </div>
+</div>
 
 
 <!-- Modal -->
