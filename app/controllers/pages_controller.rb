@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     @products = Product.all
     @categories = ActsAsTaggableOn::Tag.all
-    if session["user_return_to"]
+    if user_signed_in? && session["user_return_to"]
       redirect_to session["user_return_to"]
     else
       render

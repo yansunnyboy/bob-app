@@ -12,6 +12,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    session["user_return_to"] = nil
     @solutions = Solution.where(list_id: params[:id])
     @contributor = Contributor.find_by!(list: @list, user: current_user)
     @products = []
