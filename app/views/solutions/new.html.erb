@@ -1,13 +1,13 @@
-<div class="container py-5">
-  <div class="row">
-    <div class="col-12 col-md-6 offset-lg-3">
-      <div class="bg-white rounded p-3 shadow">
-        <h3>Add a product to your <%= @list.name %> list</h3>
-        <%= simple_form_for [@list, @solution] do |f| %>
+<div class="min-h-screen bg-gradient-to-t from-pink-200 to-purple-400 p-0  flex justify-center">
+    <div class="max-w-sm rounded overflow-hidden shadow-md h-1/3 w-2/3 pt-3 ">
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2 text-white">Add a products to: <%= @list.name %></div>
+        <p class="text-gray-700 text-base">
+          <%= simple_form_for [@list, @solution] do |f| %>
           <%= f.association :product, prompt: 'Select a product', input_html: { class: 'select2' } %>
-          <%= f.submit "Add Product", class: 'btn btn-flat' %>
+          <%= f.submit "Add Product", class: 'bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full' %>
         <% end %>
+        </p>
       </div>
     </div>
   </div>
-</div>
