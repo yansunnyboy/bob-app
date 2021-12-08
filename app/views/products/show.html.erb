@@ -1,8 +1,6 @@
-
 <div class="card mb-3">
-  <div class="card-img bg-success p-4">
-    <h1>IMAGE</h1>
-    <img src="">
+  <div class="card-img p-4">
+    <%= image_tag @product.image_url, height: 100%>
   </div>
   <div class="card-body">
 
@@ -11,11 +9,6 @@
 
           <div class="card-body1 d-flex justify-content-between">
             <div class="product-img col-3">
-              <% if @product.image_url %>
-              <%= image_tag @product.image_url, height: 100%>
-                <% else %>
-              <img src="https://placedog.net/100/100?random" height="100" alt="" />
-                <% end %>
               </div>
               <div class="nameBio col-12 ml-3">
                 <h1><%= @product.name %></h1>
@@ -26,7 +19,6 @@
         </div>
           <p class="card-text">URL:<a href=<%= @product.url %> target="_blank"><%= @product.name %></a></p>
           <div>
-
             <p><%= @product.info %></p>
           </div>
           <% @product.category_list.each do |category| %>

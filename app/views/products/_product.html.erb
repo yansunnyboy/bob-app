@@ -45,7 +45,7 @@
           <% if current_user %>
             <%= render "products/savemodal", product: product %>
           <% else %>
-            <button class= "text-white font-bold text-sm py-2 pl-4 rounded" data-action="click->save#addToList">
+            <button class= "text-white font-bold text-sm py-2 rounded" data-action="click->save#addToList">
               <%= session[:saved_products]&.include?(product.id) ?
                   "REMOVE" :
                   "ADD" %>
