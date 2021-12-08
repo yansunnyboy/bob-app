@@ -1,42 +1,13 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-    <a href="/">Home</a>
-    </li>
-    <li class="breadcrumb-item">
-     <%= link_to(
-        "Lists",
-        lists_path
-     ) %>
-   </li>
-    <li class="breadcrumb-item">
-     <%= link_to(
-        params[:list_id],
-        list_path(params[:list_id])
-     ) %>
-   </li>
-    <li class="breadcrumb-item">
-      Contributors
-   </li>
-  </ol>
-</nav>
-<div class="row">
-  <div class="container">
-    <div class="box border">
-      <h3>Contributors</h3>
-      <ul class="list-group">
-        <%= render partial: "contributor", collection: @contributors %>
-      </ul>
-    </div>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-md-6 offset-md-3">
-    <%= link_to(
-      "Add New Contributor",
-      new_list_contributor_path(list_id: params[:list_id]),
-      class: "btn btn-success"
-    ) %>
+<div class="min-h-screen bg-gradient-to-t from-pink-200 to-purple-400 p-0  flex justify-center">
+  <div class="px-6 py-4">
+  <%= link_to(
+              "Add New Contributor",
+              new_list_contributor_path(list_id: params[:list_id]),
+              class: "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full"
+            ) %>
+    <div class="font-bold mt-20 text-xl mb-2 text-white">Contributors</div>
+      <%= render partial: "contributor", collection: @contributors %>
+    </div>
   </div>
 </div>
