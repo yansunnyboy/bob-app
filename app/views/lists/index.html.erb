@@ -1,9 +1,9 @@
 <div class="bg-gradient-to-t from-pink-200 to-purple-400 pt-1">
-   <h1 class="font-bold text-xl text-center text-white py-10 uppercase">MY LISTS</h1>
-      <%= render "shared/lgcontainer", classes: "flex flex-col py-2" do %>
+   <h1 class="animate-pulse font-bold text-xl text-center text-white py-10 uppercase">MY LISTS</h1>
+      <%= render "shared/lgcontainer", classes: "flex flex-col pt-2" do %>
         <%= link_to(
             new_list_path,
-            class: "w-full text-right py-1 px-3"
+            class: "w-full text-right pt-2 px-4"
             )do %>
             <i class="fas fa-plus fa-2x text-pink-400 hover:text-purple-900" data-toggle="tooltip" type="button" data-placement="top" title="Create a new list"></i>
             <% end %>

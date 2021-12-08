@@ -5,14 +5,10 @@
     data-save-url-value="<%= save_to_session_product_url(product) %>"
     data-save-target="product">
     <div class="col-4 py-4 inline-block">
-      <% if product.image_url %>
-        <%= image_tag product.image_url %>
-      <% else %>
-        <img src="https://placedog.net/100/100?random" height="100" alt="" />
-      <% end %>
+      <%= image_tag product.image_url %>
     </div>
     <div class='col-8 pt-2 p-3.5 inline-block align-middle' >
-      <div class='font-bold text-lg' data-toggle="modal" data-target='#<%= "show#{product.id}" %>'>
+      <h1 class='font-bold text-lg' data-toggle="modal" data-target='#<%= "show#{product.id}" %>'>
         <% if product.name.include?("-") %>
           <%= product.name.split("-")[0] %>
         <% elsif product.name.include?(":") %>
@@ -20,11 +16,11 @@
         <% else %>
           <%= product.name.split.first(4).join(" ")%>
         <% end %>
-      </div>
+      </h1>
       <%# <div class="font-italic text-sm">
         Link: <%=link_to product.name, product.url %>
       <%# </div> %>
-      <p class="font-light text-sm"><%= product.bio %></p>
+      <p class="text-sm"><%= product.bio %></p>
       <div class="flex">
         <div class="flex-1">
           <div class="text-purple-400">
@@ -78,8 +74,8 @@
       </div>
     </div>
   </div>
-  <%# show id product model to render %>
-  <div class="modal fade" id='<%= "show#{product.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "show#{product.id}" %>' aria-hidden="true">
+  <%# show id product modal to render %>
+  <div class="modal fade rounded-lg" id='<%= "show#{product.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "show#{product.id}" %>' aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content w-full">
         <div class="modal-header" style="background-color: rgb(39,28,162)">

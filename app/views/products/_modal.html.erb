@@ -1,29 +1,23 @@
-
-<div class="card mb-3 bg-white" >
-  <div class="card-img p-4 bg-pink-200">
-    <h1>IMAGE</h1>
-    <img src="">
+<div class="card mb-3" >
+  <div class="card-img">
+    <img src="https://source.unsplash.com/1600x900/?software">
   </div>
-  <div class="card-body">
-
+  <div class="card-body rounded-lg">
     <div class="row">
-        <div class="card-body1 d-flex justify-content-between">
-          <div class="product-img">
-            <% if product.image_url %>
-            <%= image_tag product.image_url, height: 100%>
-              <% else %>
-            <img src="https://placedog.net/100/100?random" height="100" alt="" />
-              <% end %>
-          </div>
-          <div class="col-9">
-              <h1><%= product.name %></h1>
-              <p><%= product.bio %></p>
+      <div class="card-body1 d-flex justify-content-between">
+        <div class="product-img">
+          <%= image_tag product.image_url, height: 100 %>
+        </div>
+        <div class="col-9">
+          <h1 class="font-bold text-lg"><%= product.name %></h1>
+          <p><%= product.bio %></p>
           </div>
         </div>
         </div>
-          <p class="card-text">URL:<a href=<%= product.url %> target="_blank"><%= product.name %></a></p>
+        <div class="font-italic text-sm">
+          Link: <%= link_to product.name, product.url %>
+        </div>
           <div>
-
             <p><%= product.info %></p>
           </div>
           <% product.category_list.each do |category| %>
