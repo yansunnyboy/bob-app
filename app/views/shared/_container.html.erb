@@ -3,7 +3,7 @@
 <% if @no_classes %>
   <%= yield %>
 <% else %>
-  <div class="md:max-w-2xl mx-auto w-full h-full flex-1 relative <%= classes %>">
+  <div class="md:max-w-2xl mx-auto w-full h-full flex-1 relative rounded <%= classes %>">
     <%= yield %>
   </div>
 <% end %>
