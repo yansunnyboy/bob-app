@@ -1,17 +1,15 @@
-<div class="h-full bg-gradient-to-t from-pink-200 to-purple-400 pt-20">
-   <h1 class="pl-10 font-bold text-lg bg-transparent uppercase">My Saved Lists</h1>
-    <div class="ml-80 ">
-    <%= link_to(
-        new_list_path,
-        class: "w-full text-right"
-        )do %>
-        <i class="fas fa-plus fa-2x text-pink-400 hover:text-purple-900" data-toggle="tooltip" type="button" data-placement="top" title="Create a new list"></i>
-        <% end %>
-        </div>
-      <%= render "shared/lgcontainer", classes: "p-4 flex flex-col items-center" do %>
+<div class="bg-gradient-to-t from-pink-200 to-purple-400 pt-1">
+   <h1 class="font-bold text-xl text-center text-white py-10 uppercase">MY LISTS</h1>
+      <%= render "shared/lgcontainer", classes: "flex flex-col py-2" do %>
+        <%= link_to(
+            new_list_path,
+            class: "w-full text-right py-1 px-3"
+            )do %>
+            <i class="fas fa-plus fa-2x text-pink-400 hover:text-purple-900" data-toggle="tooltip" type="button" data-placement="top" title="Create a new list"></i>
+            <% end %>
         <%= render "shared/lgcontainer", classes: "p-4 flex flex-col items-center" do %>
-      <div class='flex justify-center'><%== pagy_nav(@pagy) %></div>
       <%= render partial: "list", collection: @lists, classes: "flex rounded-md bg-pink-50 shadow-sm w-2/3"%>
+      <div class='flex justify-center p-2'><%== pagy_nav(@pagy) %></div>
         <% end %>
     <% end %>
 </div>
