@@ -12,8 +12,8 @@
           ),
           class: "mt-16 m-auto no-underline hover:no-underline hover:black z-20 inline-block group"
           ) do %>
-            <i class="fas fa-plus-circle fa-2x text-purple-400 group-hover:text-purple-900 bg-white rounded-full border-2 "></i>
-            <p id="#nav-count" class="relative -top-12 -right-5 bg-red-600 pl-1 w-7 h-7 rounded-full font-bold text-gray-200 text-center">
+            <i class="fas fa-plus fa-2x p-2 bg-purple-400 group-hover:bg-purple-900 text-white rounded-full border-2 border-top-0 border-pink-200"></i>
+            <p id="#nav-count" class="relative -top-14 -right-7 bg-red-600 w-5 h-5 pl-0.5 rounded-full font-bold text-white text-center text-sm">
               <%= session[:saved_products].count %>
             </p>
         <% end %>
@@ -27,37 +27,34 @@
     products_path,
     class: "w-full text-center z-10 inline-block p-8 -m-8 relative group"
     ) do %>
-    <i class="fas fa-th-large fa-2x <%= controller_name == "products" && action_name == "index" ? "text-purple-300" : "text-pink-200"  %> group-hover:text-purple-900"></i>
-    <% end %>
-  <% if user_signed_in? %>
-    <%= link_to(
-        lists_path,
-        class: "w-full text-center z-10 inline-block p-8 -m-8 relative group"
-        )do %>
-        <i class="fas fa-list-ul fa-2x  <%= controller_name == "lists" && action_name == "index" ? "text-purple-300": "text-pink-200" %> group-hover:text-purple-900"></i>
-        <% end %>
-
-
-    <div class = "w-full text-center">
-      <i class="fas fa-user fa-2x <%= user_signed_in? ? "text-purple-300" : "text-pink-200" %> hover:text-purple-900" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-      <div class="dropdown-menu">
-        <%= link_to "Edit your profile", edit_user_registration_path, class: "dropdown-item" %>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-      </div>
-    </div>
-
-  <% else %>
-    <%= link_to(
-      new_user_session_path,
-      class: "w-full text-center z-10 inline-block p-8 -m-8 relative group"
-      ) do %>
-      <i class="fas fa-list-ul fa-2x text-pink-200 group-hover:text-purple-900"></i>
-      <% end %>
-    <%= link_to(
-    new_user_session_path,
-    class: "w-full text-center z-10 inline-block p-8 -m-8 relative group"
-    ) do %>
-    <i class="fas fa-user fa-2x text-pink-200 group-hover:text-purple-900"></i>
-    <% end %>
+      <i class="fas fa-th-large fa-2x <%= controller_name == "products" && action_name == "index" ? "text-purple-300" : "text-pink-200"  %> group-hover:text-purple-900"></i>
   <% end %>
+    <% if user_signed_in? %>
+      <%= link_to(
+          lists_path,
+          class: "w-full text-center z-10 inline-block p-8 -m-8 relative group"
+          )do %>
+            <i class="fas fa-list-ul fa-2x  <%= controller_name == "lists" && action_name == "index" ? "text-purple-300": "text-pink-200" %> group-hover:text-purple-900"></i>
+          <% end %>
+          <div class = "w-full text-center">
+            <i class="fas fa-user fa-2x <%= user_signed_in? ? "text-purple-300" : "text-pink-200" %> hover:text-purple-900" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+            <div class="dropdown-menu">
+              <%= link_to "Edit your profile", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </div>
+      <% else %>
+        <%= link_to(
+          new_user_session_path,
+          class: "w-full text-center z-10 inline-block p-8 -m-8 relative group"
+          ) do %>
+            <i class="fas fa-list-ul fa-2x text-pink-200 group-hover:text-purple-900"></i>
+          <% end %>
+        <%= link_to(
+        new_user_session_path,
+        class: "w-full text-center z-10 inline-block p-8 -m-8 relative group"
+        ) do %>
+          <i class="fas fa-user fa-2x text-pink-200 group-hover:text-purple-900"></i>
+        <% end %>
+    <% end %>
 </nav>

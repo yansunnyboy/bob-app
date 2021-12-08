@@ -15,15 +15,19 @@
       <% end %>
     </div>
     <div class='col-8 pt-2 p-3.5 inline-block align-middle' >
-      <div class='font-bold text-lg' data-toggle="modal" data-target='#<%= "show#{product.id}" %>'>
-        <%= product.name.first(20) %>
-          <%# <%= product.name.split("-")[0] %>
-          <%# <%= product.name.split(":")[0] %>
-      </div>
+      <h1 class='font-bold text-lg' data-toggle="modal" data-target='#<%= "show#{product.id}" %>'>
+        <% if product.name.include?("-") %>
+          <%= product.name.split("-")[0] %>
+        <% elsif product.name.include?(":") %>
+          <%= product.name.split(":")[0] %>
+        <% else %>
+          <%= product.name.split.first(4).join(" ")%>
+        <% end %>
+      </h1>
         <%# <div class="font-italic text-sm">
         Link: <%=link_to product.name, product.url %>
         <%# </div> %>
-      <p class="font-light text-sm"><%= product.bio %></p>
+      <p class="text-sm"><%= product.bio %></p>
         <div class="flex">
           <div class="flex-1 text-purple-600">
             <% icons = { bookkeeping:"fas fa-book fa-3x", userexperience: "fas fa-edit", developertools: "fas fa-laptop-code", marketing: "fas fa-search-dollar",

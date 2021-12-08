@@ -4,29 +4,26 @@
     data-controller="save"
     data-save-url-value="<%= save_to_session_product_url(product) %>"
     data-save-target="product">
-    <%if !current_user && session[:saved_products]&.include?(product.id) %>
-      <p class="absolute right-8 top-3 p-1 bg-gray-200 rounded-md">SAVED!</p>
-    <% end %>
     <div class="col-4 py-4 inline-block">
-      <% if product.image_url %>
-        <%= image_tag product.image_url %>
-      <% else %>
-        <img src="https://placedog.net/100/100?random" height="100" alt="" />
-      <% end %>
+      <%= image_tag product.image_url %>
     </div>
     <div class='col-8 pt-2 p-3.5 inline-block align-middle' >
-      <div class='font-bold text-lg' data-toggle="modal" data-target='#<%= "show#{product.id}" %>'>
-        <%= product.name.first(20) %>
-        <%# <%= product.name.split("-")[0] %>
-        <%# <%= product.name.split(":")[0] %>
-      </div>
+      <h1 class='font-bold text-lg' data-toggle="modal" data-target='#<%= "show#{product.id}" %>'>
+        <% if product.name.include?("-") %>
+          <%= product.name.split("-")[0] %>
+        <% elsif product.name.include?(":") %>
+          <%= product.name.split(":")[0] %>
+        <% else %>
+          <%= product.name.split.first(4).join(" ")%>
+        <% end %>
+      </h1>
       <%# <div class="font-italic text-sm">
         Link: <%=link_to product.name, product.url %>
       <%# </div> %>
-      <p class="font-light text-sm"><%= product.bio %></p>
+      <p class="text-sm"><%= product.bio %></p>
       <div class="flex">
         <div class="flex-1">
-          <div class="text-purple-600">
+          <div class="text-purple-400">
             <% icons = { bookkeeping:"fas fa-book fa-3x", userexperience: "fas fa-edit", developertools: "fas fa-laptop-code", marketing: "fas fa-search-dollar",
                 CRM: "fas fa-project-diagram", designtools: "fas fa-pencil-ruler", productivity: "fas fa-industry", analytics: "fas fa-chart-line" } %>
             <% product.category_list.each do |category| %>
@@ -41,13 +38,13 @@
           </div>
         </div>
         <div>
-        <div class="flex-1 bg-purple-600 w-16 text-center px-0 rounded text-sm">
+        <div class="flex-1 <%= session[:saved_products]&.include?(product.id) ? "bg-purple-200" : "bg-purple-600" %> w-16 text-center px-0 rounded text-sm">
           <% if current_user %>
             <%= render "products/savemodal", product: product %>
           <% else %>
-            <button class= "text-white font-bold text-sm py-2 pl-4 rounded" data-action="click->save#addToList">
+            <button class="text-white font-bold text-sm py-2 rounded" data-action="click->save#addToList">
               <%= session[:saved_products]&.include?(product.id) ?
-                  "REMOVE" :
+                  "Saved!" :
                   "ADD" %>
             </button>
           <% end %>
@@ -77,17 +74,17 @@
       </div>
     </div>
   </div>
-  <%# show id product model to render %>
+  <%# show id product modal to render %>
   <div class="modal fade" id='<%= "show#{product.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "show#{product.id}" %>' aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content w-full">
-        <div class="modal-header" style="background-color: rgb(39,28,162)">
-          <h5 class="modal-title" id="exampleModalLabel" style="color: white">Product details</h5>
-          <button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="background-color: rgb(254,194,242)">
-            <span aria-hidden="true">&times;</span>
+        <div class="modal-header" style="background-color: rgb(139,128,254)">
+          <h5 class="modal-title" id="ModalTitle" style="color: rgb(255,253,255)">Product details</h5>
+          <button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="background-color: rgb(139,128,254)">
+            <span style="color: rgb(255,253,255)" aria-hidden="true"><i class="fas fa-times"></i></span>
           </button>
         </div>
-        <div class="modal-body" style="background-color: rgb(139,128,254)">
+        <div class="modal-body" style="background-color: rgb(255,253,255)">
           <%= render "products/modal", product: product %>
         </div>
       </div>
