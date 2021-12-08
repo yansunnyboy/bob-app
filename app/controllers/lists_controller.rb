@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
-  before_action :find_list, only: %i[show edit destroy update]
+  skip_before_action :authenticate_user!, only: %i[invite]
+  before_action :find_list, only: %i[show edit destroy update invite]
 
   def index
     list_scope = List.joins(:contributors).where(contributors:{user:current_user})
@@ -43,6 +44,9 @@ class ListsController < ApplicationController
   def destroy
     @list.destroy
     redirect_to lists_path
+  end
+
+  def invite
   end
 
   private

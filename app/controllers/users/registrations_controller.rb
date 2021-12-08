@@ -11,8 +11,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
+    # valid_list_token if params[:list_invite_token]
+    super do |resource|
+      if resource.password.blank? && params[:passwordless_signup]
+        temp_password = SecureRandom.hex(16)
+
+        resource.password = temp_password
+        resource.password_confirmation = temp_password
+        resource.save
+      end
+    end
     add_saved_products if session[:saved_products]
+    signup_to_list if params[:list_invite_token]
   end
 
   # GET /resource/edit
@@ -60,15 +70,30 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-private
-def add_saved_products
-  list = List.create!(name:"My saved list!")
-  # contributor = Contributor.create!(user_id: resource, role: "owner")
-  Contributor.create!(user: resource, role: "owner", list: list)
-  saved_product_ids = session[:saved_products]
-  saved_product_ids.each do |id|
-    Solution.create!(product_id: id, list: list)
+
+  private
+
+  def add_saved_products
+    list = List.create!(name:"My saved list!")
+    # contributor = Contributor.create!(user_id: resource, role: "owner")
+    Contributor.create!(user: resource, role: "owner", list: list)
+    saved_product_ids = session[:saved_products]
+    saved_product_ids.each do |id|
+      Solution.create!(product_id: id, list: list)
+    end
+    session[:saved_products] = nil
   end
-  session[:saved_products] = nil
-end
+
+  def signup_to_list
+    result = JWT.decode(
+      params[:list_invite_token],
+      Rails.application.secret_key_base,
+      true,
+      algorithm: "HS256"
+    )
+    list = List.find(result[0]["list_id"])
+    return unless resource.errors.empty?
+    session["user_return_to"] = list_url(list)
+    Contributor.create!(user: resource, role: "editor", list: list)
+  end
 end
