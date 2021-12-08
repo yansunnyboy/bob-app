@@ -1,16 +1,30 @@
-<div class="card mb-3" >
+<div class="card m-2 border-0 bg-pink-50 rounded-md shadow" >
   <div class="card-img">
-    <img src="https://source.unsplash.com/1600x900/?software">
+    <img class="rounded-t-md" src="https://source.unsplash.com/1600x900/?software">
   </div>
   <div class="card-body rounded-lg">
     <div class="row">
       <div class="card-body1 d-flex justify-content-between">
-        <div class="product-img">
-          <%= image_tag product.image_url, height: 100 %>
+        <div class="col-6">
+          <%= image_tag product.image_url, height: 128 %>
         </div>
-        <div class="col-9">
-          <h1 class="font-bold text-lg"><%= product.name %></h1>
-          <p><%= product.bio %></p>
+        <div class="col-6">
+          <h1 class="font-bold text-xl"><%= product.name %></h1>
+          <div class="flex text-purple-400">
+            <div class="flex-1">
+              <% icons = { bookkeeping:"fas fa-book fa-3x", userexperience: "fas fa-edit", developertools: "fas fa-laptop-code", marketing: "fas fa-search-dollar",
+                  CRM: "fas fa-project-diagram", designtools: "fas fa-pencil-ruler", productivity: "fas fa-industry", analytics: "fas fa-chart-line" } %>
+              <% product.category_list.each do |category| %>
+                <i class="<%= icons[category.gsub(' ', '').to_sym] %> grid text-lg"></i>
+              <%end%>
+              <% product.business_list.each do |business| %>
+                <p class ="text-uppercase card-text badge badge-pill badge-secondary"><%= business %></p>
+              <%end%>
+                <% product.cost_list.each do |cost| %>
+                <p class ="text-uppercase card-text badge badge-pill badge-success"><%= cost %></p>
+              <%end%>
+          </div>
+        </div>
           </div>
         </div>
         </div>
@@ -20,17 +34,9 @@
           <div>
             <p><%= product.info %></p>
           </div>
-          <% product.category_list.each do |category| %>
-          <p class =" text-uppercase card-text badge badge-pill badge-info"><%= category %></p>
-          <%end%>
-          <% product.business_list.each do |business| %>
-          <p class =" text-uppercase card-text badge badge-pill badge-secondary"><%= business %></p>
-          <%end%>
-          <% product.cost_list.each do |cost| %>
-          <p class =" text-uppercase card-text badge badge-pill badge-success"><%= cost %></p>
-          <%end%>
-          <div>
-          <button type="button" class="btn bg-purple-600 text-pink-200" data-toggle="modal" data-target='#<%= "createList#{product.id}" %>' >Add to List</button></div>
+            <div class="text-center mt-2">
+              <button type="button" class="btn bg-purple-600 text-white font-bold" data-toggle="modal" data-target='#<%= "createList#{product.id}" %>' data-dismiss="modal">ADD</button>
+            </div>
         </div>
       </div>
     </div>
