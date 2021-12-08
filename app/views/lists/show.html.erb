@@ -3,7 +3,7 @@
     <%= render "shared/lgcontainer", classes: "flex flex-col" do %>
       <div class="flex">
         <div class="flex-1 py-2 px-3" data-toggle="modal" data-target='#<%= "new#{@list.id}" %>'>
-          <i class="fas fa-user-plus fa-2x text-pink-400 hover:text-purple-900" data-toggle="tooltip" type="button" data-placement="top" title="Add a new contributor"></i>
+          <i class="fas fa-user-plus fa-2x text-pink-400 hover:text-purple-900 p-2" data-toggle="tooltip" type="button" data-placement="top" title="Add a new contributor"></i>
           <%= link_to(
             list_contributors_path(list_id:@list.id),
           class: "pl-2"
@@ -12,11 +12,14 @@
           <% end %>
         </div>
         <div class="flex-1 text-right py-2 px-3">
+          <div class="inline-block p-2" data-toggle="modal" data-target='#<%= "shareQrList#{@list.id}" %>'>
+            <i class="fas fa-share fa-2x text-pink-400 hover:text-purple-900" data-toggle="tooltip" type="button" data-placement="top" title="Add a new contributor"></i>
+          </div>
           <%= link_to(
           new_list_solution_path(@list),
-          class: ""
+          class: "inline-block"
           ) do %>
-          <i class="fas fa-plus fa-2x text-pink-400 hover:text-purple-900" data-toggle="tooltip" type="button" data-placement="top" title="Add a new product"></i>
+          <i class="fas fa-plus fa-2x text-pink-400 hover:text-purple-900 p-2" data-toggle="tooltip" type="button" data-placement="top" title="Add a new product"></i>
           <% end %>
         </div>
       </div>
@@ -47,6 +50,25 @@
       </div>
       <div class="modal-body border-t-0">
       <%= render "contributors/new", list: @list %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# QR list share modal %>
+<div class="modal fade" id='<%= "shareQrList#{@list.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "new#{@list.id}" %>' aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content w-full">
+      <div class="modal-header bg-indigo-100">
+        <h5 class="modal-title text-3xl" id="exampleModalLabel">Shareable link</h5>
+        <button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="background-color: rgb(254,194,242)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body bg-indigo-100">
+        <div class="qr">
+          <%= qr_svg(invite_list_url(@list, list_invite_token: list_invite_token(@list))) %>
+        </div>
       </div>
     </div>
   </div>
