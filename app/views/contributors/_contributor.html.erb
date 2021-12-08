@@ -1,11 +1,20 @@
-<li class="list-group-item">
-  <%= contributor.user.full_name%>
-  <%= contributor.user.email%>
-  <%= contributor.role%>
-  <%= link_to(
+<div class="flex justify-center relative">
+  <div class="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-pink-100 shadow-lg">
+    <div class="relative flex gap-4">
+      <img src="https://icons.iconarchive.com/icons/diversity-avatars/avatars/256/charlie-chaplin-icon.png" class="relative rounded-lg -top-8 -mb-4 bg-white border h-20 w-20" alt="" loading="lazy">
+        <div class="flex flex-col w-full">
+          <div class="flex flex-row justify-between">
+            <p class="relative text-xl whitespace-nowrap truncate overflow-hidden"><%= contributor.user.full_name%></p>
+          </div>
+            <p class="text-gray-400 text-sm uppercase text-bold"><%= contributor.role%></p>
+            <p class="text-gray-400 text-sm"><%= contributor.user.email%></p>
+        </div>
+    </div>
+    <p class="-mt-4 text-gray-500">  <%= link_to(
     "remove",
     remove_list_contributor_path(list_id: params[:list_id], id: contributor),
-    class: "btn btn-danger",
+    class: "bg-purple-700 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded-full",
     method: :post,
-  ) %>
-</li>
+    ) %></p>
+  </div>
+</div>
