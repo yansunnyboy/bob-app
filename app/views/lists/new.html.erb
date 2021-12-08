@@ -1,20 +1,11 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-    <a href="/">Home</a>
-    </li>
-    <li class="breadcrumb-item">
-      <%= link_to("Lists", lists_path) %>
-    </li>
-    <li class="breadcrumb-item active">
-      New List
-    </li>
-  </ol>
-</nav>
-
-<div class="row">
-  <div class="col-md-6 offset-md-3">
-    <h1>Add a List</h1>
-    <%= render "form", list: @list %>
+<div class="min-h-screen bg-gradient-to-t from-pink-200 to-purple-400 p-0  flex justify-center">
+    <!--Card 1-->
+    <div class="max-w-sm rounded overflow-hidden shadow-md h-1/3 w-2/3 pt-3 ">
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2 text-white">Give your list a name</div>
+        <p class="text-gray-700 text-base">
+          <%= render "form", list: @list %>
+        </p>
+      </div>
+    </div>
   </div>
-</div>
