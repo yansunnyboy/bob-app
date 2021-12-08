@@ -6,6 +6,7 @@ class ContributorsController < ApplicationController
   def new
     @contributor = Contributor.new(user: User.new())
     @list = List.find(params[:list_id])
+    redirect_to list_path(@list)
   end
 
   def create
