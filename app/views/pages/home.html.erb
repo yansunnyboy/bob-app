@@ -1,7 +1,7 @@
   <%# title container %>
-<div class="min-h-2 flex flex-wrap place-content-evenly text-white mb-6 place-content-evenly mb-56">
+<div class="min-h-2 flex flex-wrap place-content-evenly text-white place-content-evenly mb-56">
   <% if user_signed_in? %>
-    <h1 class="animate-pulse pt-20 text-center uppercase flex-wrap font-bold text-2xl md:text-7xl sm:text-2xl">Hello there <%= current_user.full_name %>!<br>Welcome to BOB!</h1>
+    <h1 class="animate-pulse pt-10 text-center uppercase flex-wrap font-bold text-2xl md:text-7xl sm:text-2xl">Hello there <%= current_user.full_name %>!<br>Welcome to BOB!</h1>
   <% else %>
     <h1 class="animate-pulse pt-20 text-center uppercase flex-wrap font-bold text-2xl md:text-7xl sm:text-2xl"> Welcome to BOB!</h1>
   <% end %>
@@ -27,14 +27,14 @@
 
 <%# creating a category list! %>
 
-<div class="flex flex-col bg-transparent m-auto p-auto h-screen">
-  <h1 class="flex py-24 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl text-white">Explore our software categories today....</h1>
-  <div class="flex overflow-x-scroll pb-10 hide-scroll-bar">
-    <div class="flex flex-nowrap lg:ml-40 md:ml-20 ml-10 ">
+<div class="flex flex-col bg-transparent m-auto p-auto h-full">
+  <h1 class="flex py-36 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 mt-10 font-bold text-4xl text-white">Explore our software categories today....</h1>
+  <div class="flex overflow-x-scroll hide-scroll-bar">
+    <div class="flex flex-nowrap lg:ml-40 md:ml-20 ml-10">
     <% @categories.each do |category| %>
-      <div class="inline-block px-3">
-        <div class="flex justify-around items-center w-64 h-64 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
-        <%= render partial: "shared/category", locals: { category: category} %>
+      <div class="inline-block px-3 mb-36">
+        <div class="flex justify-around items-center w-48 h-48 max-w-xs overflow-hidden rounded-xl shadow-md bg-indigo-200 hover:shadow-xl transition-shadow duration-300 ease-in-out">
+          <%= render partial: "shared/category", locals: { category: category} %>
         </div>
       </div>
       <% end %>
