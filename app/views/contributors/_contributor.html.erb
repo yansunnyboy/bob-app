@@ -1,5 +1,5 @@
 <div class="flex justify-center relative">
-  <div class="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-pink-100 shadow-lg">
+  <div class="relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-pink-100 shadow-lg w-full">
     <div class="relative flex gap-4">
       <img src="https://icons.iconarchive.com/icons/diversity-avatars/avatars/256/charlie-chaplin-icon.png" class="relative rounded-lg -top-8 -mb-4 bg-white border h-20 w-20" alt="" loading="lazy">
         <div class="flex flex-col w-full">
@@ -10,10 +10,10 @@
             <p class="text-gray-400 text-sm"><%= contributor.user.email%></p>
         </div>
     </div>
-    <p class="-mt-4 text-gray-500">  <%= link_to(
-    "remove",
+    <p class="-mt-4 text-white"> <%= link_to(
+    "Remove",
     remove_list_contributor_path(list_id: params[:list_id], id: contributor),
-    class: "bg-purple-700 hover:bg-purple-500 text-white font-bold py-2 px-4 rounded-full",
+    class: "bg-purple-500 hover:bg-purple-300 text-white font-bold py-2 rounded-full flex justify-center shadow",
     method: :post,
     ) %></p>
   </div>

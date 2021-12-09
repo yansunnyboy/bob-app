@@ -9,7 +9,9 @@
             <% end %>
         <%= render "shared/lgcontainer", classes: "p-4 flex flex-col items-center" do %>
       <%= render partial: "list", collection: @lists, classes: "flex rounded-md bg-pink-50 shadow-sm w-2/3"%>
-      <div class='flex justify-center p-2'><%== pagy_nav(@pagy) %></div>
+      <div class="flex justify-center items-center bg-white">
+        <div class='mb-20 pb-2'><%== pagy_nav(@pagy) %></div>
+      </div>
         <% end %>
     <% end %>
 </div>

@@ -6,19 +6,14 @@ class ContributorsController < ApplicationController
   def new
     @contributor = Contributor.new(user: User.new())
     @list = List.find(params[:list_id])
-    redirect_to list_path(@list)
   end
 
   def create
     user = User.find_by(email: set_params[:user])
     @list = List.find(params[:list_id])
     @contributor = Contributor.new(user: user, list: @list)
-    if @contributor.save
-      redirect_to list_contributors_path(@list)
-    else
-      flash.now[:notice] = "maybe could not find user: #{set_params[:user_attributes]}"
-      render :new
-    end
+    redirect_to list_contributors_path(@list)
+    # flash.now[:notice] = "Could not find user: #{set_params[:user_attributes]}"
   end
 
   def remove
