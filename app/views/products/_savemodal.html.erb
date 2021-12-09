@@ -6,23 +6,19 @@
 <!-- Modal -->
 <div class="modal fade" id='<%= "saveModal#{product.id}" %>' tabindex="-1" role="dialog" data-dismiss="modal" aria-labelledby='<%= "saveModal#{product.id}" %>' aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id='<%= "saveModal#{product.id}" %>'>Select List</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <div class="modal-content w-full">
+      <div class="modal-header" style="background-color: rgb(139,128,254)">
+        <h5 class="font-bold text-xl mb-2 text-white" style="color: rgb(255,253,255)" id='<%= "saveModal#{product.id}" %>'>Select List</h5>
+        <button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="bg-purple-500 text-white">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-bold text-lg">
         <% current_user.lists.each do |list| %>
           <%= link_to list_product_solutions_path(list, product) , method: :post do %>
-            <div><%= list.name %></div>
+            <div class="block bg-pink-50 rounded-full shadow py-1 m-1"><%= list.name %></div>
           <% end %>
         <% end %>
-      </div>
-      <div class="modal-footer">
-        <%# <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button> %>
       </div>
     </div>
   </div>
