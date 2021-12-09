@@ -40,14 +40,14 @@
 <div class="modal fade" id='<%= "new#{@list.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "new#{@list.id}" %>' aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content w-full">
-      <div class="modal-header bg-gradient-to-t from-pink-200 to-purple-400">
+      <div class="modal-header" style="background-color: rgb(139,128,254)">
         <h5 class="font-bold text-xl mb-2 text-white" id="exampleModalLabel">Add a contributor</h5>
-        <button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="bg-purple-500 text-white ">
+        <button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="bg-purple-500 text-white">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body border-t-0 bg-white">
-      <%= render "contributors/new", list: @list %>
+      <div class="modal-body bg-white">
+        <%= render "contributors/new", list: @list %>
       </div>
     </div>
   </div>
