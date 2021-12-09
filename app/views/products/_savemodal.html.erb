@@ -1,10 +1,10 @@
 <!-- Button trigger modal -->
-<button type="button" class=" text-white font-bold py-2 text-sm   btn" data-toggle="modal" data-target='#<%= "saveModal#{product.id}" %>'>
+<button type="button" class="bg-purple-600 text-white font-bold py-2 text-sm btn" data-toggle="modal" data-target='#<%= "saveModal#{product.id}" %>' data-dismiss="modal">
   ADD
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id='<%= "saveModal#{product.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "saveModal#{product.id}" %>' aria-hidden="true">
+<div class="modal fade" id='<%= "saveModal#{product.id}" %>' tabindex="-1" role="dialog" data-dismiss="modal" aria-labelledby='<%= "saveModal#{product.id}" %>' aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
