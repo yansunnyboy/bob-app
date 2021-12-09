@@ -511,13 +511,13 @@ product.save!
 product = nil
 product = Product.find_by({:name=>"Manon is terrific!", :url=>"https://www.linkedin.com/in/manon-shearn/?originalSubdomain=au"})
 product = Product.create!({:name=>"Manon is terrific!", :url=>"https://www.linkedin.com/in/manon-shearn/?originalSubdomain=au"}) if product.nil?
-product.update!({:bio=>"Thank you Manon for your support for batch 757", :info=>nil, :image_url=>"https://media-exp1.licdn.com/dms/image/C5603AQHQrLe6kI8Aag/profile-displayphoto-shrink_200_200/0/1617169099089?e=1644451200&v=beta&t=OVd-4lAHYBc8bZZ_Ift8DpQB-wy42rMqbUHr-vm_DLg2"})
+product.update!({:bio=>"Thank you Manon for your support for batch 757", :info=>nil, :image_url=>"https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_220,q_auto,w_315/v1593502070/v7x09uqsbdge7kazftva.webp"})
 product.category_list.add("analytics", parse: true)
 product.save!
 product = nil
-product = Product.find_by({:name=>"Julian likes riding he bike", :url=>"https://www.linkedin.com/in/julian-harrington/?originalSubdomain=au"})
-product = Product.create!({:name=>"Julian likes riding he bike", :url=>"https://www.linkedin.com/in/julian-harrington/?originalSubdomain=au"}) if product.nil?
-product.update!({:bio=>"Always ready to help Batch 757!..", :info=>nil, :image_url=>"https://media-exp1.licdn.com/dms/image/C5603AQHABsXnHkTjzQ/profile-displayphoto-shrink_200_200/0/1607741867673?e=1644451200&v=beta&t=fwu_5ofZp0hlIDsOg2lvjc8ZOQQEb2oYsTfG5Cqrpzs"})
+product = Product.find_by({:name=>"Julian likes riding his bike", :url=>"https://www.linkedin.com/in/julian-harrington/?originalSubdomain=au"})
+product = Product.create!({:name=>"Julian likes riding his bike", :url=>"https://www.linkedin.com/in/julian-harrington/?originalSubdomain=au"}) if product.nil?
+product.update!({:bio=>"Always ready to help Batch 757! Thank you..", :info=>nil, :image_url=>"https://media-exp1.licdn.com/dms/image/C5603AQHABsXnHkTjzQ/profile-displayphoto-shrink_200_200/0/1607741867673?e=1644451200&v=beta&t=fwu_5ofZp0hlIDsOg2lvjc8ZOQQEb2oYsTfG5Cqrpzs"})
 product.category_list.add("analytics", parse: true)
 product.save!
 product = nil
