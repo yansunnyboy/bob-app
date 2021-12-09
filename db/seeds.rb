@@ -527,3 +527,34 @@ product.update!({:bio=>"Thanks George for all your help for bacth #757!!", :info
 product.category_list.add("analytics", parse: true)
 product.save!
 product = nil
+product = Product.find_by({:name=>"myob", :url=>"https://www.myob.com/au"})
+product = Product.create!({:name=>"myob", :url=>"https://www.myob.com/au"}) if product.nil?
+product.update!({:bio=>"A single system that automates your everyday tasks and helps your business look professional, while staying compliant.", :info=>"MYOB Business automatically pre-fills GST to your BAS, so you'll always know how much you owe. No manual calculations. No surprises. More insights, less spreadsheets", :image_url=>"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1VrPvDQcg1gzZJcN7Rd8jkLi3zPJF1M-kGsgOKUh-xLwBbuVvg4lel85gl2OjStoXVxk&usqp=CAU"})
+product.category_list.add("bookkeeping", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"pocketbook", :url=>"https://getpocketbook.com/"})
+product = Product.create!({:name=>"pocketbook", :url=>"https://getpocketbook.com/"}) if product.nil?
+product.update!({:bio=>"Take control of your money", :info=>"One app to rule them all
+Securely link your accounts from multiple banks and track all your money from one place. We provide coverage for more than 80% of Australia’s banking data. In the unlikely event of your bank not being in the list, get in touch! And we will make sure it is on the list.", :image_url=>"https://getpocketbook.com/images/Full-Dark.png"})
+product.category_list.add("bookkeeping", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Flodesk", :url=>"https://flodesk.com/"})
+product = Product.create!({:name=>"Flodesk", :url=>"https://flodesk.com/"}) if product.nil?
+product.update!({:bio=>"Take control of your money", :info=>"Flodesk is a fast-growing email marketing service for small businesses. Their focus is on design, enabling small business owners to create beautiful emails and showcase their brand. Flodesk offers workflows that allow users to automate lead magnet delivery, welcome sequences, and more with an easy-to-use visual builder.", :image_url=>"https://flodesk.com/dist/icons/logo.png"})
+product.category_list.add("analytics", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Flodesk", :url=>"https://www.proofhub.com/"})
+product = Product.create!({:name=>"Flodesk", :url=>"https://www.proofhub.com/"}) if product.nil?
+product.update!({:bio=>"The one place for all your projects and team collaboration", :info=>"All the tools your team needs. Easily plan, collaborate, organize and deliver projects of all sizes, on time, using one project planning software with all the right tools put at one place.", :image_url=>"https://www.proofhub.com/wp-content/themes/ph4.1/images/logos/logo.png"})
+product.category_list.add("analytics", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"StudioCloud", :url=>"https://www.proofhub.com/"})
+product = Product.create!({:name=>"StudioCloud", :url=>"https://www.proofhub.com/"}) if product.nil?
+product.update!({:bio=>"StudioCloud has made a name for itself as a reliable business management platform and company management system in much less time.", :info=>"Manage clients, partners, and vendors at one place. Create and send professional invoices. Send automated, personalized, text and email reminders. Have clients review and sign contracts online. Easily customize the look and feel of your software", :image_url=>"https://media.giphy.com/media/l1J3IBMn0rRxbjxUQ/giphy.gif"})
+product.category_list.add("developer tools", parse: true)
+product.save!
+product = nil
