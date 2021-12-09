@@ -1,13 +1,13 @@
 
 <div class="min-h-screen bg-gradient-to-t from-pink-200 to-purple-400 p-0  flex justify-center">
   <div class="px-6 py-4">
-  <%= link_to(
-              "Add New Contributor",
-              new_list_contributor_path(list_id: params[:list_id]),
-              class: "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full"
-            ) %>
-    <div class="font-bold mt-20 text-xl mb-2 text-white">Contributors</div>
+    <h1 class="animate-pulse font-bold text-xl my-16 text-white text-center">Contributors</h1>
       <%= render partial: "contributor", collection: @contributors %>
+    <%= link_to(
+                "Back to list",
+                list_path(params[:list_id]),
+                class: "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full flex justify-center shadow"
+              ) %>
     </div>
   </div>
 </div>
