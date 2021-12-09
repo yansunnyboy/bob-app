@@ -14,7 +14,7 @@
         <% elsif product.name.include?(":") %>
           <%= product.name.split(":")[0] %>
         <% else %>
-          <%= product.name.split.first(4).join(" ")%>
+          <%= product.name.split.first(3).join(" ")%>
         <% end %>
       </h1>
       <%# <div class="font-italic text-sm">
