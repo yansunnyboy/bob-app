@@ -546,15 +546,15 @@ product.update!({:bio=>"Take control of your money", :info=>"Flodesk is a fast-g
 product.category_list.add("analytics", parse: true)
 product.save!
 product = nil
-product = Product.find_by({:name=>"Flodesk", :url=>"https://www.proofhub.com/"})
-product = Product.create!({:name=>"Flodesk", :url=>"https://www.proofhub.com/"}) if product.nil?
-product.update!({:bio=>"The one place for all your projects and team collaboration", :info=>"All the tools your team needs. Easily plan, collaborate, organize and deliver projects of all sizes, on time, using one project planning software with all the right tools put at one place.", :image_url=>"https://www.proofhub.com/wp-content/themes/ph4.1/images/logos/logo.png"})
-product.category_list.add("analytics", parse: true)
-product.save!
-product = nil
+# product = Product.find_by({:name=>"Flodesk", :url=>"https://www.proofhub.com/"})
+# product = Product.create!({:name=>"Flodesk", :url=>"https://www.proofhub.com/"}) if product.nil?
+# product.update!({:bio=>"The one place for all your projects and team collaboration", :info=>"All the tools your team needs. Easily plan, collaborate, organize and deliver projects of all sizes, on time, using one project planning software with all the right tools put at one place.", :image_url=>"https://www.proofhub.com/wp-content/themes/ph4.1/images/logos/logo.png"})
+# product.category_list.add("analytics", parse: true)
+# product.save!
+# product = nil
 product = Product.find_by({:name=>"StudioCloud", :url=>"https://www.proofhub.com/"})
 product = Product.create!({:name=>"StudioCloud", :url=>"https://www.proofhub.com/"}) if product.nil?
-product.update!({:bio=>"StudioCloud has made a name for itself as a reliable business management platform and company management system in much less time.", :info=>"Manage clients, partners, and vendors at one place. Create and send professional invoices. Send automated, personalized, text and email reminders. Have clients review and sign contracts online. Easily customize the look and feel of your software", :image_url=>"https://media.giphy.com/media/l1J3IBMn0rRxbjxUQ/giphy.gif"})
+product.update!({:bio=>"StudioCloud has made a name for itself as a reliable business management platform and company management system in much less time.", :info=>"Manage clients, partners, and vendors at one place. Create and send professional invoices. Send automated, personalized, text and email reminders. Have clients review and sign contracts online. Easily customize the look and feel of your software", :image_url=>"https://www.proofhub.com/wp-content/themes/ph4.1/images/logos/logo.png"})
 product.category_list.add("developer tools", parse: true)
 product.save!
 product = nil

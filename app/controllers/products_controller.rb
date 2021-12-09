@@ -1,11 +1,13 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show save_to_session nav_count]
-  before_action :find_product, only: %i[show edit update destroy toggle_category toggle_business toggle_cost add_to_list create_solution_from_product save_to_session]
+  before_action :find_product,
+                only: %i[show edit update destroy toggle_category toggle_business toggle_cost add_to_list create_solution_from_product
+                         save_to_session]
 
   def index
-    product_scope = Product.all
+    product_scope = Product.all.order(:id)
     product_scope = product_scope.tagged_with(params[:category]) unless params[:category].nil?
-    @pagy, @products = pagy(product_scope, size: [1,1,1,1])
+    @pagy, @products = pagy(product_scope, size: [1, 1, 1, 1])
     @categories = product_scope.tag_counts_on(:categories)
     @lists = List.all
     @solution = Solution.new
@@ -102,19 +104,18 @@ class ProductsController < ApplicationController
       solution.liked_by contributor
     end
 
-
     redirect_back fallback_location: list_product_path(list: list, product: product)
   end
 
   def save_to_session
     session[:saved_products] ||= []
     if session[:saved_products].include?(@product.id)
-      session[:saved_products] = session[:saved_products].reject{|p| p == @product.id}
+      session[:saved_products] = session[:saved_products].reject { |p| p == @product.id }
     else
       session[:saved_products] << @product.id
     end
     respond_to do |format|
-      @no_classes = true # hack to remove shared/_container wrapping for re-render
+      @no_classes = true # HACK: to remove shared/_container wrapping for re-render
       format.html # Follow regular flow of Rails
       format.text { render partial: 'products/product', locals: { product: @product }, formats: [:html] }
     end
