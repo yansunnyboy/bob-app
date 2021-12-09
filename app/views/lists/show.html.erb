@@ -57,13 +57,13 @@
 <div class="modal fade" id='<%= "shareQrList#{@list.id}" %>' tabindex="-1" role="dialog" aria-labelledby='<%= "new#{@list.id}" %>' aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content w-full">
-      <div class="modal-header bg-indigo-100">
-        <h5 class="modal-title text-3xl" id="exampleModalLabel">Shareable link</h5>
-        <button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="background-color: rgb(254,194,242)">
-          <span aria-hidden="true">&times;</span>
+      <div class="modal-header" style="background-color: rgb(139,128,254)">
+        <h5 class="modal-title" id="ModalTitle" style="color: rgb(255,253,255)">Shareable link</h5>
+        <button type="button" class="btn" data-dismiss="modal" aria-label="Close" style="background-color: rgb(139,128,254)">
+            <span style="color: rgb(255,253,255)" aria-hidden="true"><i class="fas fa-times"></i></span>
         </button>
       </div>
-      <div class="modal-body bg-indigo-100">
+      <div class="modal-body" style="background-color: rgb(255,253,255)">
         <div class="qr">
           <%= qr_svg(invite_list_url(@list, list_invite_token: list_invite_token(@list))) %>
         </div>
