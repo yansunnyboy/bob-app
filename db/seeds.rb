@@ -107,9 +107,9 @@ product.update!({:bio=>"What defines a great user experience?", :info=>"User Exp
 product.category_list.add("user experience", parse: true)
 product.save!
 product = nil
-# product = Product.find_by({:name=>"User Experiences That Matter", :url=>"https://www.userexperiencesmatter.com/"})
-# product = Product.create!({:name=>"User Experiences That Matter", :url=>"https://www.userexperiencesmatter.com/"}) if product.nil?
-# product.update!({:bio=>"Take your product from liked by you, to loved by your users!", :info=>nil, :image_url=>"https://ph-files.imgix.net/abffbb80-66d8-4a7c-b2f8-e64a3469c25f.png?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+# product = Product.find_by({:name=>"Manon is Incredible and has been Terrific", :url=>"https://www.linkedin.com/in/manon-shearn/?originalSubdomain=au"})
+# product = Product.create!({:name=>"User Experiences That Matter", :url=>"https://www.linkedin.com/in/manon-shearn/?originalSubdomain=au"}) if product.nil?
+# product.update!({:bio=>"Incredible Positive And Makes the Boot Camp Loads of FUN!", :info=>nil, :image_url=>"https://media-exp1.licdn.com/dms/image/C5603AQHQrLe6kI8Aag/profile-displayphoto-shrink_200_200/0/1617169099089?e=1644451200&v=beta&t=OVd-4lAHYBc8bZZ_Ift8DpQB-wy42rMqbUHr-vm_DLg2"})
 # product.category_list.add("user experience", parse: true)
 # product.save!
 # product = nil
@@ -506,6 +506,24 @@ product = nil
 product = Product.find_by({:name=>"Intutel - Social Media Analytics", :url=>"https://intutel.com/products/social"})
 product = Product.create!({:name=>"Intutel - Social Media Analytics", :url=>"https://intutel.com/products/social"}) if product.nil?
 product.update!({:bio=>"Monitor brands & grow your social media with smart analytics", :info=>nil, :image_url=>"https://ph-files.imgix.net/6589d877-5951-48c5-baff-58b9e85eee50.gif?auto=format&auto=compress&codec=mozjpeg&cs=strip&w=160&h=160&fit=crop&dpr=3%203x%22"})
+product.category_list.add("analytics", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Manon is terrific!", :url=>"https://www.linkedin.com/in/manon-shearn/?originalSubdomain=au"})
+product = Product.create!({:name=>"Manon is terrific!", :url=>"https://www.linkedin.com/in/manon-shearn/?originalSubdomain=au"}) if product.nil?
+product.update!({:bio=>"Thank you Manon for your support for batch 757", :info=>nil, :image_url=>"https://media-exp1.licdn.com/dms/image/C5603AQHQrLe6kI8Aag/profile-displayphoto-shrink_200_200/0/1617169099089?e=1644451200&v=beta&t=OVd-4lAHYBc8bZZ_Ift8DpQB-wy42rMqbUHr-vm_DLg2"})
+product.category_list.add("analytics", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"Julian likes riding he bike", :url=>"https://www.linkedin.com/in/julian-harrington/?originalSubdomain=au"})
+product = Product.create!({:name=>"Julian likes riding he bike", :url=>"https://www.linkedin.com/in/julian-harrington/?originalSubdomain=au"}) if product.nil?
+product.update!({:bio=>"Always ready to help Batch 757!..", :info=>nil, :image_url=>"https://media-exp1.licdn.com/dms/image/C5603AQHABsXnHkTjzQ/profile-displayphoto-shrink_200_200/0/1607741867673?e=1644451200&v=beta&t=fwu_5ofZp0hlIDsOg2lvjc8ZOQQEb2oYsTfG5Cqrpzs"})
+product.category_list.add("analytics", parse: true)
+product.save!
+product = nil
+product = Product.find_by({:name=>"George the annimated gif guru", :url=>"https://www.linkedin.com/in/george-kettle/?originalSubdomain=au"})
+product = Product.create!({:name=>"George the annimated gif guru", :url=>"https://www.linkedin.com/in/george-kettle/?originalSubdomain=au"}) if product.nil?
+product.update!({:bio=>"Thanks George for all your help for bacth #757!!", :info=>nil, :image_url=>"https://media.giphy.com/media/kdWeMuuUJxjcWJM34m/giphy.gif"})
 product.category_list.add("analytics", parse: true)
 product.save!
 product = nil
