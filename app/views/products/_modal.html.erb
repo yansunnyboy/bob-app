@@ -32,10 +32,16 @@
           Link: <%= link_to product.name, product.url %>
         </div>
           <div>
-            <p><%= product.info %></p>
+            <p><%= product.info.nil? ? "#{product.bio}" : "#{product.info}" %></p>
           </div>
             <div class="text-center mt-2">
-              <button type="button" class="btn bg-purple-600 text-white font-bold" data-toggle="modal" data-target='#<%= "createList#{product.id}" %>' data-dismiss="modal">ADD</button>
+            <% if current_user %>
+              <button type="button" class="bg-purple-600 text-white font-bold py-2 text-sm btn" data-toggle="modal" data-target='#<%= "saveModal#{product.id}" %>' data-dismiss="modal">
+                ADD
+              </button>
+            <% else %>
+              <button type="button" class="btn bg-purple-600 text-white font-bold text-sm py-2 rounded" data-action="click->save#addToList" data-dismiss="modal">ADD</button>
+            <% end %>
             </div>
         </div>
       </div>
